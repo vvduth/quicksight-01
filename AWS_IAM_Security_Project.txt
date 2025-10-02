@@ -1,0 +1,293 @@
+<h1>🔐 AWS Identity and Access Management (IAM) Security Project</h1>
+
+<p>A comprehensive cloud security project demonstrating AWS Identity and Access Management (IAM) best practices, including policy creation, user management, and access control implementation.</p>
+
+<h2>🎯 Project Overview</h2>
+
+<p>This project explores AWS IAM service to control authentication (who can sign in) and authorization (what permissions they have) in an AWS account. The focus is on implementing granular access controls using IAM policies, user groups, and testing security boundaries.</p>
+
+<p><strong>Duration:</strong> Approximately 1 hour<br>
+<strong>Difficulty Level:</strong> Intermediate<br>
+<strong>Author:</strong> Duke (ducthai)</p>
+
+<h2>🛠️ Tools and Technologies Used</h2>
+
+<h3>AWS Services</h3>
+<ul>
+<li><strong>AWS IAM (Identity and Access Management)</strong> - Core service for access control</li>
+<li><strong>Amazon EC2</strong> - Target resources for policy testing</li>
+<li><strong>AWS Management Console</strong> - Web interface for resource management</li>
+</ul>
+
+<h3>Key Concepts Implemented</h3>
+<ul>
+<li><strong>IAM Policies</strong> - JSON rules that allow or deny actions on resources</li>
+<li><strong>Account Alias</strong> - Friendly account name used in sign-in URLs</li>
+<li><strong>IAM Users</strong> - Individual identities with credentials</li>
+<li><strong>User Groups</strong> - Collections of users for simplified permission management</li>
+<li><strong>Resource Tagging</strong> - Labels for resource identification and policy application</li>
+</ul>
+
+<h2>🏗️ Project Architecture</h2>
+
+<h3>Resource Structure</h3>
+<pre><code>AWS Account (ducthai)
+├── EC2 Instances
+│   ├── Production Instance (nextwork-prod-duke)
+│   │   └── Tags: Name=nextwork-prod-duke, Env=production
+│   └── Development Instance (nextwork-dev-duke)
+│       └── Tags: Name=nextwork-dev-duke, Env=development
+├── IAM Components
+│   ├── Custom JSON Policy (Development Access Policy)
+│   ├── User Group (with policy attachment)
+│   └── IAM User (member of user group)
+└── Account Alias: ducthai</code></pre>
+
+<h2>📋 Implementation Steps</h2>
+
+<h3>Step 1: Resource Tagging Strategy 🏷️</h3>
+
+<p>Implemented a comprehensive tagging strategy for EC2 instances:</p>
+
+<p><strong>Production Instance:</strong></p>
+<ul>
+<li><code>Name</code>: nextwork-prod-duke</li>
+<li><code>Env</code>: production</li>
+</ul>
+
+<p><strong>Development Instance:</strong></p>
+<ul>
+<li><code>Name</code>: nextwork-dev-duke</li>
+<li><code>Env</code>: development</li>
+</ul>
+
+<p><strong>Benefits of Tagging:</strong></p>
+<ul>
+<li>Resource identification and filtering</li>
+<li>Cost allocation tracking</li>
+<li>Environment-based policy application</li>
+<li>Simplified resource management</li>
+</ul>
+
+<h3>Step 2: IAM Policy Creation 📜</h3>
+
+<p>Created a sophisticated JSON policy with granular permissions:</p>
+
+<p><strong>Policy Objectives:</strong></p>
+<ul>
+<li>Allow all actions on EC2 instances tagged with <code>Env=development</code></li>
+<li>Allow describe actions on all EC2 instances (read-only visibility)</li>
+<li>Deny all delete and create actions on all EC2 instances (safety measure)</li>
+</ul>
+
+<p><strong>JSON Policy Structure:</strong></p>
+<pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:*",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "ec2:ResourceTag/Env": "development"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "ec2:Delete*",
+        "ec2:Create*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}</code></pre>
+
+<p><strong>Policy Components:</strong></p>
+<ul>
+<li><strong>Effect</strong>: Allow or Deny permissions</li>
+<li><strong>Action</strong>: Specific API calls or operations</li>
+<li><strong>Resource</strong>: Target AWS resources (ARNs or "*" for all)</li>
+<li><strong>Condition</strong>: Additional constraints based on tags or other attributes</li>
+</ul>
+
+<h3>Step 3: Account Alias Configuration 🔗</h3>
+
+<p><strong>Setup Details:</strong></p>
+<ul>
+<li>Created friendly account alias: <code>ducthai</code></li>
+<li>New sign-in URL: <code>https://ducthai.signin.aws.amazon.com/console</code></li>
+<li>Implementation time: ~1 minute</li>
+<li>Benefit: User-friendly login experience instead of numeric account ID</li>
+</ul>
+
+<h3>Step 4: User and Group Management 👥</h3>
+
+<p><strong>IAM User Group:</strong></p>
+<ul>
+<li>Created dedicated user group for development team</li>
+<li>Attached custom JSON policy to group</li>
+<li>Benefit: Simplified permission management for multiple users</li>
+</ul>
+
+<p><strong>IAM User:</strong></p>
+<ul>
+<li>Created individual IAM user</li>
+<li>Added user to the development group</li>
+<li>Inherited group permissions automatically</li>
+</ul>
+
+<h3>Step 5: Access Testing and Validation ✅</h3>
+
+<p><strong>Test Scenarios:</strong></p>
+
+<p><strong>Production Instance Test:</strong></p>
+<ul>
+<li>Action: Attempted to stop production instance</li>
+<li>Result: ❌ <strong>FAILED</strong> - Access denied</li>
+<li>Reason: Policy doesn't allow actions on production-tagged resources</li>
+<li>UI Response: Error banner indicating unauthorized access</li>
+</ul>
+
+<p><strong>Development Instance Test:</strong></p>
+<ul>
+<li>Action: Attempted to stop development instance</li>
+<li>Result: ✅ <strong>SUCCESS</strong> - Action completed</li>
+<li>Reason: Policy allows all actions on development-tagged resources</li>
+</ul>
+
+<h2>🔐 Security Features Implemented</h2>
+
+<h3>1. Principle of Least Privilege</h3>
+<ul>
+<li>Users receive minimum necessary permissions</li>
+<li>Environment-based access restrictions</li>
+<li>Explicit deny rules for sensitive operations</li>
+</ul>
+
+<h3>2. Resource-Based Access Control</h3>
+<ul>
+<li>Tag-based policy conditions</li>
+<li>Environment segregation (production vs development)</li>
+<li>Granular action permissions</li>
+</ul>
+
+<h3>3. Defense in Depth</h3>
+<ul>
+<li>Multiple policy statements with different effects</li>
+<li>Explicit deny rules override allow rules</li>
+<li>Account-level and resource-level controls</li>
+</ul>
+
+<h2>📊 Project Outcomes</h2>
+
+<h3>Successfully Implemented</h3>
+<p>✅ <strong>Tag-based resource organization</strong><br>
+✅ <strong>Custom IAM policy with conditional logic</strong><br>
+✅ <strong>Account alias for improved user experience</strong><br>
+✅ <strong>User group-based permission management</strong><br>
+✅ <strong>Policy testing and validation</strong></p>
+
+<h3>Key Learnings</h3>
+<ul>
+<li><strong>Most Challenging</strong>: Launching EC2 instances required subnet configuration</li>
+<li><strong>Most Rewarding</strong>: Understanding subnet concepts and network fundamentals</li>
+<li><strong>Security Insight</strong>: IAM users have limited access to account-wide features (history, billing, etc.)</li>
+</ul>
+
+<h2>🎓 Technical Skills Demonstrated</h2>
+
+<h3>AWS IAM Expertise</h3>
+<ul>
+<li>JSON policy creation and syntax</li>
+<li>Conditional access controls</li>
+<li>Resource-based permissions</li>
+<li>User and group management</li>
+</ul>
+
+<h3>Cloud Security Best Practices</h3>
+<ul>
+<li>Least privilege access</li>
+<li>Environment segregation</li>
+<li>Tag-based governance</li>
+<li>Access testing methodologies</li>
+</ul>
+
+<h3>Infrastructure Management</h3>
+<ul>
+<li>EC2 instance tagging</li>
+<li>Network subnet configuration</li>
+<li>Account administration</li>
+<li>User experience optimization</li>
+</ul>
+
+<h2>🚨 Security Considerations</h2>
+
+<h3>Policy Design Principles</h3>
+<ol>
+<li><strong>Explicit Deny Rules</strong> - Prevent accidental destructive actions</li>
+<li><strong>Conditional Access</strong> - Tag-based resource targeting</li>
+<li><strong>Read-Only Baseline</strong> - Default describe permissions for visibility</li>
+<li><strong>Environment Isolation</strong> - Separate production and development access</li>
+</ol>
+
+<h3>Testing Methodology</h3>
+<ol>
+<li><strong>Positive Testing</strong> - Verify allowed actions work correctly</li>
+<li><strong>Negative Testing</strong> - Confirm denied actions are blocked</li>
+<li><strong>Boundary Testing</strong> - Test edge cases and policy limits</li>
+</ol>
+
+<h2>🔄 Future Enhancements</h2>
+
+<h3>Advanced Features to Implement</h3>
+<ul>
+<li><strong>Multi-Factor Authentication (MFA)</strong> for enhanced security</li>
+<li><strong>Cross-account access</strong> for complex organizational structures</li>
+<li><strong>Temporary credentials</strong> using AWS STS</li>
+<li><strong>Policy simulation</strong> for pre-deployment testing</li>
+<li><strong>CloudTrail integration</strong> for audit logging</li>
+</ul>
+
+<h3>Scaling Considerations</h3>
+<ul>
+<li><strong>Role-based access</strong> for service-to-service communication</li>
+<li><strong>Identity federation</strong> for enterprise SSO integration</li>
+<li><strong>Automated policy management</strong> using Infrastructure as Code</li>
+<li><strong>Compliance reporting</strong> and governance frameworks</li>
+</ul>
+
+<h2>📚 Learning Resources</h2>
+
+<h3>AWS Documentation</h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/">IAM User Guide</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html">IAM JSON Policy Reference</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/">EC2 User Guide</a></li>
+</ul>
+
+<h3>Best Practices</h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html">IAM Security Best Practices</a></li>
+<li><a href="https://aws.amazon.com/security/security-resources/">AWS Security Guidelines</a></li>
+</ul>
+
+<h2>🤝 Project Reflection</h2>
+
+<p>This AWS IAM project provided hands-on experience with cloud security fundamentals. The implementation of tag-based access controls demonstrates real-world security patterns used in enterprise environments. The most valuable learning was understanding how IAM policies cascade through user groups and the importance of testing security boundaries.</p>
+
+<p><strong>Key Takeaway</strong>: Effective cloud security requires both technical implementation and thorough testing to ensure policies work as intended.</p>
+
+<hr>
+
+<p><strong>Project Source</strong>: <a href="https://nextwork.org">NextWork.org</a> - Cloud Security with AWS IAM<br>
+<strong>Sign-in URL</strong>: https://ducthai.signin.aws.amazon.com/console</p>
+
+<p><em>This project demonstrates practical AWS security implementation suitable for portfolio presentation and technical interviews.</em></p>
