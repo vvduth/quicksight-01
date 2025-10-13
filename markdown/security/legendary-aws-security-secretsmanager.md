@@ -60,8 +60,8 @@ It's not just AWS credentials; database passwords, API keys for other services, 
 
 In my `config.py`, I put:  
 
-AWS_ACCESS_KEY_ID = "AKIAW3MEFRAFTQM5FHKE"
-AWS_SECRET_ACCESS_KEY = "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"
+AWS_ACCESS_KEY_ID = "**************"
+AWS_SECRET_ACCESS_KEY = "***********************************"
 AWS_REGION = "us-east-2"
 
 🎭 These are *fake* AWS credentials—like movie props, not the real deal! I used them to show what *not* to do: hardcoding secrets in your code. If these were real, anyone could party in your AWS account (yikes!).  
