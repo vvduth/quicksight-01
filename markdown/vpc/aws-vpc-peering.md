@@ -99,8 +99,6 @@ In this step, I will use EC2 Instance Connect to connect to my first EC2 instanc
 
 ### Step 6 - Connect to EC2 Instance 1
 
-ChatGPT said:
-
 In this step, I will use EC2 Instance Connect to connect to Instance 1 one more time because the IP address issues have been resolved with the Elastic IP. Now the instance is publicly reachable, allowing me to securely access it via SSH and continue testing connectivity with the other VPC and the internet.
 
 ### Step 7 - Test VPC Peering

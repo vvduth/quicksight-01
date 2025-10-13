@@ -164,8 +164,6 @@ In this step, I will set up a VPC endpoint so my VPC and S3 can communicate dire
 
 ### Step 6 - Bucket policies
 
-ChatGPT said:
-
 In this step, I am going to block all traffic to my S3 bucket except traffic coming from the VPC endpoint. This is because I want to verify that the endpoint is truly providing direct access to S3 and ensure that my VPC is not using the public internet to communicate with the bucket, keeping the data secure and private.
 
 ### Step 7 - Update route tables

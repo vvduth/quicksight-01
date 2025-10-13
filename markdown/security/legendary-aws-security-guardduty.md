@@ -17,7 +17,6 @@
 
 ### Tools and concepts
 
-Copilot said: The services I used were AWS EC2,
 The services I used were AWS EC2, S3, CloudShell, and GuardDuty. Key concepts I learnt include SQL injection and command injection attacks, how stolen credentials can be abused, the importance of input sanitization, and the dangers of insecure cloud storage. I also discovered how GuardDuty detects suspicious activity and malware in real time 🦸‍♂️, and how enabling features like S3 Malware Protection adds another layer of defense. Overall, this project was a hands-on lesson in cloud security, attack detection, and how to think like both a hacker and a defender!
 
 ### Project reflection
@@ -115,7 +114,7 @@ I had to create a new profile because each AWS profile stores unique authenticat
 
 ## GuardDuty's Findings
 
-Copilot said: After performing the attack, GuardDuty reported a
+After performing the attack, GuardDuty reported a
 After performing the attack, GuardDuty reported a finding within 5 minutes—blink and you might miss it! ⚡️ Findings are pretty detailed: GuardDuty flagged that credentials for the EC2 instance role NextWork-GuardDuty-project-Dukem-TheRole-rKoK7V4EcZ2A were used from a remote AWS account (096530338542), which is a big red flag. Severity was marked as high, with timestamps showing when the suspicious activity was first and last seen. This quick detection is proof that GuardDuty is watching closely for stolen keys and unusual cross-account access—so attackers don’t get to party for long!
 
 GuardDuty's finding was called "Anomalous Behavior: AWS Credentials Used from Unusual Location" 🚨, which means GuardDuty's smart algorithms spotted someone (me, the hacker!) using your EC2 instance’s credentials in a way that didn’t match normal patterns. GuardDuty compares each activity with your instance’s typical behavior, and when something fishy pops up—like credentials being used from a remote account—it sounds the alarm. Anomaly detection was used because it helps catch sneaky attacks that don’t fit the usual mold, even if the credentials themselves look legit. It’s like having a cloud security dog that barks when something weird happens! 🐕
