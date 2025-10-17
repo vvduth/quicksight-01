@@ -16,8 +16,7 @@
 ---
 
 ## Introducing Today's Project!
-
-answer:  
+  
 In this project, I will demonstrate the basics of building a web app using VS Code and AWS. The steps include:
 
 - 💻 Launching an EC2 instance.
@@ -80,8 +79,7 @@ This project is part one of a series of DevOps projects where I'm building a CI/
 ---
 
 ## Launching an EC2 instance
-
-answer:  
+  
 I started this project by launching an EC2 instance because an EC2 instance provides a virtual server in the cloud where I can install software, run applications, and practice configuring a real server environment. By using EC2, I get hands-on experience with cloud infrastructure, remote access, and server management—all essential skills for deploying and maintaining web applications in a cloud environment. It also allows me to simulate a production environment, making my learning more practical and relevant to real-world scenarios.
 
 ### I also enabled SSH
@@ -115,7 +113,7 @@ I installed VS Code to write code.
 
 A terminal is A terminal is where you send instructions to your computer using text instead of clicks. For example, instead of right-clicking on your desktop to create a new folder, you can type a simple text command in your terminal instead. It's like sending text messages to your computer's operating system to tell it what to do.
 
-Every computer has a terminal. On Windows, it's often called Command Prompt or PowerShell, while macOS and Linux systems use Terminal. answer:  
+Every computer has a terminal. On Windows, it's often called Command Prompt or PowerShell, while macOS and Linux systems use Terminal.  
 The first command I ran in my terminal for this project was:
 
 ```sh
@@ -143,8 +141,7 @@ This ensures that only I can read the private key, which is important for securi
 ---
 
 ## SSH connection to EC2 instance
-
-answer:  
+  
 To connect to my EC2 instance, I ran the following command in my terminal:
 
 ```sh
@@ -237,8 +234,7 @@ Together, these folders organize your code and resources in a standard structure
 ---
 
 ## Using Remote - SSH
-
-answer:  
+  
 The `index.jsp` is a Java Server Page file that serves as the starting or main page of your web application. JSP files allow you to write HTML combined with Java code, so you can create dynamic web pages that respond to user input or display data from your server. In most Java web apps, `index.jsp` is the default landing page users see when they visit your site.
 
 I edited `index.jsp` by adding the following HTML code:
@@ -259,8 +255,7 @@ This creates a simple web page that displays a greeting and a message, confirmin
 ---
 
 ## Using nano
-
-answer:  
+  
 I opened `index.jsp` on my terminal by using a text editor command. On a Linux-based EC2 instance, I could use editors such as:
 
 - `nano index.jsp` — Opens the file in the Nano editor, which is easy for beginners.
@@ -274,8 +269,7 @@ nano index.jsp
 ```
 
 opened the file in the Nano editor so I could view and make changes to the contents directly from the terminal.
-
-answer:  
+  
 Compared to using an IDE, editing `index.jsp` in the terminal felt less intuitive and slower, especially for tasks like navigating files, syntax highlighting, and finding errors. The terminal editors like Nano or Vim are powerful, but they require memorizing keyboard shortcuts and commands, and they don’t offer the same visual feedback or productivity tools as an IDE.
 
 I’d be more likely to use an IDE if I want features like code completion, real-time error checking, integrated version control, and a graphical interface that makes editing, navigating, and debugging code much easier and faster. IDEs also let me manage large projects more comfortably and help reduce mistakes, which is especially helpful for beginners or when working on complex codebases.

@@ -16,8 +16,7 @@
 ---
 
 ## Introducing Today's Project!
-
-answer:  
+  
 In this project, I’m here to demonstrate how to use CloudFront to distribute traffic to my website and minimize loading time. I’ll also compare different hosting methods and analyze their performance. My main goal is to learn about Content Delivery Networks (CDNs) and get hands-on with the presentation layer of a three-tier architecture website—understanding how CDNs fit into the overall structure, which includes the presentation, logic, and data layers.
 
 ### Tools and concepts
@@ -63,8 +62,7 @@ I validated that my website files work by opening index.html in my browser to ma
 Businesses and developers use CloudFront because caching helps store copies of files in temporary locations closer to users, improving load times and overall performance. This makes websites more responsive and reliable, especially for audiences in different geographic regions.
 
 To use Amazon CloudFront, I set up distributions, a distribution in Amazon CloudFront is a set of instructions that tells CloudFront how to deliver your content to users. When you set up a distribution, you specify details like the origin (where your files are stored—in my case, the newly created S3 bucket), caching settings, and security options. Setting up a distribution for my single website means CloudFront knows where to fetch my files and how to serve them quickly and securely to visitors around the world.
-
-answer:  
+  
 My CloudFront distribution’s default root object is set to `index.html`. This means that when users access my website through CloudFront without specifying a file name in the URL (for example, just the domain name), CloudFront will automatically serve the `index.html` file as the default homepage. This ensures visitors always see the main page of my site, even if they don’t specify an exact file path.
 
 ![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_qgo7wcdt)
@@ -72,8 +70,7 @@ My CloudFront distribution’s default root object is set to `index.html`. This 
 ---
 
 ## Handling Access Issues
-
-answer:  
+  
 When I tried visiting my distributed website, I ran into an access denied error because my S3 bucket is private by default and I haven’t configured the proper permissions for CloudFront to access it. Although my origin access was set to public, I didn’t set up Origin Access Control (OAC) or an appropriate bucket policy. CloudFront needs explicit permission to read files from the S3 bucket—without this, it can’t serve my website content and returns an access denied error. To fix this, I need to grant CloudFront permission through a bucket policy or by using OAC settings.
 
 My distribution’s origin access settings were set to public. This led to the access denied error because making the origin public doesn’t automatically change the permissions of the objects in your S3 bucket—by default, those objects remain private for security reasons. To fix this, you have to manually set your S3 objects to public so CloudFront can access and serve your website content. In summary, even if the origin is public, CloudFront can’t access your site’s files until the objects themselves are also set to public.
@@ -128,8 +125,7 @@ I preferred CloudFront’s permission settings because they give me better secur
 ## S3 vs CloudFront Load Times
 
 Load time means how long it takes for a website’s content to be delivered and displayed in the user’s browser after they visit the site. The load times for the CloudFront site(102ms) were faster than the S3 site (271ms) - in my internet because CloudFront is a global Content Delivery Network (CDN) that caches copies of your website files at edge locations around the world. When a user visits your site through CloudFront, their request is served from the nearest edge server, reducing latency and speeding up delivery. In contrast, S3 static website hosting serves files directly from the AWS data center where your bucket is located, which can be much farther away from the user, resulting in slower load times.
-
-answer:  
+  
 A business would prefer CloudFront when performance, global reach, and security are priorities. CloudFront is ideal for sites with users around the world because it uses edge locations to cache and deliver content quickly, reduces latency, and provides more advanced security features such as HTTPS, origin protection, and access controls.
 
 S3 static website hosting might be sufficient when the website is simple, has low traffic, or is intended for users in a specific region. It’s best for basic sites, prototypes, internal tools, or when minimal configuration and cost are important, since it’s easier to set up and manage but doesn’t offer the same speed or security as CloudFront.

@@ -14,8 +14,7 @@
 ---
 
 ## Introducing Today's Project!
-
-answer:  
+  
 In this project, I will demonstrate how to build an API without managing traditional servers, using AWS Lambda and Amazon API Gateway. I’m doing this to learn about the logic layer in a three-tier architecture, which splits applications into three essential layers: presentation, logic, and data.
 
 Today, I’m focusing on the logic tier—the backend of my app. This is where I’ll write and run code that handles user actions, such as button clicks, and translates them into application functionality, like website searches or data processing. By using serverless technologies like Lambda and API Gateway, I can build and deploy backend logic efficiently without worrying about server management.
@@ -52,8 +51,7 @@ The code I added to my function will connect to a DynamoDB table called 'UserDat
 APIs are interfaces that allow different software systems to communicate and interact with each other, letting applications send and receive data or trigger actions. There are different types of APIs, such as HTTP APIs, WebSocket APIs, REST APIs, and private REST APIs, each designed for specific use cases.
 
 My API is a REST API (Representational State Transfer), which uses standard HTTP methods (like GET, POST, PUT, DELETE) to interact with resources. REST is popular because it’s simple, stateless, and can be used with almost any programming language. We’re using a REST API today to connect users with my Lambda function, letting them make requests and get responses efficiently and securely.
-
-answer:  
+  
 Amazon API Gateway is an AWS service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale. It manages incoming API traffic, directs requests to the correct backend services, and ensures only authorized requests get through.
 
 In this project, I’m using API Gateway as the “front door” to my Lambda function. It receives user requests, forwards them to Lambda for processing, and then delivers Lambda’s response back to the user. Directly exposing Lambda functions to the internet isn’t best practice since Lambda lacks built-in security and API management features. API Gateway adds authentication, authorization, and advanced API management capabilities (like request routing), making my app more secure, scalable, and efficient.
@@ -82,8 +80,7 @@ For example, an API for a messaging app might have separate resources for retrie
 - **OPTIONS** to find out what methods are supported by the resource.
 
 These HTTP methods make it easy to organize and control how users interact with your API and its resources.
-
-answer:  
+  
 The method I set up is a **GET** method for the "users" resource. I chose **Lambda Function** as the integration type, which means that whenever a GET request is made to the "users" endpoint, API Gateway will forward the request to my Lambda function.  
 I also enabled **Lambda proxy integration**, which allows API Gateway to pass the entire request (including query parameters, headers, and body) directly to the Lambda function. This gives the Lambda function full control over processing the request and formatting the response.
 
@@ -104,8 +101,7 @@ To visit my API, I go to my prod stage's Invoke URL provided by API Gateway. Whe
 ## API Documentation
 
 For my project's extension, I am writing API documentation because it helps other developers (and future me) understand how to use the API, what endpoints are available, what requests and responses look like, and any authentication or usage requirements. Good documentation makes it easier to integrate with my API, troubleshoot issues, and maintain or update the project over time. You can create and manage this documentation in the "Documentation" tab in the API Gateway console, making it easy to publish, update, and share with others.
-
-answer:  
+  
 Once I prepared my documentation, I published it as a special file type—either Swagger or OpenAPI (which are standardized formats for describing APIs). I exported my API documentation from the API Gateway console, linking it to a specific API stage (like "prod") so it matches the current version of my API.
 
 By publishing my documentation to a specific stage, I ensure that it accurately describes the endpoints and functionality available at that stage. External tools like Swagger UI or ReDoc can then use my OpenAPI documentation to generate interactive web pages, allowing other developers to explore and test my API directly from their browsers. This makes my API much easier to share, understand, and integrate with.

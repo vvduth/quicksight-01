@@ -28,8 +28,7 @@ In this project, I will demonstrate how to:
 I'm doing this project to learn how to design, build, and secure a backend system using serverless technologies and best practices for cloud security and testing.
 
 ### Tools and concepts
-
-answer:  
+  
 The key services and concepts I learnt in this project were:
 
 - **AWS Lambda:** A serverless compute service that lets you run code without managing servers. I used Lambda to build backend logic that processes requests and interacts with other AWS services.
@@ -49,8 +48,7 @@ I chose to do this project today because I wanted to learn how to build secure, 
 ## Project Setup
 
 To set up my project, I created a database table called **UserData** in DynamoDB. The partition key for this table is **userId**, which means each user’s data is uniquely identified and accessed using their userId value. This setup allows me to efficiently store and retrieve individual user records based on their unique identifiers.
-
-answer:  
+  
 In my DynamoDB table, I added one item after the database became active by typing the following JSON into the editor:
 ```json
 {
@@ -76,8 +74,7 @@ It also scales automatically, from a few requests per day to thousands per secon
 ---
 
 ## AWS Lambda Function
-
-answer:  
+  
 My Lambda function has an **execution role**, which is an IAM (Identity and Access Management) role assigned specifically to the function. This role defines what actions the Lambda function is allowed to perform in AWS, such as accessing other services like DynamoDB, S3, or writing logs to CloudWatch.
 
 By default, AWS creates a basic execution role for Lambda that only allows writing logs to CloudWatch. That's why, when I tested my Lambda function, I could see error messages in the logs—because the function had permission to write those logs, but not necessarily to access other services like DynamoDB unless I added those permissions to the role. Properly configuring the execution role is essential for giving the function the right access while keeping it secure.
@@ -91,8 +88,7 @@ My code block defines a Lambda function that retrieves user data from a DynamoDB
 - If there’s an error (like a missing item or permission problem), it catches the error, logs it, and returns the error object.
 
 In summary, this Lambda function takes a `userId`, queries DynamoDB for matching user information, and returns the result, while handling any errors and providing helpful logs for troubleshooting.
-
-answer:  
+  
 The AWS SDK (Software Development Kit) is a collection of libraries provided by Amazon that makes it easy to interact with AWS services from your application code. The SDK handles authentication, request formatting, and error handling so you can focus on building features.
 
 My code uses the AWS SDK to connect to DynamoDB, send queries, and retrieve user data directly from my Lambda function. By using the SDK, I can securely and efficiently access AWS resources without having to manually manage API calls or signatures.
@@ -127,8 +123,7 @@ There were many DynamoDB permission policies I could choose from, but I didn’t
 
 - **AWSLambdaDynamoDBExecutionRole** gives Lambda permission to read from DynamoDB streams—essentially a real-time feed of changes to your table (like new, updated, or deleted items) over the past 24 hours. It doesn’t grant permission to read individual items from the table using `GetItem`.
 - **AWSLambdaInvocation-DynamoDB** is used to automatically trigger Lambda functions in response to events captured in DynamoDB streams. You’d use this if you want Lambda to automatically react to data changes (for example, sending a notification when a user adds a new item to their cart).
-
-answer:  
+  
 I also didn’t pick policies like **AWSLambdaDynamoDBExecutionRole** or **AWSLambdaInvocation-DynamoDB** because those are designed for working with DynamoDB streams or triggering Lambda functions based on table changes—not for reading items directly from a DynamoDB table.
 
 **AmazonDynamoDBReadOnlyAccess** was the right choice because it gives my Lambda function permission to safely read data from any DynamoDB table, including using the `GetItem`, `Query`, and `Scan` actions. This ensures my function can retrieve user data without being able to modify or delete anything, which helps maintain security and follows best practices for granting the minimum necessary permissions.
@@ -166,8 +161,7 @@ These patterns help create applications that are highly scalable, cost-efficient
 ---
 
 ## Enahancing Security
-
-answer:  
+  
 I am replacing my Lambda function’s permission policy because I want to make my project more secure by using an **inline policy** that only allows access to the specific `UserData` table. The previous managed policy (like `AmazonDynamoDBReadOnlyAccess`) gave my Lambda function permission to read from all DynamoDB tables in my AWS account, which is more access than I need. By writing an inline policy, I can restrict Lambda to only read from the `UserData` table, preventing it from accessing any other tables. This follows the principle of least privilege and helps protect my other data resources.
 
 To create the permission policy, I used an **inline policy** like this:

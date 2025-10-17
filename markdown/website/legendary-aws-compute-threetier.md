@@ -28,15 +28,13 @@ Key concepts I learnt include Lambda functions for processing backend logic, Dyn
 ### Project reflection
 
 This project took me approximately 2 hours. The most challenging part was updating the S3 website files—my changes didn’t reflect immediately in the CloudFront distribution because of the caching mechanism. I had to create an invalidation for `/script.js` and `/index.html` in CloudFront to ensure the latest versions were served to users. It was most rewarding to see the site working end-to-end, with data fetched dynamically from DynamoDB and changes appearing instantly after cache invalidation. This gave me a deeper understanding of how CDN caching works and how to manage updates in a real-world, scalable web architecture.
-
-answer:  
+  
 I chose to do this project today because I wanted to challenge myself to learn and apply cloud architecture concepts using AWS services. I was eager to understand how different components like S3, CloudFront, Lambda, API Gateway, and DynamoDB work together to build a scalable web application. Working on this project today gave me hands-on experience and allowed me to deepen my understanding of serverless technologies and real-world deployment workflows.
 
 ---
 
 ## Presentation tier
-
-answer:  
+  
 For the presentation tier, I will set up the following:
 
 - **Create an S3 bucket** to store my website’s files.
@@ -89,8 +87,7 @@ The Lambda function retrieves data by using the AWS SDK for JavaScript to intera
 For the data tier, I will set up DynamoDB as my database. This is where I will store all the data that my application uses, such as user information, product details, or any other structured data needed by the web app. Using DynamoDB ensures that my data is highly available, scalable, and can be accessed quickly by my Lambda function. 
 
 I need to set up the data tier because I already have my website files distributed through CloudFront (the presentation tier) and a Lambda function ready to retrieve and process data (the logic tier). DynamoDB completes the architecture by providing a secure and efficient place to store and retrieve the application’s data.
-
-answer:  
+  
 We are using DynamoDB to store and manage user data for our web application. The partition key for my DynamoDB table is **userId** (after I created a table named **UserData**), which means that each item in the table is uniquely identified by its `userId` value. This allows us to quickly and efficiently retrieve, update, or store user information based on their unique `userId`. By using `userId` as the partition key, DynamoDB can organize and access data in a scalable way, ensuring fast lookups and consistent performance even as the amount of data grows.
 
 ![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_u1v2w3x4)
@@ -144,8 +141,7 @@ Because I didn’t configure my API Gateway or Lambda function to include the ap
 ---
 
 ## Resolving CORS Errors
-
-answer:  
+  
 To resolve the CORS error, I just updated my API by enabling CORS (Cross-Origin Resource Sharing) in Amazon API Gateway. Here’s what I did:
 
 - Went back to the API Gateway console and navigated to the Resources tab.
@@ -173,8 +169,7 @@ to the `headers` property in my Lambda responses, I ensured that only requests f
 ---
 
 ## Fixed Solution
-
-answer:  
+  
 I verified the fixed connection between API Gateway and CloudFront by refreshing my CloudFront domain name one more time. After updating the CORS settings in API Gateway and adding the correct CORS headers in my Lambda function, I reloaded the website delivered through CloudFront. This time, the data from DynamoDB was successfully fetched and displayed on the site without any CORS errors in the browser console, confirming that the integration between all layers is now working as intended.
 
 ![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_2b3c4d5e)
