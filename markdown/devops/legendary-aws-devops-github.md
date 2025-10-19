@@ -55,7 +55,7 @@ This project is part two of a series of DevOps projects where I'm building a CI/
 
 ## Git and GitHub
 
-answer:  
+  
 Git is a distributed version control system that helps you track changes in your code, collaborate with others, and manage different versions of your project efficiently. It’s widely used by developers to maintain project history and support teamwork.
 
 I installed Git on my EC2 instance using the following commands:
@@ -115,7 +115,7 @@ A **staging area** in Git is a place where you can group changes you want to com
 
 ### git commit
 
-answer:  
+  
 Using `-m` with the `git commit` command means you are providing a commit message directly in the command line. The commit message describes the changes you made and helps others (and yourself) understand the purpose of that commit. For example:
 
 ```sh
@@ -158,7 +158,7 @@ A GitHub token is a secure, randomly generated string (called a Personal Access 
 
 I'm using one in this project because GitHub no longer accepts passwords for command-line operations like `git push` or `git pull`. Instead, it requires a token to authenticate actions and protect my account. Using a token allows me to safely push code from my EC2 instance to my GitHub repository.
 
-answer:  
+  
 I could set up a GitHub token by going to my GitHub account settings, navigating to "Developer settings" > "Personal access tokens," and clicking "Generate new token." I selected the required scopes (permissions) for my project, gave the token a name, and then clicked "Generate token." I copied the generated token and used it as my password when pushing or pulling code from my local repository to GitHub via the terminal. This allows secure authentication and access to my GitHub repositories.
 
 ![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_fa11169d)
@@ -177,7 +177,7 @@ I finally saw the changes in my GitHub repo after I committed the changes to my 
 
 ## Setting up a READMe file
 
-answer:  
+  
 As a finishing touch to my GitHub repository, I added a README file, which is a special Markdown file (usually named `README.md`) that provides important information about the project. It typically explains what the project does, how to install or use it, and any other relevant details to help users and collaborators understand the repository.
 
 I added a README file by creating a new file called `README.md` in my project folder, writing a brief description and instructions, and then committing and pushing it to my GitHub repository. This makes my project more professional and user-friendly for anyone who visits the repo.

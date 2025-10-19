@@ -76,7 +76,7 @@ I ran into an error when retrieving a token because I got an "Unable to locate c
 
 ### Resolution
 
-answer:  
+  
 This resolved the error because attaching the IAM policy and role to my EC2 instance gave it the necessary permissions to request an authorization token and access the CodeArtifact repository securely. With these permissions, my instance could authenticate with AWS and interact with CodeArtifact without running into credential or access errors. This approach follows AWS best practices for secure and managed access to resources.
 
 It's security best practice to use IAM roles because IAM roles allow you to grant temporary and controlled permissions to AWS resources without needing to store sensitive credentials like access keys on your servers. This reduces the risk of accidental exposure or misuse of credentials, makes it easier to rotate permissions, and helps enforce the principle of least privilege—ensuring that each resource only has the access it needs. Using IAM roles improves the overall security of your AWS environment and simplifies permission management.
@@ -105,7 +105,7 @@ These permissions are necessary because they enable your EC2 instance to securel
 
 ### To test the connection between Maven and CodeArtifact, I compiled my web app using settings.xml
 
-answer:  
+  
 The settings.xml file configures Maven to behave consistently across all my projects. In my case, I need a settings.xml file to tell Maven where to find dependencies and how to access the correct repositories, such as those hosted in CodeArtifact.
 
 The settings.xml file contains configuration details like the URL of the CodeArtifact repository, authentication settings (such as server credentials or tokens), and any necessary proxy or mirror information. By setting this up, Maven knows exactly which repository to use for downloading dependencies and how to authenticate securely, allowing it to interact seamlessly with CodeArtifact and fetch packages for my projects.
@@ -120,7 +120,7 @@ This process happens for each required dependency, ensuring that my build proces
 
 ## Verify Connection
 
-answer:  
+  
 After compiling, I checked my CodeArtifact repository. I noticed a list of Maven packages in my CodeArtifact repository. These packages were the dependencies my web app needed, and they were automatically stored in CodeArtifact as Maven artifacts. This confirmed that the connection between Maven and CodeArtifact was working correctly, and that my repository was now securely storing and managing my project's dependencies.
 
 ![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_1d79e699)
@@ -158,7 +158,7 @@ aws codeartifact publish-package-version \
 - **Origin:** The package’s origin is my CodeArtifact repository (not an upstream source).
 - **Security Hashes:** CodeArtifact calculates and displays hashes for each asset (such as `secret-mission.tar.gz`), allowing verification of the package’s integrity.
 
-answer:  
+  
 To validate my packages, I went back to the CloudShell terminal and downloaded the package from CodeArtifact using this command:
 
 ```bash
