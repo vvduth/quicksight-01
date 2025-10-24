@@ -175,3 +175,58 @@ I could verify all the deployed resources by visiting the **Resources** tab in t
 ---
 
 ---
+
+
+## Some more error:
+Before getting success, I encountered some more error.
+Here’s a concise summary of what changed to resolve each error and why it worked.
+
+1) Error: “resource specifies a HostArn that your account does not own”
+- What caused it:
+  - The template set HostArn on an AWS::CodeStarConnections::Connection resource, but you’re using GitHub.com. HostArn is only for self‑hosted providers (e.g., GitHub Enterprise Server); also, I accidentally put a connection ARN where a host ARN would be expected.
+- What I changed:
+  - Removed the Connection resource block entirely (commented out) and stopped specifying HostArn.
+  - For now, I configured CodeBuild Source with Type: GITHUB (legacy OAuth), so the stack no longer needs to create or reference a CodeConnections resource.
+- Why this fixes it:
+  - GitHub.com connections do not use HostArn. By removing the Connection resource (and HostArn), CloudFormation no longer tries to create a connection tied to a non‑existent “host.”
+  - If I later want to use CodeConnections, keep HostArn unset and either:
+    - Reference an existing connection ARN in CodeBuild Source (Type: CODECONNECTIONS + ConnectionArn), or
+    - Let CFN create the Connection without HostArn and then complete the “Authorize” step in the console.
+
+2) Error: “role cannot be found”
+- What caused it:
+  - Managed policies and roles referenced each other in both directions (policies attaching to roles via the ManagedPolicy.Roles property while roles also attached the same policies via ManagedPolicyArns). This can cause timing/order issues where CFN tries to attach a policy to a role that isn’t created yet.
+- What I changed:
+  - For the CodeArtifact consumer policy (IAMManagedPolicyPolicycodeartifactnextworkconsumerpolicy), I removed:
+    - Roles: [...]
+    - Users: [...]
+    - Any forced DependsOn to roles
+  - I attached that policy to IAMRoleEc2instancenextworkcicd using the role’s ManagedPolicyArns: [ !Ref IAMManagedPolicyPolicycodeartifactnextworkconsumerpolicy ].
+- Why this fixes it:
+  - Using just one attachment direction (role → managed policy via ManagedPolicyArns) lets CloudFormation infer the correct creation order automatically, so the role exists before policy attachment is evaluated.
+
+3) Error: Circular dependency (IAMInstanceProfileEc2instancenextworkcicd, IAMManagedPolicyPolicycodeartifactnextworkconsumerpolicy, IAMRoleEc2instancenextworkcicd)
+- What caused it:
+  - A cycle existed: the managed policy depended on the role (via Roles or DependsOn), while the role depended on the managed policy (via ManagedPolicyArns), and the instance profile depended on the role. This created a loop CFN couldn’t resolve.
+- What I changed:
+  - Broke the loop by:
+    - Removing the policy’s Roles (and DependsOn) so the policy no longer depends on the role.
+    - Keeping the single direction: Role → ManagedPolicy via ManagedPolicyArns.
+    - Leaving the instance profile to depend only on the role (normal, linear dependency).
+- Why this fixes it:
+  - The dependency chain is now acyclic:
+    - ManagedPolicy (standalone) → referenced by Role via ManagedPolicyArns
+    - InstanceProfile → references Role
+    - No back‑references from ManagedPolicy to Role
+
+Additional observations and suggestions
+- In my final working template, the CodeBuild base managed policy still lists Roles and a DependsOn. It works, but for consistency and to avoid future ordering issues, I can remove Roles/Users/DependsOn from that policy too and attach it only via the CodeBuild role’s ManagedPolicyArns.
+- I am currently using Source.Type: GITHUB in CodeBuild. If I want to use my existing CodeConnections connection (recommended), switch to:
+  - Source.Type: CODECONNECTIONS
+  - Add ConnectionArn: arn:aws:codeconnections:eu-north-1:841162690953:connection/f5382a03-8c6b-4254-9cba-b81ae715d040
+  - Ensure the CodeBuild role allows codeconnections:UseConnection and codeconnections:GetConnection on that ARN.
+
+Net effect of the changes
+- Removed HostArn usage for GitHub.com (and commented out the CFN connection resource), eliminating the “HostArn not owned” failure.
+- Normalized IAM wiring to a one‑way attachment (roles attach managed policies), eliminating “role cannot be found” and the circular dependency.
+- Let CloudFormation infer dependencies via !Ref/!GetAtt instead of forcing DependsOn for IAM attachments.
