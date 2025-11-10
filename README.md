@@ -1,7 +1,7 @@
 # 🚀 AWS Cloud Computing Project Documentation
 
 [![AWS](https://img.shields.io/badge/AWS-Cloud%20Computing-orange)](https://aws.amazon.com/)
-[![Projects](https://img.shields.io/badge/Projects-8+-blue)](https://github.com/vvduth/quicksight-01)
+[![Projects](https://img.shields.io/badge/Projects-25+-blue)](https://github.com/vvduth/quicksight-01)
 [![Documentation](https://img.shields.io/badge/Documentation-Comprehensive-green)](https://github.com/vvduth/quicksight-01)
 [![NextWork](https://img.shields.io/badge/NextWork-Certified-purple)](http://learn.nextwork.org/)
 
@@ -14,6 +14,14 @@ This repository contains my hands-on AWS cloud computing project documentation, 
 **Author:** Duc Thai  
 **Email:** ducthai060501@gmail.com  
 **Focus:** Enterprise AWS Cloud Architecture & Implementation
+
+### 📊 Quick Stats
+- **25+ comprehensive cloud projects** spanning AI/ML, containers, databases, networking, security, and DevOps
+- **50+ hours** of hands-on implementation and learning
+- **20+ AWS services** mastered including EKS, Lambda, DynamoDB, GuardDuty, Bedrock, and more
+- **Real-world expertise** including attack simulation, threat detection, and performance optimization
+- **62% performance improvement** achieved through CloudFront CDN optimization
+- **Enterprise patterns** aligned with AWS Well-Architected Framework
 
 ---
 
@@ -34,6 +42,18 @@ This repository serves as a comprehensive portfolio of AWS cloud computing exper
 ---
 
 ## 📋 Project Portfolio
+
+### 🤖 AI & Machine Learning Projects
+
+#### [RAG Chatbot with Amazon Bedrock](markdown/ai_ml/legendary-ai-rag-bedrock.md)
+- **Focus:** Retrieval Augmented Generation (RAG) & AI-Powered Chatbot
+- **Technologies:** Amazon Bedrock, S3, OpenSearch Serverless, Titan Embeddings, Lambda
+- **Key Features:**
+  - Custom AI chatbot trained on personal project documents
+  - Knowledge Base setup with vector embeddings and chunking
+  - Integration with S3 for document storage
+  - Dynamic prompt customization for context-aware responses
+  - Real-world RAG pipeline implementation
 
 ### 🎨 Data Analytics & Visualization
 
@@ -78,20 +98,54 @@ This repository serves as a comprehensive portfolio of AWS cloud computing exper
 
 ### ⚡ Serverless & Compute Projects
 
-#### [AWS Lambda Data Retrieval](txt/compute/AWS_Lambda_Serverless_CKEditor.txt)
-- **Focus:** Serverless Computing Architecture
-- **Technologies:** Lambda, DynamoDB, IAM Security
-- **Duration:** Several hours
+#### [Docker Containerization & Elastic Beanstalk](markdown/compute/legendary-aws-compute-eb.md)
+- **Focus:** Container Packaging & Deployment
+- **Technologies:** Docker, Elastic Beanstalk, Dockerfile, Container Images
+- **Duration:** 1 hour
 - **Key Features:**
-  - Event-driven architecture implementation
-  - Advanced IAM security with least-privilege access
-  - Comprehensive testing and debugging methodologies
-  - Enterprise-grade error handling
+  - Docker basics and container fundamentals
+  - Custom Dockerfile creation and image building
+  - Nginx web server configuration
+  - Elastic Beanstalk deployment and updates
+  - Troubleshooting port conflicts and container management
 
-#### [API Gateway & Lambda Integration](txt/compute/AWS_API_Gateway_Lambda_CKEditor.txt)
+#### [Kubernetes Cluster Launch (EKS 1)](markdown/compute/legendary-aws-compute-eks1.md)
+- **Focus:** Kubernetes Orchestration & Cluster Setup
+- **Technologies:** Amazon EKS, eksctl, CloudFormation, IAM, Kubernetes
+- **Duration:** 20 minutes cluster creation
+- **Key Features:**
+  - EKS cluster creation with eksctl
+  - Node group configuration and auto-scaling
+  - CloudFormation stack management for infrastructure
+  - IAM access entry configuration for RBAC
+  - Cluster resilience testing and node management
+
+#### [Kubernetes Deployment (EKS 2)](markdown/compute/legendary-aws-compute-eks2.md)
+- **Focus:** Container Image Deployment to Kubernetes
+- **Technologies:** Amazon EKS, Docker, Amazon ECR, GitHub, Git
+- **Duration:** 1 hour
+- **Key Features:**
+  - Backend application deployment pipeline
+  - Git repository cloning and source management
+  - Docker image building from application code
+  - Amazon ECR (Elastic Container Registry) integration
+  - Troubleshooting Docker permissions and user groups
+  - Flask Python backend deployment to Kubernetes
+
+#### [AWS Lambda Data Retrieval](markdown/website/legendary-aws-compute-lambda.md)
+- **Focus:** Serverless Computing & Database Integration
+- **Technologies:** Lambda, DynamoDB, IAM Roles, AWS SDK, Testing
+- **Key Features:**
+  - Serverless function development and deployment
+  - DynamoDB integration with least-privilege IAM policies
+  - Lambda execution roles and permission management
+  - AWS SDK usage for service interaction
+  - Comprehensive testing and debugging strategies
+  - Error handling and logging best practices
+
+#### [API Gateway & Lambda Integration](markdown/website/legendary-aws-compute-api.md)
 - **Focus:** RESTful API Development
 - **Technologies:** API Gateway, Lambda, OpenAPI Documentation
-- **Duration:** 60 minutes
 - **Key Features:**
   - Three-tier architecture logic layer
   - Professional API documentation standards
@@ -181,15 +235,17 @@ This repository serves as a comprehensive portfolio of AWS cloud computing exper
   - Comprehensive security policy implementation
   - Enterprise compliance and audit trails
 
-#### [GuardDuty Threat Detection](txt/security/AWS_GuardDuty_Security_Project_CKEditor.txt)
-- **Focus:** Advanced Threat Detection & Response
-- **Technologies:** GuardDuty, CloudTrail, SNS Notifications
-- **Duration:** 2 hours
+#### [GuardDuty Threat Detection](markdown/security/legendary-aws-security-guardduty.md)
+- **Focus:** Advanced Threat Detection & Security Attack Simulation
+- **Technologies:** GuardDuty, EC2, S3, CloudFormation, OWASP Juice Shop, CloudShell
+- **Duration:** 3 hours
 - **Key Features:**
-  - Real-time threat detection and analysis
-  - Automated security response systems
-  - Comprehensive security monitoring
-  - Incident response and remediation
+  - Real-world attack simulation (SQL injection, command injection)
+  - Credential theft and IAM key extraction from EC2 instances
+  - GuardDuty findings and anomaly detection analysis
+  - S3 Malware Protection with EICAR test files
+  - Cross-account security detection and incident response
+  - Comprehensive security monitoring and automated alerting
 
 #### [Secrets Manager Implementation](txt/security/AWS_SecretsManager_Security_Project_CKEditor.txt)
 - **Focus:** Credential Management & Security
@@ -249,13 +305,14 @@ This repository serves as a comprehensive portfolio of AWS cloud computing exper
 ## 🛠️ Technologies & Services Covered
 
 ### Core AWS Services
-- **Compute:** Lambda, EC2, Auto Scaling, API Gateway
-- **Networking:** VPC, Route Tables, Internet Gateways, NAT Gateways, CloudFront CDN, VPC Endpoints
+- **Compute:** Lambda, EC2, Auto Scaling, API Gateway, EKS (Kubernetes), Elastic Beanstalk
+- **Containers & Orchestration:** Docker, Amazon EKS, Amazon ECR
+- **Networking:** VPC, Route Tables, Internet Gateways, NAT Gateways, CloudFront CDN, VPC Endpoints, VPC Peering
 - **Storage:** S3, EBS, DynamoDB
 - **Database:** Aurora MySQL, RDS, DynamoDB
 - **Security:** IAM, Security Groups, NACLs, KMS, Secrets Manager, GuardDuty
 - **Monitoring:** CloudWatch, VPC Flow Logs, CloudWatch Logs Insights, CloudTrail
-- **Analytics:** QuickSight
+- **Analytics:** QuickSight, Bedrock
 - **DevOps:** CodePipeline, CodeBuild, CodeDeploy, GitHub Actions
 - **Management:** AWS CLI, CloudFormation
 - **Messaging:** SNS (Simple Notification Service)
@@ -302,6 +359,81 @@ Each project includes comprehensive documentation with:
 ---
 
 ## 🎓 Learning Outcomes
+
+### Core Competencies Developed
+
+#### 🤖 **AI & Machine Learning**
+- Retrieval Augmented Generation (RAG) architecture and implementation
+- Bedrock AI model integration and customization
+- Vector embeddings and semantic search optimization
+- Knowledge base creation from unstructured data
+
+#### ⚡ **Serverless Computing Excellence**
+- Advanced Lambda function development and optimization
+- API Gateway integration with RESTful design principles
+- Event-driven architecture and microservices patterns
+- Cost-effective serverless application deployment
+
+#### 🐳 **Container & Orchestration Mastery**
+- Docker image creation, building, and management
+- Kubernetes cluster deployment and management with Amazon EKS
+- Container registry integration with Amazon ECR
+- Docker permissions and user group management
+- Container networking and port configuration
+
+#### 🗄️ **Database Architecture & Management**
+- NoSQL database design and optimization (DynamoDB)
+- Relational database management (Aurora MySQL, RDS)
+- Query optimization and performance tuning
+- Database security and access control patterns
+- Schema design and data modeling
+
+#### 🌐 **Content Delivery & Performance**
+- Global CDN implementation with CloudFront
+- Performance optimization achieving 62% improvement
+- Origin Access Control and security implementation
+- Edge location optimization and caching strategies
+
+#### 🔐 **Advanced Security & Compliance**
+- Enterprise encryption management (KMS)
+- Real-time threat detection and response (GuardDuty)
+- Credential management and rotation (Secrets Manager)
+- Security attack simulation (SQL injection, command injection)
+- Comprehensive security monitoring and audit trails
+- IAM policies and least-privilege access implementation
+- S3 Malware Protection and threat remediation
+
+#### 🏗️ **Infrastructure Architecture**
+- Multi-tier application architectures
+- High availability and fault tolerance design
+- Scalable and resilient infrastructure patterns
+- Cost-effective resource allocation and optimization
+- CloudFormation Infrastructure as Code
+
+#### 🌐 **Network Engineering**
+- Advanced VPC design and implementation
+- Network security and segmentation
+- Traffic flow optimization and monitoring
+- Cross-region connectivity and peering patterns
+- VPC endpoints and private connectivity
+- Multi-VPC architecture and routing configuration
+- Network troubleshooting methodologies
+
+#### 📊 **Monitoring & Analytics**
+- Comprehensive monitoring strategies with CloudWatch
+- Real-time log analysis and insights with CloudWatch Logs Insights
+- VPC Flow Logs for network traffic analysis
+- Performance optimization and bottleneck identification
+- Automated alerting and incident response
+- Business intelligence with QuickSight dashboards
+
+#### 🔄 **DevOps & Automation**
+- CI/CD pipeline implementation with CodePipeline
+- Infrastructure as Code with CloudFormation
+- GitHub Actions integration and workflow automation
+- Automated testing and deployment strategies
+- Configuration management and version control
+- Git-based workflow and development best practices
 
 ### Skills Demonstrated
 
@@ -391,27 +523,30 @@ Each project includes comprehensive documentation with:
 ## 📈 Project Metrics & Achievements
 
 ### Portfolio Statistics
-- **Total Projects:** 25+ comprehensive implementations
-- **AWS Services Covered:** 20+ core services including Lambda, DynamoDB, CloudFront, KMS, GuardDuty
-- **Documentation Pages:** 100+ detailed guides and CKEditor-ready documentation
-- **Implementation Time:** 50+ hours of hands-on experience
-- **Architecture Patterns:** 35+ proven design patterns
-- **Project Categories:** 6 major areas (Networking, Security, Serverless, Databases, DevOps, Analytics)
+- **Total Projects:** 25+ comprehensive implementations across 7 categories
+- **AWS Services Covered:** 20+ core services (Lambda, EKS, DynamoDB, RDS, Aurora, EC2, VPC, CloudFront, S3, KMS, GuardDuty, Bedrock, QuickSight, and more)
+- **Documentation Pages:** 100+ detailed markdown guides with architecture diagrams
+- **Implementation Time:** 50+ hours of hands-on learning and execution
+- **Architecture Patterns:** 35+ proven enterprise design patterns
+- **Project Categories:** 7 major areas (AI/ML, Compute, Databases, Networking, Security, Content Delivery, DevOps)
+- **Attack Simulations:** Real-world security testing with SQL injection, command injection, and threat detection
 
 ### Technical Achievements
-- **Performance Optimization:** 62% load time improvement with CloudFront CDN implementation
-- **Security Excellence:** Enterprise-grade encryption, threat detection, and access management
-- **Serverless Mastery:** Advanced Lambda functions with DynamoDB integration and API Gateway
-- **Network Architecture:** Complex VPC designs with peering, monitoring, and security controls
+- **Performance Optimization:** 62% load time improvement with CloudFront CDN implementation (102ms vs 271ms)
+- **Security Excellence:** Enterprise-grade encryption, real-time threat detection, and access management
+- **Container Mastery:** Docker containerization, Kubernetes orchestration with Amazon EKS, ECR integration
+- **Serverless Excellence:** Advanced Lambda functions with DynamoDB integration, IAM security policies, and API Gateway
+- **Network Architecture:** Complex multi-VPC designs with peering, monitoring, and security controls
 - **DevOps Integration:** CI/CD pipelines with GitHub Actions and AWS CodePipeline
-- **Database Expertise:** Both NoSQL (DynamoDB) and relational (Aurora/RDS) implementations
+- **Database Expertise:** Both NoSQL (DynamoDB) and relational (Aurora/RDS) implementations with optimization
+- **AI/ML Implementation:** RAG chatbot with Bedrock, embeddings, and custom knowledge bases
 
 ### Certification & Validation
-- Projects aligned with AWS Well-Architected Framework
-- NextWork.org certified project implementations
-- Real-world enterprise architecture patterns
-- Industry best practices integration
-- Comprehensive security and compliance implementations
+- NextWork.org certified hands-on project implementations
+- Real-world attack simulation and threat detection validation
+- AWS Well-Architected Framework alignment
+- Enterprise architecture pattern demonstrations
+- Industry security best practices integration
 
 ---
 
