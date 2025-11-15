@@ -1,85 +1,44 @@
-# Test note
+# Build app
 
 ## Overview
 
-**duke** is handsome as fuck
+# Building a Real-Time Chat Application
 
-![ines5.jpg](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qskrtbYGqWjNxAMiKVC58X0lQ6zwvr9cuLkfo)
+Today we're building a real-time chat application using WebSockets and Redis. This project will help us understand how to handle concurrent connections and message broadcasting efficiently.
+
+**Key Goals:**
+- Implement WebSocket connections
+- Set up Redis pub/sub
+- Handle user authentication
+- Build a responsive UI
+
+[Upload 1-2 images here - e.g., architecture diagram, screenshot of finished app]
+
+<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qVyGNgmiJkX2Nb0tMKUHmf86soRSCTWVOnPrc" alt="gts5.jpg" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ## Steps
 
 ### Step 1
 
-You are an expert full-stack developer specialized in Next.js 16, React 19, TypeScript, Tailwind CSS v4, and UploadThing v7 for file uploads. 
+## Setting Up the Backend
 
-Your task is to **generate code for a Next.js 16 project** with App Router that fulfills the following requirements:
+First, we initialized a Node.js server with Express and Socket.io:
 
-1. **User Note Input**
-   - Show a main text area labeled: "✍️ What are we here to do today?"
-   - Users can type in plain text or markdown.
-   - Optionally, users can **attach media** (images, videos, GIFs) to each section.
-   - Render uploaded media **directly below the corresponding text**.
+\`\`\`javascript
+const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
 
-2. **Step-Based Notes**
-   - Users can click **“Add Step”** to add multiple steps.
-   - Each step has:
-     - Text area: "✍️ What are we doing in this step?"
-     - Optional media attachments.
-   - AI must maintain the **order of steps** and their associated media.
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
+\`\`\`
 
-3. **Summary Section**
-   - Ask for answers to:
-     - ✅ What were the key services and concepts you learnt in this project?
-     - ✅ What is one thing you didn't expect in this project?
-     - ✅ How long did it take you to complete this project?
-     - ✅ Why did you do this project today?
+We configured CORS to allow connections from our React frontend on port 3000.
 
-4. **Markdown Generation**
-   - Convert all input into a **well-structured markdown document**:
-     - Maintain headings, subheadings, bullet points if markdown syntax is used.
-     - Insert media in proper markdown format immediately after the corresponding text.
-   - Blog-post style tone.
+[Upload a code screenshot or terminal output here]
 
-5. **File Upload Integration**
-   - Use UploadThing v7 with type-safe `UploadButton` and `UploadDropzone`.
-   - Include proper client-side and server-side integration.
-   - Use `app/api/uploadthing/core.ts` for server routes and `app/utils/uploadthing.ts` for client helpers.
-
-6. **React & Tailwind**
-   - Use **functional React components**, TypeScript, Tailwind CSS v4.
-   - Components must be **modular**, **reusable**, and fully typed.
-   - Implement **dynamic state management** for adding steps and media.
-
-7. **Output**
-   - Provide the **full React component code**.
-   - Include Next.js API routes and UploadThing integration.
-   - Ensure proper markdown rendering for blog-post style output.
-
-**Constraints**
-- Follow Next.js 16 App Router conventions.
-- Use `@/*` path aliases for imports.
-- Tailwind v4 for styling.
-- TypeScript types must be included.
-- File uploads must use **UploadThing v7**.
-
-Generate the **entire project feature** that fulfills these requirements, ready to be used in a Next.js project.
-
-
-![ines4.jpg](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qzLZVB8gXa6FlGNieK4CWDkodQyOYnBE9H7LT)
-
-### Step 2
-
-## Implementing Redis Pub/Sub
-
-We integrated Redis to enable message broadcasting across multiple server instances:
-
-- Installed `redis` and `socket.io-redis` packages
-- Connected to Redis server running on localhost:6379
-- Set up pub/sub channels for different chat rooms
-
-**Challenge:** Had to handle Redis connection failures gracefully with retry logic.
-
-[Upload Redis dashboard screenshot or connection diagram]
+<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qDyJetrR8HxKaPTtb4jvp06SsuOzRgBdYiV7y" alt="gts1.avif" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ## Summary
 
