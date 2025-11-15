@@ -24,7 +24,7 @@ Today we're building a real-time chat application using WebSockets and Redis. Th
 
 First, we initialized a Node.js server with Express and Socket.io:
 
-\`\`\`javascript
+```javascript
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -32,7 +32,7 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-\`\`\`
+```
 
 We configured CORS to allow connections from our React frontend on port 3000.
 
