@@ -11,7 +11,7 @@
 
 ## Set Up a RAG Chatbot in Bedrock
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_d5e8f1g2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_d5e8f1g2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -54,7 +54,7 @@ My Knowledge Base is connected to S3 because under the knowledge base configurat
 
 In an S3 bucket, I uploaded 10 PDF files—these are the documents from my 10 previous projects about AI and AWS. My S3 bucket is in the same region as my Knowledge Base (Ohio, us-east-2) because keeping them in the same AWS region reduces latency, lowers data transfer costs, and ensures smooth, reliable integration between the storage and the Knowledge Base features. This setup allows my RAG-powered chatbot to quickly access and retrieve information from my project documents whenever needed.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_b5c8d1e2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_b5c8d1e2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -72,7 +72,7 @@ Chunking is the process of breaking a large text into smaller, manageable paragr
 
 In my Knowledge Base, chunks are set to 300 tokens, which means each segment is about 300 words or punctuation marks. This configuration ensures that the AI can quickly search, retrieve, and generate answers from my documents, while staying within processing limits and delivering accurate responses.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_p9r2s5t8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_p9r2s5t8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -93,7 +93,7 @@ The model access page has been retired. Now, access to all serverless foundation
 
 
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_model-access-proof)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_model-access-proof" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -112,7 +112,7 @@ Even though I already connected my S3 bucket when creating the Knowledge Base, I
 
 Together, these steps turn my raw documents into a structured, searchable Knowledge Base ready for AI-powered retrieval and generation.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_sync-screenshot)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_sync-screenshot" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -124,7 +124,7 @@ When I asked my chatbot about making tea—a topic unrelated to my uploaded data
 
 When you change the response generation settings to "Retrieval only: data sources," your chatbot stops using the AI model to generate human-like answers. Instead, it simply returns chunks of raw text pulled directly from your datasource—like your S3 documents or Knowledge Base—without any extra processing or rephrasing. When I tested this setting, my chatbot replied with actual portions of text from my uploaded documents, rather than conversational or summarized responses, letting me see exactly what data is being retrieved.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_d5e8f1g2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_d5e8f1g2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -148,7 +148,7 @@ The response became much more comprehensive, listing more projects found in the 
 
 Overall, these enhancements allowed my chatbot to deliver answers that were fuller, more informative, and better aligned with my expectations for helpfulness and context.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_improved-response)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-bedrock_improved-response" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

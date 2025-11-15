@@ -11,7 +11,7 @@
 
 ## Launch a Kubernetes Cluster
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_e5f6g7h8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_e5f6g7h8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -82,7 +82,7 @@ I initially ran into two errors while using eksctl:
 
 After installing eksctl and updating the IAM role, I was able to successfully run eksctl commands and create my Kubernetes cluster.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_ff9bfc221)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_ff9bfc221" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -109,7 +109,7 @@ The difference between a **cluster** and a **node group** is:
 
 CloudFormation separates the core EKS cluster stack from the node group stack to make it easier to manage and troubleshoot each part independently. If you need to update, delete, or fix a problem in the node group, you can do so without affecting the core cluster—and vice versa. This separation is especially helpful if one half fails.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_w3e4r5t6)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_w3e4r5t6" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -136,7 +136,7 @@ It took 20 minutes to create my cluster. Since I’ll be creating this cluster a
 
 These steps could help make cluster creation quicker and smoother next time.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_e5f6g7h8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_e5f6g7h8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -153,7 +153,7 @@ By setting these limits, you allow EKS to automatically scale your node group be
 
 When I deleted my EC2 instances (which are the worker nodes in my EKS cluster), Kubernetes detected that the nodes had disappeared and automatically started replacing them. This is because Kubernetes is designed to maintain the desired state of your cluster, including the number of nodes specified in your node group. When a node goes missing, the EKS node group controller launches a new EC2 instance to replace it, ensuring that your applications keep running smoothly and your cluster remains healthy and resilient.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_q7r8s9t0)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks1_q7r8s9t0" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

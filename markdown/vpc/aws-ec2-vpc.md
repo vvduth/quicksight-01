@@ -11,7 +11,7 @@
 
 ## Launching VPC Resources
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_8ee57662)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_8ee57662" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -66,7 +66,7 @@ A private key's file format means it key is usually stored in text-based file fo
 
 I edited my EC2 instance’s networking settings by changing its VPC to NextWork VPC, moving it into the NextWork public subnet, and attaching it to the NextWork Security Group. This ensured the instance was in the right network, had public accessibility, and the correct security rules applied.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_88727bef)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_88727bef" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -76,7 +76,7 @@ My private server has its own dedicated security group because the public server
 
 My private server's security group's source is NextWork Public Security Group which means eans only resources that are part of the NextWork Public Security Group can communicate with your instance. This restricts access to a much smaller group of trusted resources, rather than allowing potentially any IP address on the internet (0.0.0.0/0) to access your instance. A great move for securing a private subnet!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_4a9e8014)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_4a9e8014" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -88,7 +88,7 @@ A VPC resource map is a visual diagram in AWS that shows all the networking reso
 
 My new VPC has a CIDR block of 10.0.0.0/24 It is possible for my new VPC to have the same IPv4 CIDR block as my existing VPC because VPCs are isolated from each other by default. Each VPC is its own private network, so their IP ranges don’t conflict unless you try to directly connect them (for example, with VPC peering or a transit gateway). If you do need to connect them, then the CIDR blocks must be different to avoid IP address conflicts.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_1cbb1b88)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_1cbb1b88" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -100,7 +100,7 @@ When determining the number of public subnets in my VPC, I only had two options:
 
 The set up page also offered to create NAT gateways, which are allows instances in a private subnet to access the internet for updates, downloads, or API calls without exposing them to inbound internet traffic. It translates private IP addresses to a public IP, so the private instances can initiate outbound connections while staying protected from direct access from the internet.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_8ee57662)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-ec2_8ee57662" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

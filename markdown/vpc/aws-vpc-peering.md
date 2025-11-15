@@ -11,7 +11,7 @@
 
 ## VPC Peering
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_88727bef)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_88727bef" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -65,7 +65,7 @@ The IPv4 CIDR blocks for VPCs 1 and 2 are unique because each VPC needs its own 
 
 I didn’t set up key pairs for these EC2 instances because I learned that with EC2 Instance Connect, AWS automatically manages a key pair for us. We don’t need to create or manage our own keys. Since we already practiced setting up key pairs in the previous projects, it wasn’t necessary to do it again this time.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_11111111)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_11111111" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -77,7 +77,7 @@ VPCs would use peering connections to let different VPCs communicate securely an
 
 The difference between a Requester and an Accepter in a VPC peering connection is who starts and who approves the connection. The Requester is the VPC that sends the peering request, while the Accepter is the VPC that receives and approves it. Once the Accepter accepts the request, the two VPCs are linked and can communicate securely through the peering connection.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_1cbb1b88)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_1cbb1b88" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -87,7 +87,7 @@ After accepting a peering connection, my VPCs' route tables need to be updated b
 
 My VPCs' new routes have a destination of the other VPC’s CIDR block ( 10.2.0.0/16 for VPC 1, and 10.1.0.0/16 for VPC 2). The routes' target was the VPC peering connection ID  pcx-xxxxxxxx). This setup allows traffic to flow between the two VPCs through the peering connection.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_4a9e8014)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_4a9e8014" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -113,7 +113,7 @@ After allocating an Elastic IP and associating it with the first EC2 instance, I
 
 I was stopped from using EC2 Instance Connect as because the instance was not accessible from the internet. Without a public IP, there’s no way for the SSH connection to reach the instance from outside the VPC, so EC2 Instance Connect could not establish a session.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_7685490c)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_7685490c" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -123,7 +123,7 @@ To resolve this error, I set up Elastic IP addresses. Elastic IP addresses are s
 
 Associating an Elastic IP address resolved the error because it gave my EC2 instance a public, static IP address that is reachable from the internet. This allowed EC2 Instance Connect to establish an SSH connection, letting me access the instance directly.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_45663498)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_45663498" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -140,7 +140,7 @@ A successful ping test would validate my VPC peering connection because it shows
 
 I had to update my second EC2 instance's security group because it did not allow any ICMP traffic from outside. I added a new inbound rule to allow ICMP (ping) from the first instance’s IP address or VPC CIDR block, which enabled the two instances to communicate and complete the VPC peering test successfully.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_7a29d352)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-peering_7a29d352" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

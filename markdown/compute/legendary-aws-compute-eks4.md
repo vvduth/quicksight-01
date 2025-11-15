@@ -11,7 +11,7 @@
 
 ## Deploy Backend with Kubernetes
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_6cfb382f2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_6cfb382f2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -84,7 +84,7 @@ A Kubernetes Service exposes your application running inside the cluster so that
 
 You need a Service manifest to define how Kubernetes should expose your backend app—whether it’s just inside the cluster, or to the outside world through a load balancer or NodePort. Without a Service, your app would be isolated and unreachable, making it impossible for users or other applications to connect to it.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_b01876554)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_b01876554" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -105,7 +105,7 @@ kubectl is the command-line tool for interacting with Kubernetes resources (like
 
 I can't use eksctl for this job because eksctl is only for setting up and deleting your EKS cluster and configuring its settings. Once the cluster is created, kubectl is the tool I use to manage what runs inside the cluster—deploying apps, scaling workloads, and troubleshooting issues.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_6cfb382f2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_6cfb382f2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -138,7 +138,7 @@ The EKS console shows you the events for each pod, where I could see a detailed 
 
 This validated that my deployment was working as expected: the pod was assigned to a node, the backend image was retrieved from ECR without errors, and the container started up successfully. These event messages confirm that my application is running and that all steps in the deployment process completed without issues.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_3b391f873)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks4_3b391f873" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

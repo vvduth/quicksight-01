@@ -11,7 +11,7 @@
 
 ## Build a Three-Tier Web App
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_2b3c4d5e)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_2b3c4d5e" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -45,7 +45,7 @@ because this setup ensures that my web app is highly available, scalable, and lo
 
 I accessed my delivered website by first making sure that my S3 bucket had the correct permissions for my CloudFront distribution to access its files. Then, I went to the CloudFront console, copied the distribution domain name (the URL provided by CloudFront), and opened it in my web browser. This domain name is the public URL that CloudFront uses to serve my website content globally, ensuring fast and reliable access for users..
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_3a4b5c6d)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_3a4b5c6d" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -78,7 +78,7 @@ The Lambda function retrieves data by using the AWS SDK for JavaScript to intera
    - If no item is found, it responds with `404` and a message indicating no user data was found.
    - If an error occurs (such as a permissions or network issue), it logs the error 
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_6a7b8c9d)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_6a7b8c9d" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -90,7 +90,7 @@ I need to set up the data tier because I already have my website files distribut
   
 We are using DynamoDB to store and manage user data for our web application. The partition key for my DynamoDB table is **userId** (after I created a table named **UserData**), which means that each item in the table is uniquely identified by its `userId` value. This allows us to quickly and efficiently retrieve, update, or store user information based on their unique `userId`. By using `userId` as the partition key, DynamoDB can organize and access data in a scalable way, ensuring fast lookups and consistent performance even as the amount of data grows.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_u1v2w3x4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_u1v2w3x4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -112,7 +112,7 @@ I saw the following result returned by the API:
 ```
 which means my API Gateway, Lambda function, and DynamoDB integration are working correctly. The API was able to receive the request, trigger the Lambda function, fetch the correct user data from the DynamoDB table, and return it as a JSON response. This confirms that all parts of my backend are connected and functioning as expected.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_a112c3d5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_a112c3d5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -122,7 +122,7 @@ The error in my CloudFront distributed website occurred because my JavaScript co
 `https://[YOUR-PROD-API-URL]/users?userId=1`  
 instead of the actual API Gateway endpoint.
 
-As shown in the console error in ![image1](image1), the fetch request failed because the placeholder `[YOUR-PROD-API-URL]` was not replaced with the real API URL. This caused a `TypeError: Failed to execute 'fetch'` and the browser couldn't parse the URL.
+As shown in the console error in <img src="image1" alt="image1" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />, the fetch request failed because the placeholder `[YOUR-PROD-API-URL]` was not replaced with the real API URL. This caused a `TypeError: Failed to execute 'fetch'` and the browser couldn't parse the URL.
 
 To fix this, I need to update my `script.js` file with the actual API Gateway Invoke URL so that my website can correctly fetch user data from the backend.
 
@@ -136,7 +136,7 @@ This happened because my frontend website is hosted on CloudFront, which has a d
 
 Because I didn’t configure my API Gateway or Lambda function to include the appropriate `Access-Control-Allow-Origin` header in the response, the browser blocked the request for security reasons. To fix this, I need to enable CORS on my API Gateway, allowing requests from my website’s CloudFront domain.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_a1b2c3d5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_a1b2c3d5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -164,7 +164,7 @@ By adding:
 ```
 to the `headers` property in my Lambda responses, I ensured that only requests from my CloudFront distribution are allowed, which improves both functionality and security. Now, when a user visits my website, the frontend can successfully fetch data from my API  getting blocked.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_1qthryj2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_1qthryj2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -172,7 +172,7 @@ to the `headers` property in my Lambda responses, I ensured that only requests f
   
 I verified the fixed connection between API Gateway and CloudFront by refreshing my CloudFront domain name one more time. After updating the CORS settings in API Gateway and adding the correct CORS headers in my Lambda function, I reloaded the website delivered through CloudFront. This time, the data from DynamoDB was successfully fetched and displayed on the site without any CORS errors in the browser console, confirming that the integration between all layers is now working as intended.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_2b3c4d5e)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-threetier_2b3c4d5e" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

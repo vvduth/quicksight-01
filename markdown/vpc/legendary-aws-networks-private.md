@@ -11,7 +11,7 @@
 
 ## Creating a Private Subnet
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_afe1fdbd)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_afe1fdbd" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -43,7 +43,7 @@ Having private subnets are useful because they to protect resources by keeping t
 
 My private and public subnets cannot have the same CIDR block Because subnets must be non‑overlapping slices of the VPC IP range. Sharing CIDRs would cause duplicate IPs and routing conflicts. AWS enforces unique, non‑overlapping subnet CIDR blocks.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_afe1fdbd)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_afe1fdbd" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -55,7 +55,7 @@ I had to set up a new route table because the default route table was also used 
 
 My private subnet's dedicated route table only has one inbound and one outbound rule that allows lets instances talk to any IP inside the VPC. There’s no 0.0.0.0/0 to an IGW or NAT, so traffic won’t reach the internet—only intra‑VPC communication.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_b4b904b5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_b4b904b5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -67,7 +67,7 @@ I set up a dedicated network ACL for my private subnet because the default ACL a
 
 My new network ACL has two simple rules -  denying all inbound and outbound traffic! I will leave these settings for now - let's customise them later in this project series,
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_1ed2cb07)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-private_1ed2cb07" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

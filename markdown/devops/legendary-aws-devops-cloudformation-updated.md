@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_bd8b836b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_bd8b836b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -68,7 +68,7 @@ The resources I could add to my template include:
 
 The resources I couldn’t add to my template were my CodeBuild project and CodeDeploy deployment group, because the IaC generator doesn’t currently support exporting these resources into CloudFormation templates. This means I had to manually define them in my template or set them up separately, since not all AWS resources are supported for automatic detection and template generation by the tool.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_0495b046)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_0495b046" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -80,7 +80,7 @@ The result of my first template test was a failure:
 Resource handler returned message: "The role with name codebuild-nextwork-devops-cicd-service-role cannot be found."  
 This happened because AWS couldn’t find the IAM role (codebuild-nextwork-web-build-service-role) that CloudFormation was trying to use, even though I was creating it in the same CloudFormation template. The issue is that CloudFormation sometimes tries to create and attach policies to the IAM role before the role itself exists—like looking for a file before it’s been saved. This dependency timing caused the error during deployment.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_f56730fd)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_f56730fd" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -106,7 +106,7 @@ The **DependsOn** line was added to four different parts of my CloudFormation te
 
 In each case, the DependsOn attribute references the IAM role that each policy is supposed to attach to, ensuring CloudFormation creates the role first before attaching the policy.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_f0df8018)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_f0df8018" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -116,7 +116,7 @@ I gave my CloudFormation template another test! But this time the new error I ra
 
 To fix this error, I searched for the IAM role configuration in my CloudFormation template (using Ctrl + F for "IAMRolecodebuild"). I found a section called **ManagedPolicyArns** that was referencing my IAM policies. These references were unnecessary and were causing the circular dependency error. By removing the **ManagedPolicyArns** lines that pointed to my IAM policies, I broke the dependency loop and allowed CloudFormation to create the IAM role and attach the policies in the correct order. This resolved the circular dependency issue and let my template deploy successfully.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_e6fd85ed)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_e6fd85ed" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -162,7 +162,7 @@ Parameters:
 
 These parameters let you set the GitHub repository owner and name dynamically. When deploying, you can provide different values for these fields, making your template adaptable for various projects or environments.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_1cee0428)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_1cee0428" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -170,7 +170,7 @@ These parameters let you set the GitHub repository owner and name dynamically. W
 
 I could verify all the deployed resources by visiting the **Resources** tab in the CloudFormation console. This tab shows a complete list of all resources that were created by your CloudFormation stack, along with their status and logical IDs.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_bd8b836b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cloudformation-updated_bd8b836b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

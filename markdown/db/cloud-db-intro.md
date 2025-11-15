@@ -11,7 +11,7 @@
 
 ## I'm exploring AWS Databases!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-intro_ba6d42ae)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-intro_ba6d42ae" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -19,7 +19,7 @@
 
 In this AWS Databases series, I’m learning about database fundamentals and how to manage them in the cloud. By the end of these projects, I will have a solid understanding of how different types of databases work, how to set them up, and how to connect them securely with other AWS services. I’m learning about cloud databases because they are essential for storing, organizing, and accessing data efficiently in modern applications, and AWS provides powerful, scalable solutions for doing this.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-intro_a1b2c3d4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-intro_a1b2c3d4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

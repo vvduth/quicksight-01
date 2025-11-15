@@ -11,7 +11,7 @@
 
 ## Fetch Data with AWS Lambda
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_p9thryj2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_p9thryj2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -61,7 +61,7 @@ This created a sample user record in my table.
 
 DynamoDB is **schemaless**, which means you don’t have to define a fixed structure for your data ahead of time. Each item in the table can have different attributes, so you can easily add or modify data as your application evolves. The only requirement is that each item must have the primary key you specified (in this case, `userId`).
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_a112c3d5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_a112c3d5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### AWS Lambda
 
@@ -93,7 +93,7 @@ The AWS SDK (Software Development Kit) is a collection of libraries provided by 
 
 My code uses the AWS SDK to connect to DynamoDB, send queries, and retrieve user data directly from my Lambda function. By using the SDK, I can securely and efficiently access AWS resources without having to manually manage API calls or signatures.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_a1b2c3d5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_a1b2c3d5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -111,7 +111,7 @@ DynamoDB is currently blocking my Lambda function from reading any items from th
 
 To fix this, I need to update the Lambda function’s execution role so it includes permission to read from my DynamoDB table.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_u1v2w3x4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_u1v2w3x4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -128,7 +128,7 @@ I also didn’t pick policies like **AWSLambdaDynamoDBExecutionRole** or **AWSLa
 
 **AmazonDynamoDBReadOnlyAccess** was the right choice because it gives my Lambda function permission to safely read data from any DynamoDB table, including using the `GetItem`, `Query`, and `Scan` actions. This ensures my function can retrieve user data without being able to modify or delete anything, which helps maintain security and follows best practices for granting the minimum necessary permissions.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_3ethryj2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_3ethryj2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -156,7 +156,7 @@ Web apps are a popular use case for using Lambda and DynamoDB. For example, I co
 
 These patterns help create applications that are highly scalable, cost-efficient, and easy to maintain, taking advantage of the serverless architecture and managed database.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_p9thryj2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_p9thryj2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -187,7 +187,7 @@ because this method lets me precisely control which actions my Lambda function c
 
 When updating a Lambda function’s permission policies, you could risk accidentally breaking your function’s ability to access required resources—especially if the new policies are too restrictive. I validated that my Lambda function still works by re-running a test event after updating the permission policy. I checked that the function was able to successfully retrieve data from the `UserData` table, confirming that my new, tighter policy still allows the function to perform its intended task without losing necessary access.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_1qthryj2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-lambda_1qthryj2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

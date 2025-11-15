@@ -11,7 +11,7 @@
 
 ## Query Data with DynamoDB
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_733d9399)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_733d9399" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -51,7 +51,7 @@ It is used to order and organize items that have the same partition key, making 
 
 In short, the combination of partition key + sort key must be unique, and the sort key helps store related items together and query them efficiently.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_d105b0b0)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_d105b0b0" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -75,7 +75,7 @@ Aggregated statistics across multiple partitions, like total comments per user o
 
 Full-text search or keyword-based filtering within messages directly.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_cb3e260c)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_cb3e260c" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -96,7 +96,7 @@ Query options I could add to my query are:
 --projection-expression: I only want to know some of the item's attributes.
 --return-consumed-capacity : I want to know how much capacity was consumed by the request.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_733d9399)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_733d9399" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -112,7 +112,7 @@ Updated the Forum table by incrementing the Comments count for "Events" by 1 to 
 
 Using a transaction ensures both actions succeed or fail together, maintaining data consistency across the tables.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_2f65f83e)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-query_2f65f83e" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

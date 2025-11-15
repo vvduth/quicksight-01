@@ -11,7 +11,7 @@
 
 ## Create Kubernetes Manifests
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_b01876555)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_b01876555" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -102,7 +102,7 @@ A Kubernetes deployment manages the rollout and lifecycle of application instanc
 
 The container image URL in my Deployment manifest tells Kubernetes exactly which version of my app to run and where to pull the image from (like Amazon ECR). Kubernetes uses this URL to fetch the container image, create pods, and keep the application up and running in the cluster.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_b01876554)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_b01876554" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -121,7 +121,7 @@ My Service manifest sets up a Kubernetes Service of type NodePort for my backe
 
 This manifest makes my Flask backend accessible to users or other services by routing traffic from the cluster nodes directly to my backend application.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_b01876555)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_b01876555" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -137,7 +137,7 @@ One part of the Deployment manifest I still want to know more about is the **sel
 
 Understanding this is important because it ensures my Deployment only manages the intended pods, helps with scaling, rolling updates, and avoids conflicts with other workloads running in the cluster. I’d like to know more about best practices for choosing labels and how these selectors work in more complex Kubernetes setups.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_6aae73e71)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks3_6aae73e71" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

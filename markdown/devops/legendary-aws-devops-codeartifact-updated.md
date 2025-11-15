@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_1d79e699)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_1d79e699" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -62,7 +62,7 @@ A CodeArtifact repository can have an upstream repository, which means it can pu
 
 My repository’s upstream repository is **maven-central-store**, so if I request a package that isn’t available in my CodeArtifact repository, it will try to retrieve it from Maven Central through the upstream connection. This helps keep my project up to date and simplifies dependency management.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_n4o5p6q7)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_n4o5p6q7" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -97,7 +97,7 @@ Additionally, the policy grants:
 
 These permissions are necessary because they enable your EC2 instance to securely authenticate, connect to, and read packages.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_23rp7q8r9)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_23rp7q8r9" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -114,7 +114,7 @@ Compiling means converting my source code into a format that the computer can ex
 
 This process happens for each required dependency, ensuring that my build process is secure (since dependencies come from a trusted source), controlled (with consistent versions), and faster for subsequent builds because dependencies are cached in CodeArtifact and don’t need to be downloaded again.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_c17eace8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_c17eace8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -123,7 +123,7 @@ This process happens for each required dependency, ensuring that my build proces
   
 After compiling, I checked my CodeArtifact repository. I noticed a list of Maven packages in my CodeArtifact repository. These packages were the dependencies my web app needed, and they were automatically stored in CodeArtifact as Maven artifacts. This confirmed that the connection between Maven and CodeArtifact was working correctly, and that my repository was now securely storing and managing my project's dependencies.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_1d79e699)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_1d79e699" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -175,7 +175,7 @@ aws codeartifact get-package-version-asset \
 
 After downloading, I unzipped the `secret-mission.tar.gz` file and used `cat secret-mission.txt` to display its contents. I saw "Hellooooo this is a test package!"—which confirmed that my package was published, stored, and retrieved correctly from CodeArtifact. This process validated both the integrity and accessibility of my custom package.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_sm12-upload)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codeartifact-updated_sm12-upload" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
