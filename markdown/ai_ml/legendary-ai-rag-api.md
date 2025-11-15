@@ -11,8 +11,7 @@
 
 ## How I Built an API for My RAG Chatbot
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_r4s5t6u7)
-
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_r4s5t6u7" alt="RAG API Architecture" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 ---
 
 ## Introducing Today's Project!
