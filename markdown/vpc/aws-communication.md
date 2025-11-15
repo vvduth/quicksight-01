@@ -11,7 +11,7 @@
 
 ## Testing VPC Connectivity
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_8ee57662)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_8ee57662" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -43,7 +43,7 @@ Connectivity means  how well different parts of your network talk to each other 
 
 My first connectivity test was whether I could connect to my public server using the key pair and the public IP address. This confirmed that my security group, subnet, and internet gateway were set up correctly, and that the server was reachable from the internet.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_88727bef)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_88727bef" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -55,7 +55,7 @@ My first attempt at getting direct access to my public server resulted in an err
 
 I fixed the connection error by updating the security group rules for my EC2 instance. I added an inbound rule to allow SSH (port 22) from my IP address. After saving the changes, I was able to connect to the public server successfully.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_1cbb1b88)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_1cbb1b88" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -67,7 +67,7 @@ The ping command I ran was ping 10.0.1.69 (which is the ipv4 address of my priva
 
 The first ping returned 172 packets transmitted, 0 received, 100% packet loss, which meant that my public server could not reach the private server. This usually happens when the security group or network ACL rules don’t allow ICMP (ping) traffic, so the packets are blocked before they reach the private server.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_defghijk)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_defghijk" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -75,7 +75,7 @@ The first ping returned 172 packets transmitted, 0 received, 100% packet loss, w
 
 I troubleshooted this by updating my network ACL (NACL) and security group inbound rules to allow ICMP traffic (ping). After making these changes, the public server was able to successfully communicate with the private server, confirming that the network settings were correctly configured.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_4a9e8014)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_4a9e8014" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -106,7 +106,7 @@ curl example.com
 
 This command sent a request from my Public Server to example.com and returned the HTML content of the page. It showed that my server could access the internet and retrieve data, confirming that the internet gateway, route table, and security group settings were working correctly for outbound traffic.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_8ee57662)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-connectivity_8ee57662" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

@@ -11,7 +11,7 @@
 
 ## Website Delivery with CloudFront
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_1dddddwe)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_1dddddwe" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -51,7 +51,7 @@ The three files that make up my website are:
 
 I validated that my website files work by opening index.html in my browser to make sure the layout, styles, and functionality all display correctly. This let me confirm that the HTML, CSS, and JavaScript files are working together as expected before uploading them to S3.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_qgo7wcd3)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_qgo7wcd3" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -65,7 +65,7 @@ To use Amazon CloudFront, I set up distributions, a distribution in Amazon Cloud
   
 My CloudFront distribution’s default root object is set to `index.html`. This means that when users access my website through CloudFront without specifying a file name in the URL (for example, just the domain name), CloudFront will automatically serve the `index.html` file as the default homepage. This ensures visitors always see the main page of my site, even if they don’t specify an exact file path.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_qgo7wcdt)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_qgo7wcdt" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -79,7 +79,7 @@ To resolve the error, I set up origin access control (OAC). OAC  is a special us
 
 OAC also gives you granular control over how CloudFront accesses the content. For example, you can add other authentication or security settings to make sure only legitimate users can access your content.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_egrhntyu)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_egrhntyu" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -89,7 +89,7 @@ Once I set up my Origin Access Control (OAC), I still needed to update my S3 buc
 
 Creating an OAC automatically gives me a policy I could copy, which grants the CloudFront service permission to retrieve objects (s3:GetObject) from your S3 bucket (nextwork-three-tier-dukem), but only when the request comes specifically from your CloudFront distribution with the ARN arn:aws:cloudfront::841162690953:distribution/E29AF12EHK58JS. The policy uses a condition to ensure that only requests originating from this CloudFront distribution are allowed, keeping your S3 bucket private from the public and securely restricting access to just CloudFront.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_eg98ntyu)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_eg98ntyu" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -130,7 +130,7 @@ A business would prefer CloudFront when performance, global reach, and security 
 
 S3 static website hosting might be sufficient when the website is simple, has low traffic, or is intended for users in a specific region. It’s best for basic sites, prototypes, internal tools, or when minimal configuration and cost are important, since it’s easier to set up and manage but doesn’t offer the same speed or security as CloudFront.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_12verpuh)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-cloudfront_12verpuh" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

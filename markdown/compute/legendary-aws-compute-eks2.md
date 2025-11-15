@@ -11,7 +11,7 @@
 
 ## Set Up Kubernetes Deployment
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_45e6c3de5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_45e6c3de5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -70,7 +70,7 @@ Next, I retrieved the backend that I plan to deploy. The backend is the "brain" 
 
 I retrieved the backend code by using the `git clone` command, which downloads the entire project repository from GitHub to my EC2 instance. This gives me all the source files I need to build, package, and eventually deploy the backend service to my Kubernetes cluster.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_1ebb86c71)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_1ebb86c71" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -97,7 +97,7 @@ sudo usermod -aG docker ec2-user
 
 The `docker` group is a special group in Linux systems that grants users permission to run Docker commands. By default, only the root user can run Docker commands. When I add a user (like `ec2-user`) to the Docker group, it allows that user to execute Docker commands without needing to type `sudo` every time. This makes working with Docker much easier and follows good practice for managing user permissions safely.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_45e6c3de5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_45e6c3de5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -107,7 +107,7 @@ I'm using Amazon ECR in this project to store and manage the container image of 
 
 Container registries like Amazon ECR are great for Kubernetes deployment because they provide a centralized, secure, and scalable location to store and manage container images. This makes it easy for Kubernetes to pull the exact app images it needs for deployment, ensures consistency across environments, and allows for version control and easy sharing. Additionally, registries integrate with access controls, automation tools, and monitoring systems, making deployments safer, faster, and more reliable.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_l2m3n4o5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eks2_l2m3n4o5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

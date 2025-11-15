@@ -11,7 +11,7 @@
 
 ## Connect a Web App to Amazon Aurora
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_1709b26b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_1709b26b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -37,7 +37,7 @@ I project takes me 1 hour.
 
 ## Creating a Web App
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_b7999168)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_b7999168" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 To connect to my EC2 instance, I ran the command:
 
@@ -79,7 +79,7 @@ define('DB_DATABASE', 'sample');
 
 Finally, I saved the file with Ctrl + S and exited with Ctrl + X. This file allows my PHP web app to connect securely to the Aurora database.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_1709b25b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_1709b25b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -87,7 +87,7 @@ Finally, I saved the file with Ctrl + S and exited with Ctrl + X. This file allo
 
 Next, I upgraded my web app by going into the /var/www/html folder and creating a new file called SamplePage.php. This file imports the connection details from the dbinfo.inc file I created earlier and uses them to connect to my Aurora database. With this setup, my web app can now display real-time data directly from the database, showing updates or changes instantly on the webpage.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_2709b25b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_2709b25b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -95,7 +95,7 @@ Next, I upgraded my web app by going into the /var/www/html folder and creating 
 
 To make sure my web app was updating my Aurora database correctly, I installed MySQL on my EC2 instance by adding the MySQL repository and installing the client. Then, I connected to my Aurora cluster using the MySQL CLI and ran commands like SHOW DATABASES;, USE sample;, and SHOW TABLES; to confirm my schema and tables were there. I also ran DESCRIBE employees; to view the table structure and SELECT * FROM employees; to check if new data added through the web app appeared in the database — confirming that the connection between my web app and Aurora worked perfectly.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_1409z22b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-webapp_1409z22b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

@@ -11,7 +11,7 @@
 
 ## Connect a GitHub Repo with AWS
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_dd9d254e)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_dd9d254e" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -71,7 +71,7 @@ GitHub is an online platform for hosting, sharing, and collaborating on code usi
 
 I'm using GitHub in this project to store my web app’s code online, track changes, and collaborate more effectively. By pushing my project to GitHub, I can back up my work, share it with others, and take advantage of features like pull requests and README files to keep my project organized and accessible.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_efaadbf7)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_efaadbf7" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -97,7 +97,7 @@ git branch -m <name>
 
 This helps organize your project and makes it clear which branch is the main line of development.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_7bf21bae)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_7bf21bae" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -146,7 +146,7 @@ Git needs my name and email because every commit I make is recorded with this in
 
 Running git log showed me that  history of commits, which also mentions the commit author's name.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_9a27ee3b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_9a27ee3b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -161,7 +161,7 @@ I'm using one in this project because GitHub no longer accepts passwords for com
   
 I could set up a GitHub token by going to my GitHub account settings, navigating to "Developer settings" > "Personal access tokens," and clicking "Generate new token." I selected the required scopes (permissions) for my project, gave the token a name, and then clicked "Generate token." I copied the generated token and used it as my password when pushing or pulling code from my local repository to GitHub via the terminal. This allows secure authentication and access to my GitHub repositories.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_fa11169d)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_fa11169d" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -171,7 +171,7 @@ I updated the file `src/index.jsp` in my `nextwork-web-project`. I added a new l
 
 I finally saw the changes in my GitHub repo after I committed the changes to my local repository and then pushed them to the remote GitHub repository using the `git push` command. This uploaded my updated files from my EC2 instance to GitHub, making the changes visible in my online repository.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_6becb2bc)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_6becb2bc" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -206,7 +206,7 @@ My README file has 6 sections that outline the structure and purpose of my proje
 
 This structure makes it easy for anyone to understand the project, set it up, and get involved.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_c94976902)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-github_c94976902" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

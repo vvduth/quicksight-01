@@ -11,7 +11,7 @@
 
 ## Set Up a Web App Using AWS and VS Code
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_7a1de541)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_7a1de541" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -105,7 +105,7 @@ VS Code is a code editor.
 I installed VS Code to write code.
 
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_53d05e68)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_53d05e68" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -136,7 +136,7 @@ icacls "nextwork-keypair.pem" /inheritance:r
 
 This ensures that only I can read the private key, which is important for security when connecting to my EC2 instance with SSH.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_9328ada1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_9328ada1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -154,7 +154,7 @@ This command uses SSH (Secure Shell) with the `-i` flag to specify my private ke
 
 A Public IPv4 DNS (which stands for Domain Name System) is the public address for your EC2 server that the internet uses to find and connect to it. The local computer you're using to do this project will find and connect to your EC2 instance through this IPv4 DNS.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_e3069dca)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_e3069dca" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -202,7 +202,7 @@ Configuration details required to set up a remote connection include:
 
 These details are typically stored in a configuration file (like `.ssh/config` or within the settings of your VS Code Remote - SSH extension) to make connecting to your EC2 instance quick and secure, without needing to type the full SSH command each time.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_2939cf01)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_2939cf01" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -229,7 +229,7 @@ This structure shows the standard organization of a Java web application created
 
 Together, these folders organize your code and resources in a standard structure, helping Maven build and manage your Java web application efficiently.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_45f91fd7)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_45f91fd7" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -250,7 +250,7 @@ I edited `index.jsp` by adding the following HTML code:
 
 This creates a simple web page that displays a greeting and a message, confirming that your NextWork web application is up and running.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_7a1de541)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_7a1de541" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -274,7 +274,7 @@ Compared to using an IDE, editing `index.jsp` in the terminal felt less intuitiv
 
 I’d be more likely to use an IDE if I want features like code completion, real-time error checking, integrated version control, and a graphical interface that makes editing, navigating, and debugging code much easier and faster. IDEs also let me manage large projects more comfortably and help reduce mistakes, which is especially helpful for beginners or when working on complex codebases.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_a3324ad41)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-vscode_a3324ad41" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_reghtjy)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_reghtjy" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -34,7 +34,7 @@ Secrets Manager is an AWS service designed to securely store, manage, and retrie
 
 For this project, I created a secret in AWS Secrets Manager called TopSecretInfo. It includes a single key/value pair: the key is 'The Secret is' and the value is 'I need 3 coffees a day to function.' This gives me a simple, memorable example to monitor and helps me practice tracking access to sensitive information in AWS.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_o5p6q7r8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_o5p6q7r8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -56,7 +56,7 @@ I retrieved my secret using two methods. First, I accessed the AWS Console, navi
 
 To analyze my CloudTrail events, I checked the Event history section, which shows all management events from the past 90 days. I noticed multiple "GetSecretValue" events, indicating that my secret’s value was retrieved or accessed several times. This confirms that CloudTrail is effectively logging every attempt to use or expose my sensitive information—which is exactly what I want for proper security monitoring.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_s8t9u0v1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_s8t9u0v1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -68,7 +68,7 @@ The key difference is that CloudTrail’s Event History is great for quickly che
 
 A CloudWatch metric is a measurement that tracks specific activity or conditions. The metric value represents what gets recorded whenever our filter detects a match in the logs—by setting it to 1, we ensure each secret access increases the counter by one. The default value is used when no matches are found in a given time period; we set it to 0 so that periods without secret access are clearly shown as zero on our charts. This way, we get a complete picture of both when access occurs and when it doesn’t.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_a9b0c1d2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_a9b0c1d2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -80,7 +80,7 @@ A CloudWatch alarm monitors a metric and triggers an alert when the metric cross
 
 AWS requires email confirmation for SNS subscriptions to make sure that only the intended recipient receives notifications. This helps prevent unwanted emails, accidental subscriptions, or misuse of your contact information. By confirming, you verify that you actually want to get alerts, which adds an extra layer of security and trust to the notification process.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_fsdghstt)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_fsdghstt" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -106,7 +106,7 @@ By systematically investigating each step, I was able to narrow down where the p
 
 To validate that my monitoring system works, I triggered a secret access event and then checked both my CloudWatch Alarm status and my email inbox for notifications. I confirmed that the CloudWatch Alarm was activated when the secret was accessed, and I received an email alert through SNS, proving that my system reliably detects and reports secret access events as intended.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_ageraergearge)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_ageraergearge" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -114,7 +114,7 @@ To validate that my monitoring system works, I triggered a secret access event a
 
 After enabling direct CloudTrail SNS notifications, my inbox quickly filled up with several new emails from CloudTrail. These notifications arrived each time the secret was accessed. As for usefulness, I found the alerts helpful for immediate visibility, but they can get overwhelming or noisy if not filtered properly. It’s a good reminder to fine-tune alert settings so you only get notified about truly important events.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_d7e8f9g0)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-monitoring_d7e8f9g0" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

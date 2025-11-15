@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_c9d0e1f2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_c9d0e1f2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -42,7 +42,7 @@ I'm using Lambda in this project to handle the logic layer of my application. It
 
 The code I added to my function will connect to a DynamoDB table called 'UserData', look up a record using a user ID provided in the HTTP request’s query string, and return the user’s data as a JSON response. If the user’s data is found, it responds with a 200 status code and the data; if not, it returns a 404 error with a message. If something goes wrong during the process (like a database error), it returns a 500 error indicating failure. This function acts as an API endpoint that retrieves user information from DynamoDB in response to client requests.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_a1b2c3d5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_a1b2c3d5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -60,7 +60,7 @@ When a user makes a request, API Gateway acts as the entry point—it receives t
 
 Lambda then runs the backend code you wrote, processes the request (such as fetching data or performing calculations), and returns a response. API Gateway receives Lambda’s response and sends it back to the user. This setup lets you build scalable, serverless APIs without managing infrastructure, with API Gateway handling security, traffic management, and request/response formatting, while Lambda executes your application logic.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_m3n4o5p6)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_m3n4o5p6" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -84,7 +84,7 @@ These HTTP methods make it easy to organize and control how users interact with 
 The method I set up is a **GET** method for the "users" resource. I chose **Lambda Function** as the integration type, which means that whenever a GET request is made to the "users" endpoint, API Gateway will forward the request to my Lambda function.  
 I also enabled **Lambda proxy integration**, which allows API Gateway to pass the entire request (including query parameters, headers, and body) directly to the Lambda function. This gives the Lambda function full control over processing the request and formatting the response.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_c9d0e1f2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_c9d0e1f2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -94,7 +94,7 @@ A stage is a named environment in API Gateway where your API is deployed and acc
 
 To visit my API, I go to my prod stage's Invoke URL provided by API Gateway. When I accessed the URL, the API displayed an error (“Missing authentication token”) because I haven't fully set up my DynamoDB table and configured the correct resource path and method yet. This error usually means I either visited the base URL instead of a specific endpoint (like `/users`), or the endpoint isn't properly configured or deployed. Once I finish setting up my DynamoDB table and API resources, the API should work as expected.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_3ethryj2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_3ethryj2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -115,7 +115,7 @@ There was also a description section explaining what the API does:
 
 Overall, the documentation clearly outlined the structure, endpoints, and purpose of my API, making it easier for other developers to understand how to use it.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_z9a0b1c2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-api_z9a0b1c2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

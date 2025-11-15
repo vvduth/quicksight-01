@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_c4df13c84)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_c4df13c84" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -65,7 +65,7 @@ docker run -d -p 80:80 nginx
 
 `docker run` starts a new container. I used the pre-existing container image called `nginx` and started it in detached mode (`-d`), so it runs in the background. The `-p 80:80` option maps port 80 on my host machine to port 80 in the container, allowing me to access the Nginx web page from my computer's web browser.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_6245f5bb10)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_6245f5bb10" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -94,7 +94,7 @@ docker build -t my-web-app .
 
 This tells Docker to build an image named `my-web-app` using the instructions in my Dockerfile. The `.` at the end of the command means "use the current directory as the build context," so Docker will look for the Dockerfile and any needed files here.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_4c741d1913)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_4c741d1913" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -108,7 +108,7 @@ The image name for the running container was `nginx`, which was the container I 
 
 In this example, the container image is the blueprint that tells Docker the application code, dependencies, libraries etc that should go into a container. The container is the actual software that's created from this image and running the web server displaying my index.html.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_74b5c3d619)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_74b5c3d619" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -141,7 +141,7 @@ Here are my settings:
 
 With these settings, the deployment was quick and straightforward!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_26d5573b23)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_26d5573b23" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -159,7 +159,7 @@ To deploy my app updates, I realized the changes I made to index.html were only 
 
 To get my updates live, I compressed the updated index.html and Dockerfile into a new zip file. Then, I went to Elastic Beanstalk, clicked “Upload and Deploy,” and selected the new zip file. This pushed my changes to the cloud, and my live environment started showing the new version of my app.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_5b7034684)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-compute-eb_5b7034684" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

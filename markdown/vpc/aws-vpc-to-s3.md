@@ -11,7 +11,7 @@
 
 ## Access S3 from a VPC
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_3e1e79a2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_3e1e79a2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -59,7 +59,7 @@ I started my project by launching a VPC with one public subnet and an EC2 instan
 
 I also set up an S3 bucket in the same region as my VPC and uploaded two .png files into the bucket. This allows me to test accessing S3 from my EC2 instance and ensures that the bucket and its contents are available for network and permissions testing within my AWS environment.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_4334d777)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_4334d777" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -73,7 +73,7 @@ The first command I ran was 'aws s3 ls'. This command is used to list all the S3
 
 The second command I ran was aws configure. This command is used to set up the AWS CLI with my credentials and default settings, such as the access key, secret key, default region, and output format. It allows my EC2 instance to authenticate with AWS services and run commands like accessing S3 securely.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_e7fa8776)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_e7fa8776" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -118,7 +118,7 @@ When I ran the command aws s3 ls again, the terminal responded with:
 
 This indicated that my EC2 instance was successfully authenticated and could access my AWS environment. It confirmed that the instance can list all S3 buckets I have permission to see, showing that the access keys and AWS CLI configuration were working correctly.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_4334d778)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_4334d778" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -137,7 +137,7 @@ It returned:
 
 This showed that the two .png files I uploaded were successfully stored in the S3 bucket. It confirmed that my EC2 instance could access the bucket, list its contents, and interact with S3 using the access keys I configured.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_4334d779)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_4334d779" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -164,7 +164,7 @@ aws s3 ls s3://nextwork-vpc-project-dukem
 
 This validated that the file test.txt was successfully uploaded to the S3 bucket. It confirmed that my EC2 instance could access, write to, and list contents in the bucket, showing that the VPC-to-S3 connection and access permissions were correctly configured.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_3e1e79a2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-s3_3e1e79a2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

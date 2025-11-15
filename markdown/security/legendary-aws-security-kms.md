@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_w0x1y2z3)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_w0x1y2z3" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -39,7 +39,7 @@ Key management systems are important because they centralize control over who ca
 
 Encryption keys are broadly categorized as symmetric and asymmetric. I chose a symmetric key because it uses a single key for both encryption and decryption. This makes it faster and more efficient, especially for encrypting large volumes of data like in a DynamoDB table. It’s ideal for internal applications where AWS securely manages and controls access to the key.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_a2b3c4d5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_a2b3c4d5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -58,7 +58,7 @@ Customer managed key (CMK): Created and managed by you in AWS KMS. You have full
 Their differences are based on who controls and manages the encryption key.
 I selected “Stored in my account” (customer managed key) because it allows me to fully control access, monitor usage, and enforce my own security policies.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_q8r9s0t1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_q8r9s0t1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -68,7 +68,7 @@ Rather than controlling who can see the data directly, KMS manages user permissi
 
 Despite encrypting my DynamoDB table, I could still see the table's items because DynamoDB uses transparent data encryption, which means the service automatically decrypts the data for authorized users. When I query or view items, DynamoDB securely communicates with KMS to decrypt the data in real time — as long as I have the right permissions. This allows me to work with my data normally while it remains encrypted at rest and protected from unauthorized access.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_c0d1e2f3)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_c0d1e2f3" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -78,7 +78,7 @@ I created a new IAM user named nextwork-kms-user and enabled console access so I
 
 After accessing the DynamoDB table as the test user, I encountered a “You don’t have permission to kms:Decrypt” error. This happened because the IAM user (nextwork-kms-user) doesn’t have permission to use the KMS key that encrypts the table. This confirmed that encryption with a customer-managed KMS key effectively blocks unauthorized users from accessing sensitive data, even if they have full DynamoDB permissions.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_w0x1y2z3)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_w0x1y2z3" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -90,7 +90,7 @@ Using the test user, I logged into the AWS console and accessed the encrypted Dy
 
 Encryption secures data itself, protecting it even if someone bypasses security groups or permission policies. I could combine encryption with IAM policies, security groups, and VPC endpoints to ensure that only authorized users and systems can access and decrypt the data, adding multiple layers of protection.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_feffb2fb8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-kms_feffb2fb8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

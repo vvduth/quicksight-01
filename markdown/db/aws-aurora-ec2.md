@@ -11,7 +11,7 @@
 
 ## Connect a Web App to Amazon Aurora
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_44443546)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_44443546" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -46,7 +46,7 @@ When a database is relational we can query it using a special language called SQ
 
 Aurora is a good choice when you want a high-performance, highly available, and fully managed relational database that is compatible with MySQL or PostgreSQL. It is ideal for applications that need fast read and write speeds, automatic backups, scalability, and fault tolerance, without having to manage the underlying infrastructure yourself.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_44443546)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_44443546" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -60,13 +60,13 @@ I created a new key pair for my EC2 instance because it’s required to securely
 
 When I created my EC2 instance, I took particular note of the Public IPv4 DNS and key pair name because the Public IPv4 DNS is what I use to connect to my instance from my local terminal or tools like SSH, and the key pair name tells me which private key file I need to use for that connection. Without these two details, I wouldn’t be able to securely log in or manage my EC2 instance.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_91b9fd1g)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_91b9fd1g" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
 ## Then I could finish setting up my database
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_1fddb0b5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-aurora_1fddb0b5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 Aurora Database uses clusters because they provide high availability, scalability, and fault tolerance. A cluster separates the writer instance (for updates) from reader instances (for queries), which helps balance the workload. If one instance fails, another can take over automatically without downtime. This setup ensures better performance and reliability for applications.
 

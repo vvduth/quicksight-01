@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-27)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-27" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -56,7 +56,7 @@ Instead of launching these resources manually, I used AWS CloudFormation to depl
 
 Other resources created in this CloudFormation template include a VPC and all the necessary networking components such as subnets, internet gateway (IGW), security groups, route tables, and IAM roles, along with the EC2 instance. These resources are included in the template to ensure that the EC2 instance is launched in a secure and properly configured network environment. Having all these components defined together in the template allows for automated, repeatable, and consistent infrastructure setup, making it easier to manage and update your deployment stack in AWS.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -109,7 +109,7 @@ artifacts:
 
 This change tells CodeBuild to package not only the compiled WAR file, but also the deployment instructions (`appspec.yml`) and all deployment scripts. Including these files ensures that CodeDeploy has everything it needs to successfully deploy and configure the application. Without them, CodeDeploy wouldn’t know how to handle, start, or stop the app during deployment!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-12)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-12" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -134,7 +134,7 @@ To set up a deployment group, you also need to create an IAM role for CodeDeploy
 
 Tags are helpful for organizing and identifying resources in AWS. I used the tag with `"role"` as the key and `"webserver"` as the value to make it easy for CodeDeploy to target the correct EC2 instance during deployment. By tagging my EC2 instance this way, CodeDeploy can automatically find and deploy to instances that match this tag, ensuring that only the intended servers receive the new application. Tags also help with resource management, automation, and tracking in larger environments.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-18)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-18" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -150,7 +150,7 @@ I used **CodeDeployDefault.AllAtOnce**, so my application was updated on all tar
 
 A CodeDeploy Agent is a small software package installed on your EC2 instances that allows AWS CodeDeploy to communicate with and manage deployments on those servers. The agent listens for deployment instructions from CodeDeploy, downloads the application package, runs deployment scripts (like install, start, and stop), and reports the status back to AWS. Setting up the CodeDeploy Agent ensures your EC2 instance can receive and execute automated deployment tasks, making the process seamless, reliable, and fully managed.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-20)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-20" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -175,7 +175,7 @@ In my case, the revision location was your S3 bucket, which stores your app’s 
 
 To check that the deployment was a success, I visited the Public DNS of my target EC2 instance using HTTP. When I saw my web application fully accessible in the browser, I knew CodeDeploy had successfully deployed my app. This confirmed that all files were copied, services started correctly, and the deployment process worked as expected.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-27)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_val-27" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -189,7 +189,7 @@ I also enabled rollbacks with this deployment, which means that if something goe
 
 When my deployment failed, the automatic rollback also failed because CodeDeploy’s rollback only reuses the previous deployment’s settings, not the actual build artifact. It still deploys the latest (broken) artifact from S3, so the error persists. True artifact-based rollbacks aren’t supported in basic CodeDeploy setups—this is a common misconception. With AWS CodePipeline, you can automate rollbacks to specific, previously successful artifacts. To actually recover, you must fix the broken script, rebuild, and redeploy. In production, set up your pipeline to retain previous artifacts and reference them for rollbacks to ensure rapid recovery and minimal downtime.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_rollback-validation-upload)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codedeploy-updated_rollback-validation-upload" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_r7s8t9u0)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_r7s8t9u0" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -68,7 +68,7 @@ AWS_REGION = "us-east-2"
 
 Don’t worry, these won’t actually connect to AWS or reveal your S3 buckets. They’re just here for learning and demo purposes. Security first, fun always! 🔐😄
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_j2k3l4m5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_j2k3l4m5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -101,7 +101,7 @@ AWS_SECRET_ACCESS_KEY (super secret!)
 AWS_REGION (where my AWS stuff lives)
 But remember: hardcoding real secrets is risky business! 🔥 This is just to get things working—next step is to secure those credentials like a security ninja! 🥷🔐
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_wghjteykut)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_wghjteykut" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -129,7 +129,7 @@ This is a GOOD security feature because it protects you (and everyone) from acci
 
 GitHub’s blockade keeps our code public, but our secrets private. Safety first, drama never! 👏
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_o2p3q4r5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_o2p3q4r5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -151,7 +151,7 @@ Secrets Manager makes developers' lives easier by providing sample code in langu
 
 This is super helpful because it saves time, reduces mistakes, and means you don’t have to be a security wizard to keep your secrets safe. Just copy, paste, and boom—your app talks to Secrets Manager securely! 💥🔐
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_h2i3j4k5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_h2i3j4k5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -175,7 +175,7 @@ AWS_REGION = "eu-north-1"
 
 This is important because it keeps sensitive credentials out of your codebase, prevents accidental leaks, and makes it super easy to rotate or update secrets without touching your code. Security, flexibility, and peace of mind, all in one vault! 🦸‍♂️🔐
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_v0w1x2y3)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_v0w1x2y3" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -197,7 +197,7 @@ Once the merge conflict was resolved, I verified my hardcoded credentials were o
 
 I also tried searching the repo for the old credentials to make sure they were totally gone—nothing popped up! This double-check gives me peace of mind that my secrets are safe, and the repo is ready for public sharing. 🎉🔐
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_t5u6v7w8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-security-secretsmanager_t5u6v7w8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

@@ -11,7 +11,7 @@
 
 ## Visualise a Relational Database
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1fddb0b5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1fddb0b5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -41,7 +41,7 @@ This project took me 3 hours, which was longer than I expected. At first, I coul
 
 I created my relational database by logging in as an IAM user, going to the Aurora and RDS service, and selecting “Create Database” with MySQL as the database engine. I then configured settings like DB instance size, storage, and credentials to set up a fully functional relational database in AWS.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_43343546)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_43343546" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -61,13 +61,13 @@ The first thing I did was make my RDS instance public because I wanted to connec
 
 I had to update the default security group for my RDS instance to allow access only from my IP even though the instance is public because making it public exposes it to the internet. Restricting access ensures that only my machine can connect, keeping the database secure from unauthorized access.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_91b9fd1g)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_91b9fd1g" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
 ## Using MySQL Workbench
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1fddb0b5)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1fddb0b5" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 To populate my database, I created a new schema named QuickSightDatabase. After selecting it by double-clicking, I wrote SQL commands to create two tables — new_hire and department — using the CREATE TABLE statement. Then, I used the INSERT command to add sample records into each table. This process helped me understand how to define tables, set data types, and manually input data using SQL, which is a key part of working with relational databases.
 
@@ -93,17 +93,17 @@ To make my RDS instance secure, I set it to Not Publicly Accessible. Then, I cre
 
 I gave QuickSight access to my RDS instance by removing the default security group from the RDS instance and attaching the new security group I created. This new security group is configured to allow MySQL/Aurora traffic only from the QuickSight security group, ensuring that QuickSight can connect securely while keeping the database private from the public internet.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1709b26b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1709b26b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
 ## Adding RDS as a data source for QuickSight
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1709b29b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1709b29b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 This data source is different from my initial data source because it is now connected through a private, secure VPC setup instead of being publicly accessible. QuickSight can access the RDS instance only through the dedicated security groups and VPC connection, ensuring that the database is protected from public internet access while still allowing visualization and analysis.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1709b30b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-rds_1709b30b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

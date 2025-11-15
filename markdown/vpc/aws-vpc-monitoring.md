@@ -11,7 +11,7 @@
 
 ## VPC Monitoring with Flow Logs
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_3e1e79a1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_3e1e79a1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -67,7 +67,7 @@ The IPv4 CIDR blocks for VPCs 1 and 2 are unique because each VPC needs its own 
 
 My EC2 instances' security groups allow ICMP traffic from all IP addresses because ICMP is needed for the ping command, which tests network connectivity between the two instances. Allowing ICMP from all IPs ensures that the instances can send and receive ping requests freely, helping me confirm that the VPC peering connection is working correctly.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_e7fa8775)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_e7fa8775" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -79,7 +79,7 @@ Log groups in AWS are like folders in Amazon CloudWatch that organize and store 
 
 ### I also set up a flow log for VPC 1
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_e8398869)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_e8398869" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -91,7 +91,7 @@ I also created an IAM role because the role uses the IAM policy to grant VPC Flo
 
 A custom trust policy is a JSON document in AWS that defines which entities (users, services, or accounts) are allowed to assume an IAM role. It specifies who can “trust” the role and use its permissions. For example, when setting up VPC Flow Logs, a custom trust policy allows the Flow Logs service to assume the role you created so it can write logs to CloudWatch. It’s essentially a way to control who or what can act using the role.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_4334d777)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_4334d777" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -115,7 +115,7 @@ In this step, I will review the flow logs recorded for VPC 1's public subnet and
 
 My first ping test between my EC2 instances had no replies, which means a key part of the network was missing: the VPC peering connection. Without this direct link, the two VPCs cannot communicate using their private IP addresses. Setting up the peering connection allows traffic to flow securely between the instances across the VPCs.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_99d4ba42)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_99d4ba42" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 I could receive ping replies if I ran the ping test using the other instance's public IP address, which means the instances can communicate over the internet, but not yet through their private IPs. This shows that the VPCs aren’t connected directly, and a VPC peering connection is needed for private, internal communication between the two networks.
 
@@ -129,7 +129,7 @@ Looking at VPC 1's route table, I identified that the ping test to Instance 2's 
 
 I also updated both VPCs' route tables so that traffic destined for the other VPC would be sent through the peering connection. This ensures that instances in VPC 1 and VPC 2 can communicate using their private IP addresses, making the peering connection functional and enabling secure internal network traffic.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_7316a13d)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_7316a13d" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -137,7 +137,7 @@ I also updated both VPCs' route tables so that traffic destined for the other VP
 
 I received ping replies from Instance 2's private IP address! This means the VPC peering connection and route tables are correctly configured, allowing the two VPCs to communicate directly and securely using private IP addresses. The network traffic is flowing as intended between the instances.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_4ec7821f)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_4ec7821f" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -167,7 +167,7 @@ Flow logs provide a detailed view of who is talking to whom, how much data is tr
 
 For example, the flow log I’ve captured tells us that a connection from source IP 79.124.62.122 to destination IP 10.1.2.161 on port 4854 was blocked (REJECT). It also shows which network interface handled the traffic, the number of packets and bytes sent, the protocol used (TCP), and the time of the traffic. This information helps me understand traffic patterns, identify blocked connections, and troubleshoot network issues in the VPC.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_d116818e)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_d116818e" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -186,7 +186,7 @@ stats sum(bytes) as bytesTransferred by srcAddr, dstAddr
 This query analyzes **all traffic in the flow logs**, sums up the total bytes transferred between each source and destination IP pair, sorts them from highest to lowest, and shows the **top 10 connections**. It helps identify which hosts are exchanging the most data, revealing traffic patterns and potential hotspots in the network.
 
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_3e1e79a1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-monitoring_3e1e79a1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_35588a47)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_35588a47" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -56,7 +56,7 @@ My CodeBuild project's source configuration tells CodeBuild exactly where to get
 
 In short: choosing GitHub makes my repo the authoritative input for automated, repeatable CI builds.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_fewgrhte)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_fewgrhte" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -68,7 +68,7 @@ By contrast, a personal access token (PAT) is user‑scoped, long‑lived, and r
 
 CodeConnections acted as a secure bridge between AWS and my GitHub account. I created a connection in the AWS Console (authorizing the GitHub App or OAuth flow), grabbed the connection ARN, and used that ARN in my CodeBuild project. CodeConnections handled authentication, webhooks, and token management so I didn’t have to store PATs or SSH keys in code. Benefits: least‑privilege repo access, automatic token rotation, centralized auditing and revocation, native webhook triggers for automatic builds, and seamless integration with CodeBuild/CodePipeline—simplifying secure CI integration.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_a7c98e2d)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_a7c98e2d" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -98,7 +98,7 @@ My first build failed because CodeBuild couldn’t find the buildspec.yml file i
 
 The first two phases in my buildspec.yml file are install and pre_build. The install phase sets up the environment by specifying the Java version (Corretto 8). The pre_build phase runs commands before the actual build, like logging into AWS CodeArtifact and exporting the authentication token so Maven can pull dependencies securely. The third phase, build, kicks off the actual build process: it logs the start time and runs mvn clean install to compile the code and run tests. The fourth phase, post_build, handles final steps after the build, such as logging completion and packaging the app into a WAR file. Each phase organizes and automates part of the build lifecycle for clarity and reliability.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_35588a47)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_35588a47" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -110,7 +110,7 @@ To resolve the second error, I updated the CodeBuild service role to include the
 
 To verify the build, I checked the S3 bucket where CodeBuild is configured to store build artifacts. I saw that the artifact file—specifically, the WAR file created by the build process—appeared in the bucket. Seeing this artifact tells me that the build ran successfully, the packaging step worked as expected, and the output is ready for deployment. It’s a clear sign that my CI pipeline is correctly set up to produce and store deployable application packages.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_d9cc6191)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_d9cc6191" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -126,7 +126,7 @@ To add the test script to the build process, I created a file called test.sh wit
 answer:  
 After pushing my code to GitHub, I ran the Start Build in AWS CodeBuild again and checked the build logs. Around lines 45–50, I saw my custom test phase markers and output from my test.sh script—like "==== RUNNING SIMPLE TESTS ====", "✅ PASS: src directory exists", and "✅ PASS: index.jsp exists". This is clear proof that CodeBuild automatically ran my test commands as part of the build process. Seeing these test results in the logs confirms my automated testing setup is working!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_sm-test-script-upload)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codebuild-updated_sm-test-script-upload" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

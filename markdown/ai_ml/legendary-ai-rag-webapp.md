@@ -11,7 +11,7 @@
 
 ## Building a RAG Chatbot with a Web Interface
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_oiuhgiuh)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_oiuhgiuh" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -36,7 +36,7 @@ I did this project today because I wanted to challenge myself and learn how to b
 
 I created a Knowledge Base in Bedrock to centralize important information and make it searchable for my chatbot. This allows the chatbot to provide more accurate, relevant answers by retrieving context from my curated documents, rather than relying only on general AI knowledge. Using Bedrock ensures easy integration, security, and scalability as my data and use cases grow.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_c1d2e3f4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_c1d2e3f4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -46,7 +46,7 @@ To run the API, I installed packages like boto3==1.36.20 for AWS integration, fa
 
 A virtual environment helps me by creating an isolated space for my project’s Python packages and dependencies. This prevents conflicts with system-wide packages and other projects, ensuring that the exact versions I need don’t interfere with existing software on my computer. For this project, using a virtual environment makes it easy to install API-related libraries (like FastAPI, boto3, and uvicorn) without risking compatibility issues, and it keeps my workspace clean and organized.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_a8b9c0d1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_a8b9c0d1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -62,7 +62,7 @@ My API uses the Python AWS SDK (boto3) to connect programmatically to AWS servic
 
 When I visited the root endpoint, I saw the welcome message {"message":"Welcome to your RAG chatbot API!"}. This confirms that my API is running correctly, and external applications can connect to it. It’s a quick way to verify my setup and ensures the API is ready to accept requests from clients.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_i6j7k8l9)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_i6j7k8l9" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -72,7 +72,7 @@ When I visited the root endpoint, I saw the welcome message {"message":"Welcome 
 
 To resolve the error in my query endpoint, I need to make sure these variables are correctly set and loaded in my environment before running the API.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_s9t0u1v2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_s9t0u1v2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -82,7 +82,7 @@ The difference between the API and the web app for the user is that the API offe
 
 The web app has the ability to switch between talk to AI directly and retrieval-augmented mode using my Knowledge Base. When I asked the same question "What is NextWork," with the Talk to AI directly option, it gave me an answer that's a little less accurate and less specific compared to my documents. That's because the chatbot is now using the AI model's general knowledge, without referencing my custom Knowledge Base! This new functionality is great for getting general answers quickly, but if I want precise, document-based responses, I can easily switch back to RAG mode. This makes my chatbot more versatile and interactive for different types of queries.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_v1w2x3y4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_v1w2x3y4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -116,7 +116,7 @@ web_app.py extends the API by adding more tools and features for a web interface
     - `app.mount("/static", StaticFiles(directory="static"), name="static")`: Tells FastAPI to serve static files from the `static` directory.
     - `templates = Jinja2Templates  Initializes Jinja2.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_i5j6k7l8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_i5j6k7l8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -126,7 +126,7 @@ I want to experiment with customizing the frontend because it allows me to creat
 
 My customized interface now features a retro-futuristic terminal/cyberpunk aesthetic that's totally different from the original. The chat window glows with neon accents and dark backgrounds, pixel fonts make it feel like a vintage computer, and animated effects mimic an old-school terminal. Buttons, borders, and even the message bubbles have a sleek, digital look—giving users the vibe of chatting with an AI straight out of a sci-fi movie. The whole experience feels immersive and visually striking, making chatbot interactions way more fun and memorable.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_cust24680)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-webapp_cust24680" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_fbdetger)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_fbdetger" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -61,7 +61,7 @@ I chose Superseded mode so only the most recent changes are deployed and older, 
 
 A service role gets created automatically during setup so CodePipeline can interact with other AWS resources on your behalf. A service role is a special IAM role that lets AWS services like CodePipeline access S3 buckets, invoke CodeBuild, trigger CodeDeploy, and more. Without it, CodePipeline wouldn’t have permission to move artifacts, build your code, or deploy updates as part of your pipeline. It’s essential for secure and automated CI/CD operations.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_gdnhtm)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_gdnhtm" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -86,7 +86,7 @@ CodePipeline organizes the three stages into a visual workflow, showing the flow
 
 This detailed visibility helps you monitor every step of your CI/CD pipeline, quickly identify issues, and ensure your code is reliably built and deployed.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_fbdetger)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_fbdetger" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -96,7 +96,7 @@ In the Source stage, the default branch tells CodePipeline which branch of your 
 
 Webhook events are important in a CI/CD pipeline because they allow CodePipeline to automatically start a new pipeline execution whenever code is pushed to your specified branch in GitHub. This makes the pipeline truly "continuous," as it reacts to code changes in real time. Webhooks act as instant notifications—when you push code, GitHub sends a webhook event to CodePipeline, triggering the build and deployment process automatically. This seamless automation eliminates manual intervention, speeds up releases, and ensures your applications are always up to date with the latest changes.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_sergt)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_sergt" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -104,7 +104,7 @@ Webhook events are important in a CI/CD pipeline because they allow CodePipeline
 
 The Build stage sets up where my source code gets compiled and packaged into something that can be deployed. I configured build provider to be Other build provider (not Commands), In the Project name dropdown, I search for and select nextwork-devops-cicd. SourceArtifact is the input artifact for the Build stage because it contains the source code fetched from your repository in the Source stage. The Build stage uses SourceArtifact as its starting point to compile, test, and package your code. By specifying SourceArtifact, I am  telling CodePipeline which files to build—ensuring my build provider (like CodeBuild) works with the latest code changes from my repo.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_j1k2l3m4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_j1k2l3m4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -112,7 +112,7 @@ The Build stage sets up where my source code gets compiled and packaged into som
 
 In the Deploy stage, I set up AWS CodeDeploy as the deploy provider, which takes the application artifacts produced by the Build stage and deploys them to my target environment—an EC2 instance. I selected my CodeDeploy application and deployment group from the options that automatically appeared. Additionally, I enabled the "configure automatic rollback on stage failure" option, ensuring that if the deployment fails, AWS will automatically roll back to the previous working version to maintain application stability.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_m4n5o6p7)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_m4n5o6p7" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -130,7 +130,7 @@ The moment I pushed the code change, my pipeline automatically detected the upda
 
 Once my pipeline executed successfully, I checked my deployed application in the target environment (such as my EC2 instance) to confirm that the latest changes from my source code appeared—specifically, I looked for the new line I added to the `index.jsp` file. Seeing this update live proved that my CI/CD pipeline is working end-to-end, automatically building and deploying code changes from GitHub all the way to production.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_e1f2g3h4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_e1f2g3h4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -145,7 +145,7 @@ I could verify this by comparing the commit history and build logs: both would s
 
 After the rollback, I observed that my live web application reverted to the previous working version. The new line I had added (`<p>If you see this line, that means your latest changes are automatically deployed into production by CodePipeline!</p>`) was no longer visible. This confirmed that the rollback successfully restored the earlier version of my application and removed the latest changes, ensuring that only the stable, previously deployed code was running in production.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_sdfgsdfgdf)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-codepipeline-updated_sdfgsdfgdf" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

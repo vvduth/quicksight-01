@@ -11,7 +11,7 @@
 
 ## I'm starting the 7-Day DevOps challenge!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cicd_ba6d42ae)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cicd_ba6d42ae" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -21,7 +21,7 @@ In this DevOps challenge, I'm learning about several key cloud and DevOps practi
 
 
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cicd_a1b2c3d4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cicd_a1b2c3d4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -51,6 +51,6 @@ This process helps teams by automating repetitive tasks, catching errors early, 
 
 ## Excited to share my progress - do this challenge with me!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cicd_ba6d42ae)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-devops-cicd_ba6d42ae" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---

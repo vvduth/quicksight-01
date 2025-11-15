@@ -11,7 +11,7 @@
 
 ## VPC Endpoints
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_09bcaa8a)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_09bcaa8a" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -63,7 +63,7 @@ I started my project by launching one VPC and one EC2 instance inside the VPC. I
 
 I also set up bucket in Amazon S3 because I need a storage location where my EC2 instance can upload, download, and manage files. This allows me to test that my VPC and instance can securely access AWS services and helps me understand how S3 integrates with other AWS resources.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4334d777)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4334d777" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -106,7 +106,7 @@ The terminal responded with:
 
 This indicated that my EC2 instance was successfully authenticated and could access my AWS environment. It confirmed that the instance can list all S3 buckets I have permission to see, showing that the access keys and AWS CLI configuration were working correctly.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4334d778)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4334d778" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -125,7 +125,7 @@ It returned:
 
 This showed that the two .png files I uploaded were successfully stored in the S3 bucket. It confirmed that my EC2 instance could access the bucket, list its contents, and interact with S3 using the access keys I configured.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4334d779)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4334d779" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -152,7 +152,7 @@ aws s3 ls s3://nextwork-vpc-project-dukem
 
 This validated that the file test.txt was successfully uploaded to the S3 bucket. It confirmed that my EC2 instance could access, write to, and list contents in the bucket, showing that the VPC-to-S3 connection and access permissions were correctly configured.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_3e1e79a2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_3e1e79a2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -184,7 +184,7 @@ A Gateway is a type of VPC endpoint that provides a direct, private connection f
 
 An endpoint is a network connection that allows resources in a VPC to privately communicate with AWS services without using the public internet. For example, an S3 VPC endpoint lets an EC2 instance access S3 securely and directly within the AWS network, keeping traffic private and protected.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_09bcaa8a)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_09bcaa8a" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -204,7 +204,7 @@ Condition: StringNotEquals "aws:sourceVpce" – allows access only if the reques
 
 This ensures that all traffic must go through the VPC endpoint, blocking any access from the public internet and keeping the bucket secure....
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_7316a13d)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_7316a13d" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -214,7 +214,7 @@ Right after saving my bucket policy, my S3 bucket page showed “denied access�
 
 I also had to update my route table because there was no route directing traffic to S3 using my VPC endpoint as the target. Without this route, the EC2 instance wouldn’t know to send S3 requests through the endpoint, so updating the route ensures that all S3 traffic flows privately and securely within the VPC.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4ec7821f)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_4ec7821f" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -233,7 +233,7 @@ After updating my public subnet’s route table, my terminal returned:
 
 This shows that my EC2 instance successfully accessed the S3 bucket through the VPC endpoint. All previously uploaded files, including test.txt, are listed, confirming that the endpoint and route table are correctly configured and traffic is flowing securely without using the public internet.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_d116818e)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_d116818e" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -243,7 +243,7 @@ An endpoint policy is a set of permissions attached to a VPC endpoint that contr
 
 I updated my endpoint’s policy by changing the "Effect" from "Allow" to "Deny". I saw the effect immediately because I could no longer access my S3 bucket from my EC2 instance. This confirmed that the endpoint policy directly controls which actions are allowed through the VPC endpoint, and any restrictions are enforced in real time.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_3e1e79a3)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-networks-endpoints_3e1e79a3" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

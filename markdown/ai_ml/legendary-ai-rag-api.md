@@ -45,7 +45,7 @@ Amazon Bedrock is AWS’s managed platform for running and customizing generativ
 
 My chatbot needs access to two AI models: one to convert text into embeddings (Titan Text Embeddings V2), so my Knowledge Base can process documents and understand their context, and another to generate human-like responses from raw data (Llama 3.3 70B Instruct model). I then synchronized my Knowledge Base to my data source so it can continuously index new material and stay up-to-date, ensuring the chatbot provides accurate and relevant answers with each interaction.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_1u2v3w4x)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_1u2v3w4x" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -75,7 +75,7 @@ The API code has three main sections that work together to provide a seamless ch
 2. **Environment Variables:** These lines load important settings—such as AWS_REGION, KNOWLEDGE_BASE_ID, and MODEL_ARN—from my local environment. This makes the code flexible and reusable without hardcoding sensitive details.
 3. **Functions and API Endpoints:** Here, I define how external apps interact with the chatbot. The root endpoint ("/") provides a welcome message, while "/bedrock/query" lets users send questions to the chatbot, using the text parameter. This endpoint connects to Bedrock and returns the AI’s response, just like the Bedrock CLI command.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_w7x8y9z0)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_w7x8y9z0" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -83,7 +83,7 @@ The API code has three main sections that work together to provide a seamless ch
 
 To run the API, I installed packages like boto3==1.36.20 for AWS integration, fastapi==0.115.8 for the web framework, python-dotenv==1.0.1 for loading environment variables, and uvicorn==0.34.0 as the ASGI server. I also made sure to install all dependencies listed in requirements.txt and any extra libraries required by those packages. These packages are important because they provide the tools for building, running, and connecting the API to AWS services securely, while their dependencies ensure everything works together smoothly.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_a8b9c0d1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_a8b9c0d1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -91,7 +91,7 @@ To run the API, I installed packages like boto3==1.36.20 for AWS integration, fa
 
 When I visited the root endpoint, I saw the welcome message {"message":"Welcome to your RAG chatbot API!"}. This confirms that my API is running correctly, and external applications can connect to it. It’s a quick way to verify my setup and ensures the API is ready to accept requests from clients.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_i6j7k8l9)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_i6j7k8l9" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -103,7 +103,7 @@ This means my Knowledge Base ID and Model ARN weren’t set correctly in the env
 
 Looking at the API code, I noticed that it calls for environment variables because KNOWLEDGE_BASE_ID and MODEL_ARN are sensitive details. Hardcoding these values in my code would be risky—especially if I ever share the file publicly, like on GitHub. Using environment variables is a safer and more professional way to manage secrets and settings. To resolve the error in my query endpoint, I need to make sure these variables are correctly set and loaded in my environment before running the API.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_r4s5t6u7)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_r4s5t6u7" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -121,7 +121,7 @@ When I use /bedrock/query, the chatbot retrieves information directly from my cu
 
 But when I use /bedrock/invoke, the chatbot relies only on the AI model's built-in general knowledge, without searching my documents. For questions outside the model’s training, it might respond with {"response":"I couldn't find an exact answer to the question."}, since it doesn't have access to my specialized Knowledge Base. This makes /bedrock/invoke better for general queries, while /bedrock/query is ideal for tailored, document-backed answers.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_u8d9e0f1)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/ai-rag-api_u8d9e0f1" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

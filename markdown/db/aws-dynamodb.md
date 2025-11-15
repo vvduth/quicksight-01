@@ -11,7 +11,7 @@
 
 ## Load Data into a DynamoDB Table
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_b481c730)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_b481c730" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -43,7 +43,7 @@ An attribute in DynamoDB is a single piece of data or a column in a table item. 
 
 Each item in DynamoDB can have multiple attributes. But, unlike relational databases where each row in a table must have the same columns, DynamoDB items can have their own unique set of attributes.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_a3cefee0)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_a3cefee0" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -53,7 +53,7 @@ Read capacity units (RCUs) and write capacity units (WCUs) are measures of how m
 
 Amazon DynamoDB's Free Tier gives you 25 GB of data storage, 25 write capacity units (WCUs), and 25 read capacity units (RCUs) per month, which is enough to handle roughly 200 million requests monthly at no cost. I turned off auto scaling because, for this project, I want to keep the throughput predictable and stay within the Free Tier limits, avoiding unexpected changes in capacity that could cause charges.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_ef47dd8f)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_ef47dd8f" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -77,7 +77,7 @@ Comment Table – has a partition key Id and a sort key CommentDateTime, which h
 
 These tables give me a basic structure to organize and query different types of data for my project.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_81e0258b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_81e0258b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -110,13 +110,13 @@ aws dynamodb batch-write-item --request-items file://filename.json
 
 This efficiently loads data into the DynamoDB tables.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_791c600b)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_791c600b" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
 ## Observing Item Attributes
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_b481c731)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_b481c731" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 I checked a ContentCatalog item, which had the following attributes:
 Id – Unique numeric identifier for the resource.
@@ -138,7 +138,7 @@ A benefit of DynamoDB over relational databases is flexibility, because DynamoDB
 
 Another benefit over relational databases is speed, because DynamoDB is fully managed, key-value and document-based, which allows it to quickly retrieve or write data using primary keys without needing complex joins or queries. Its automatic scaling, in-memory caching (with DynamoDB Accelerator), and SSD storage also help reduce latency and handle millions of requests per second. This makes it much faster than traditional relational databases for high-traffic applications where performance and low-latency access are critical.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_b481c730)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-databases-dynamodb_b481c730" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
