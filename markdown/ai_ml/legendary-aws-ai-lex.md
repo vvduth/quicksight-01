@@ -11,7 +11,7 @@
 
 ## I'm Building an AI Chatbot on Amazon Lex!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex_ba6d42ae)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex_ba6d42ae" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -27,7 +27,7 @@ I'm building a chatbot to:
 
 By the end of the series, I’ll have a fully functioning AI-powered banking chatbot that improves efficiency and makes banking easier and more accessible for users.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex_a1b2c3d4)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex_a1b2c3d4" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -65,6 +65,6 @@ What used to take months and require experts in ML and conversation design, Amaz
 
 ## Excited to share my progress - build a chatbot with me!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex_ba6d42ae)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex_ba6d42ae" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---

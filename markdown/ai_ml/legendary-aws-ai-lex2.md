@@ -11,7 +11,7 @@
 
 ## Add Custom Slots to a Lex Chatbot
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_c4fc89af)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_c4fc89af" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -67,7 +67,7 @@ I'm doing this because:
 - Slots also enable more dynamic chatbot design, as I can easily update or adjust supported account types without restructuring the entire bot, and help my bot prompt users with examples or suggestions.
 This step is essential for setting up robust conversations and preparing my chatbot to handle a variety of real banking situations.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_97dc2351)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_97dc2351" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -91,7 +91,7 @@ By associating your custom slot (accountType) with the CheckBalance intent, my c
 
 In summary, the CheckBalance intent focuses on gathering the details required to securely and accurately return the user’s account balance in a conversational way.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_c4fc89af)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_c4fc89af" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -105,7 +105,7 @@ I included slot values in some of the utterances for the CheckBalance intent by 
 
 By doing this, I’ve told Amazon Lex to expect and extract slot values straight from the user’s message. So if a user says, “Show me my savings account balance,” Lex will recognize “savings” as the value for the accountType slot, fill it in automatically, and avoid needing to prompt for it. This makes conversations faster and feels more natural for the user, since Lex can capture necessary details right away!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_505be5b8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_505be5b8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -128,7 +128,7 @@ After the failure response is triggered, Lex automatically switches to the Fallb
 A specific default setting I changed was in **Advanced options** under the dateOfBirth slot, in the **Slot capture: failure response** section. For “Next step in conversation,” I selected the **Intent** dropdown, then chose to **Elicit a slot**, and picked **dateOfBirth** as the slot. I also enabled the option to **Skip elicitation prompt**—this ensures my bot doesn’t repeat the date of birth question twice in a row, making the conversation smoother and less frustrating for the user.
 
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_a028bc8d2)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex2_a028bc8d2" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 

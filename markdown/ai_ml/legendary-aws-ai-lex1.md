@@ -11,7 +11,7 @@
 
 ## Build a Chatbot with Amazon Lex
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_505be5b8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_505be5b8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -80,7 +80,7 @@ In terms of the intent classification confidence score, I kept the default value
 
 This helps prevent my chatbot from acting on uncertain or ambiguous requests, making conversations clearer and reducing errors.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_97dc2351)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_97dc2351" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -97,7 +97,7 @@ Once WelcomeIntent is activated and fulfilled, the bot responds with the closing
 
 So, WelcomeIntent enables the bot to handle greetings and welcome users into a friendly, helpful banking conversation.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_505be5b8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_505be5b8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -123,7 +123,7 @@ My Lex chatbot returned the error message "Intent FallbackIntent is fulfilled" w
 
 This error message occurred because Amazon Lex could not confidently match my input to any of the existing intents. When Lex cannot understand or classify the user's input based on its training examples and confidence threshold, it triggers the FallbackIntent as a catch-all response. This means Lex didn't recognize my greeting as something the bot was programmed to handle, so it returned the fallback error instead.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_505be5b8)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_505be5b8" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -163,7 +163,7 @@ I also added variations! They are different ways your chatbot can respond to the
 
 In short, adding variations improves the overall user experience, keeps conversations interesting, and makes the bot more engaging!
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_c4fc89af)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_c4fc89af" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -184,7 +184,7 @@ The initial response messages I set up are:
 
 For the user, this means that as soon as the chatbot recognizes their intent, it immediately replies with a friendly, conversational message before asking for more details or taking further action. These initial responses help the conversation feel natural, let the user know their request is being processed, and make the bot sound more engaging and human-like.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_09bcb9701)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/aws-ai-lex1_09bcb9701" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
