@@ -652,24 +652,24 @@ export default function Modal({ title, children, onClose }) {
 ))}
 ```
 
-// Explanation:  
-// I just have to define variants, no need to define animate, initial, exit again  
-// add exist visible to prevent flicker when modal close  
-// it overrides the exit in Modal component  
-// if we don’t do this, when modal closes, it will wait for all the items in li to exit first  
-// then modal exits, causing flicker effect  
-// I must not use variant name in this case because in Modal component we already set animate, initial, exit with variant names  
-// have to use value directly  
-// exit={ { opacity: 1, scale: 1 } }
+### Explanation:  
+- I just have to define variants, no need to define animate, initial, exit again  
+- add exist visible to prevent flicker when modal close  
+- it overrides the exit in Modal component  
+- if we don’t do this, when modal closes, it will wait for all the items in li to exit first  
+- then modal exits, causing flicker effect  
+- I must not use variant name in this case because in Modal component we already set animate, initial, exit with variant names  
+- have to use value directly  
+- exit={ { opacity: 1, scale: 1 } }
 
-// UPDATE: in the later version of motion, if we keep the exit and transition: { type: 'spring' } to the whole motion.li  
-// after closing the modal my backdrop would not go away.
+- UPDATE: in the later version of motion, if we keep the exit and transition: { type: 'spring' } to the whole motion.li  
+- after closing the modal my backdrop would not go away.
 
-// Setting the transition attribute in the motion.li element means that element will enter AND EXIT using those transition properties.   
-// The added bounce that is created by the "spring" animation (which looks great on entry) is what is causing the delay on the backdrop’s disappearance.   
-// We can’t see it happening, but Framer Motion is waiting for the children elements to finish bouncing before removing the backdrop.
+- Setting the transition attribute in the motion.li element means that element will enter AND EXIT using those transition properties.   
+- The added bounce that is created by the "spring" animation (which looks great on entry) is what is causing the delay on the backdrop’s disappearance.   
+- We can’t see it happening, but Framer Motion is waiting for the children elements to finish bouncing before removing the backdrop.
 
-// So instead of adding transition: { type: 'spring' } to the whole motion.li attribute, simply add it to the visible variant (as shown in the code above). That means motion.li elements will only "spring" on entry. Then I can simply delete the exit={{ opacity: 1, scale: 1 }} which for some reason is breaking the backdrop.  
+- So instead of adding transition: { type: 'spring' } to the whole motion.li attribute, simply add it to the visible variant (as shown in the code above). That means motion.li elements will only "spring" on entry. Then I can simply delete the exit={{ opacity: 1, scale: 1 }} which for some reason is breaking the backdrop.  
 
 ---
 
