@@ -1,1037 +1,460 @@
-# Animating react app
 
-**Author:** Duc Thai
+# Animating a React App
 
+**Author:** Duc Thai  
 **Email:** ducthai060501@gmail.com
 
-## Overview
+---
 
-Today, my goal is to learn how to animate a React app to improve its look and feel, making it more engaging for users. I'll begin with a static, functioning app that looks decent but doesn't have any animations yet. My plan is to first enhance the UI with basic CSS animations and see how far that gets me. After exploring the limitations of CSS, I'll move on to using Framer Motion to build more complex animations and interactions. This step-by-step approach will help me understand both the fundamentals and advanced techniques for animating React applications.
+## Table of Contents
 
-Final code: https://github.com/vvduth/animation-react/tree/animation
+1. Project Setup & Overview
+2. Animating with CSS Transitions
+3. Animating with CSS Animations
+4. Introducing Framer Motion
+5. Framer Motion Basics & Fundamentals
+6. Animating Between Conditional Values
+7. Adding Entry Animations
+8. Animating Element Disappearances / Removal
+9. Making Elements “Pop” With Hover Animations
+10. Reusing Animation States
+11. Nested Animations & Variants
+12. Animating Staggered Lists
+13. Animating Colors & Working with Keyframes
+14. Imperative Animations
+15. Animating Layout Changes
+16. Orchestrating Multi-Element Animations
+17. Combining Animations With Layout Animations
+18. Animating Shared Elements
+19. Re-triggering Animations via Keys
+20. Scroll-based Animations
+21. Summary & Key Learnings
 
-start code: https://github.com/vvduth/animation-react/tree/main
+---
 
-<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qHZhRnDxc7W6mCxeoYTjKwzbhDUXrgQi2GRZI" alt="starting animation.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+## Project Setup & Overview
 
-## Steps
+- **Goal:** Learn to animate a React app for better user engagement.
+- **Starting Point:** Static React 19 + Vite challenge tracker app using React Router and Context API.
+- **Features:** Create, view, and manage challenges (title, description, deadline, image, status).
+- **Routing:** Welcome page (`/`) and Challenges page (`/challenges`).
+- **State Management:** Context API (`ChallengesContext`).
+- **Status:** `'active'`, `'completed'`, or `'failed'`.
+- **ID Generation:** `Math.random().toString()` (for demo only).
 
-### Starting project
+![Starting Animation](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qHZhRnDxc7W6mCxeoYTjKwzbhDUXrgQi2GRZI)
 
-In this step, I'm reviewing the starting project—a React 19 + Vite challenge tracker app that uses React Router for navigation. The app allows users to create, view, and manage personal challenges, each with a title, description, deadline, image, and status. There are two main pages: the Welcome page (`/`) and the Challenges page (`/challenges`), with routing defined in `src/App.jsx` using `createBrowserRouter`. The page layouts are located in `src/pages/`, while business logic is handled within `src/components/`.
+---
 
-For state management, the app uses the Context API, specifically the `ChallengesContext` in `src/store/challenges-context.jsx`. The context provider wraps only the `/challenges` route (set up in `pages/Challenges.jsx`), which keeps global state handling focused and efficient. Each challenge has a status of either `'active'`, `'completed'`, or `'failed'`, and IDs are generated with `Math.random().toString()`—which works for this learning project but wouldn't be safe for production. This overview helps me understand the current architecture and areas where animation could enhance user experience.
+## Animating with CSS Transitions
 
-<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qrL5kwP6gjiQSLxEToX4su7hyD5dKwYVn9RPO" alt="challenge app.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-
-### CSS transition and animation
-
-In this step, I started with straightforward CSS-based animation to enhance the user experience. To enable a smooth rotation effect for the details icon, I added specific CSS transition rules in `index.css`. 
-
-First, I defined a transition for the `.challenge-item-details-icon` class so that changes to the `transform` property would animate smoothly:
-
-```css
-.challenge-item-details-icon {
-  transition: transform 0.3s ease;
-}
-```
-
-Then, I added a rule for the expanded state, which uses the `expanded` class on the parent to trigger a rotation:
-
-```css
-.challenge-item-details.expanded .challenge-item-details-icon {
-  transform: rotate(180deg);
-}
-```
-
-With these styles, the details icon rotates when expanding or collapsing the challenge details, providing a visually pleasing cue to the user. This approach keeps things simple — there are no updates needed to the React component’s logic for handling the animation; everything is done through CSS.
-
-Inside `ChallengeItem.jsx`, I updated the class name dynamically based on the `isExpanded` prop:
-
-```jsx
-<div className={`challenge-item-details ${isExpanded ? 'expanded' : ''}`}>
-  <p>
+- **Objective:** Add smooth rotation to the details icon using CSS transitions.
+- **CSS:**
+  ```css
+  .challenge-item-details-icon {
+    transition: transform 0.3s ease;
+  }
+  .challenge-item-details.expanded .challenge-item-details-icon {
+    transform: rotate(180deg);
+  }
+  ```
+- **React:**
+  ```jsx
+  <div className={`challenge-item-details ${isExpanded ? 'expanded' : ''}`}>
     <button onClick={onViewDetails}>
-      View Details{' '}
-      <span className="challenge-item-details-icon">&#9650;</span>
+      View Details <span className="challenge-item-details-icon">&#9650;</span>
     </button>
-  </p>
-  ...
-</div>
-```
+    ...
+  </div>
+  ```
+- **Result:** Icon rotates on expand/collapse.
 
-This setup ensures that the icon’s rotation animation triggers only when the details section is expanded, leveraging CSS transitions for a simple and clean effect.
+![Expand CSS Animation](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qfERUmA5Dxo48VaHKMDyTZCRwkeB6cpPb7jJ1)
+![View Details Button](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qJstLOQcS4CcwjaphiUOfP6SmHtINxXzdEeYn)
 
-<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qfERUmA5Dxo48VaHKMDyTZCRwkeB6cpPb7jJ1" alt="expand css animation.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+---
 
-<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qJstLOQcS4CcwjaphiUOfP6SmHtINxXzdEeYn" alt="view details button.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+## Animating with CSS Animations
 
-### Anmatingn with css animation
-
-Anmatingn with css animation
-I added a CSS animation to the `.modal` class in index.css:
-
-```css
-.modal {
-  top: 10%;
-  border-radius: 6px;
-  padding: 1.5rem;
-  width: 30rem;
-  max-width: 90%;
-  z-index: 10;
-  animation: slide-up-fade-in 0.3s ease-out forwards;
-}
-
-@keyframes slide-up-fade-in {
-  0% {
-    transform: translateY(30px);
-    opacity: 0;
+- **Objective:** Animate modal entrance using CSS keyframes.
+- **CSS:**
+  ```css
+  .modal {
+    animation: slide-up-fade-in 0.3s ease-out forwards;
   }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
+  @keyframes slide-up-fade-in {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
-}
-```
+  ```
+- **Result:** Modal animates in on mount (no exit animation).
 
-No changes were made to the React component logic in Modal.jsx or NewChallenge.jsx regarding animation.
-
----
-
-### 2. **Code Review**
-
-- **Correctness:**  
-  The animation is applied directly to the modal dialog via the `.modal` class. When the modal mounts, it animates from slightly below and transparent to its final position and full opacity.
-- **Style:**  
-  The animation is concise and leverages CSS keyframes for a smooth entrance effect. The use of `forwards` ensures the modal stays in its final state after the animation.
-- **Performance:**  
-  The animation is lightweight and should not impact performance for a single modal.
-- **Improvements:**  
-  - The modal animates only on mount (open). There is no exit animation when the modal closes/unmounts.
-  - If I want a closing animation, I would need to manage the modal's visibility with state and delay unmounting until the animation completes.
+![New Challenges](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qyRutMB2N25h6fmu1vGkXCBc39rE4jgSLqTel)
 
 ---
 
-### 3. **Conceptual Overview**
+## Introducing Framer Motion
 
-- **User Experience:**  
-  The animation makes modal interactions feel less abrupt and more modern, aligning with best practices for dialog presentation in web apps.
+- **Objective:** Move beyond CSS for more complex, interactive animations.
+- **Demo:** Animated box using Framer Motion.
+- **Steps:**
+  1. Import `motion` from Framer Motion.
+  2. Replace `<div>` with `<motion.div>`.
+  3. Use `animate` and `transition` props for smooth movement.
 
 ---
 
-**In summary:**  
-I added a CSS entrance animation to the modal dialog. This causes both the Modal and NewChallenge form to animate smoothly into view when opened, enhancing the app’s visual polish and user experience. No exit animation is present.
+## Framer Motion Basics & Fundamentals
 
-<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qyRutMB2N25h6fmu1vGkXCBc39rE4jgSLqTel" alt="new challenges.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-
-### Framer motion basic
-
-In this step, I shifted focus away from my main project to experiment with Framer Motion in a simple demo outside the app’s usual architecture. The original `App.jsx` featured a box controlled by three input values: x (left/right), y (up/down), and rotate (rotation angle), all managed with React state.
-
-To introduce animation, I made the following updates:
-
-1. **Imported Framer Motion:**  
-   I added `import { motion } from 'framer-motion';` at the top of the file.
-
-2. **Replaced the standard div with motion.div:**  
-   The box element (`<div id="box" />`) is now `<motion.div id="box" />`, enabling Framer Motion’s animation capabilities.
-
-3. **Added animation props:**  
-   I applied the `animate` prop to the box, connecting x, y, and rotate to their respective state values, so changes are smoothly animated.
-
-4. **Configured the transition:**  
-   I included a `transition` prop to specify timing and easing, making the movement responsive and fluid.
-
-With these changes, the demo box animates its position and rotation dynamically whenever the input values change—showcasing the ease and flexibility of Framer Motion for handling interactive UI animations in React.
-
-### Anamting between conditial values
-
-## ChallengeItem.jsx Animation Changes
-
-
-
-I updated ChallengeItem.jsx to animate the expand/collapse icon using the `motion` library.
-
-### What Was Changed
-
-- **Imported `motion` from `motion/react`:**
+- **Example:** Animate icon rotation in `ChallengeItem.jsx`.
+- **Code:**
   ```jsx
   import { motion } from 'motion/react';
-  ```
-  This enables declarative animations in React components.
-
-- **Replaced static icon with animated icon:**
-  ```jsx
   <motion.span
-    animate={{
-      rotate: isExpanded ? 180 : 0, 
-    }}
+    animate={{ rotate: isExpanded ? 180 : 0 }}
     className="challenge-item-details-icon">&#9650;</motion.span>
   ```
-  The icon now rotates 180 degrees when the details are expanded (`isExpanded` is `true`), and rotates back to 0 degrees when collapsed.
-
-### Why I Made These Changes
-
-- To provide a visual cue for the expand/collapse action, making the UI more interactive and intuitive.
-- To leverage modern animation libraries for smooth, declarative UI transitions.
+- **Result:** Icon rotates smoothly on expand/collapse.
 
 ---
 
-## 2. Step-by-Step Implementation
 
-1. **Install and Import Motion Library**
-   - Ensure the `motion` library is installed in Ir project.
-   - Import `motion` in ChallengeItem.jsx:
-     ```jsx
-     import { motion } from 'motion/react';
-     ```
+## Animating Between Conditional Values
 
-2. **Update the Details Icon**
-   - Replace the static `<span>` for the expand/collapse icon with a `<motion.span>`.
-   - Use the `animate` prop to rotate the icon based on the `isExpanded` prop:
-     ```jsx
-     <motion.span
-       animate={{
-         rotate: isExpanded ? 180 : 0, 
-       }}
-       className="challenge-item-details-icon">&#9650;</motion.span>
-     ```
-
-3. **Maintain BEM-style Class Naming**
-   - The icon retains the `challenge-item-details-icon` class for consistent styling.
-
-4. **No Changes to CSS Required**
-   - The rotation is handled by the `motion` library, so no additional CSS transitions are needed for the icon.
-
----
-
-## Summary Table
-
-| File                | Change Made                                   | Effect on Animation Behavior                  |
-|---------------------|-----------------------------------------------|-----------------------------------------------|
-| ChallengeItem.jsx   | Animated details icon using `motion` library   | Icon rotates when details are expanded/collapsed |
-
----
-
-**In summary:**  
-I enhanced the expand/collapse interaction in ChallengeItem.jsx by animating the details icon with a rotation effect using the `motion` library. This improves the UI’s responsiveness and user experience, following the project’s conventions and architecture.
-
-### adding entry animation
-
-## Modal Animation Integration
-
----
-
-## 1. **Explanation of Changes**
-
-I updated the `Modal` component to use the `motion` library for animating the modal dialog.  
-I also added several comments explaining why no extra state or props are needed for animation.
-
-
----
-
-## 2. **Step-by-Step Implementation**
-
-### **Old Code Snippet**
-Previously, the modal dialog was rendered as a static `<dialog>` element without animation:
-
-````jsx
-import { createPortal } from "react-dom";
-export default function Modal({ title, children, onClose }) {
-  return createPortal(
-    <>
-      <div className="backdrop" onClick={onClose} />
-      <dialog open className="modal">
-        <h2>{title}</h2>
-        {children}
-      </dialog>
-    </>,
-    document.getElementById("modal")
-  );
-}
-````
-
-### **New Code Snippet**
-I replaced the static dialog with a `motion.dialog` element and added animation props.  
-All comments were removed for production readiness:
-
-````jsx
-import { createPortal } from "react-dom";
-import { motion } from "motion/react";
-export default function Modal({ title, children, onClose }) {
-  return createPortal(
-    <>
-      <div className="backdrop" onClick={onClose} />
-      <motion.dialog
-        open
-        className="modal"
-        animate={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: 30 }}
-      >
-        <h2>{title}</h2>
-        {children}
-      </motion.dialog>
-    </>,
-    document.getElementById("modal")
-  );
-}
-````
-
-#### **Step-by-Step Changes**
-1. **Imported `motion` from `motion/react`.**
-2. **Replaced `<dialog>` with `<motion.dialog>`** for declarative animation.
-3. **Added `initial` and `animate` props** for entrance animation.
-4. **Removed all comments** from the code for clarity.
-
----
-
-## 3. **Effect on Modal and NewChallenge Animation Behavior**
-
-- **Modal:**  
-  The modal now animates smoothly into view (fades in and slides up) when opened, instead of appearing instantly.
-- **NewChallenge:**  
-  Since `NewChallenge` uses the `Modal` component, the new challenge form benefits from the same entrance animation.
-- **No extra state or props needed:**  
-  Animation is handled by the `motion` library’s props.
-
----
-
-## 4. **Summary Table**
-
-| File         | Change Made                                 | Effect on Animation Behavior                |
-|--------------|---------------------------------------------|---------------------------------------------|
-| Modal.jsx    | Replaced `<dialog>` with `<motion.dialog>`  | Modal fades in and slides up on open        |
-|              | Added `initial` and `animate` props         | No exit animation (modal closes instantly)  |
-|              | Removed all comments                        | Cleaner production code                     |
-
----
-
-**In summary:**  
-I enhanced the modal dialog with a smooth entrance animation using the `motion` library, improving user experience for both the modal and the new challenge form. All comments were removed for clarity and maintainability. See `Modal` for the final implementation.
-
-### Animating exit state of the animation
-
-
-# Animating exit state of the animation
----
-
-In this step, I'm focusing on animating the exit state of the modal dialog using Framer Motion.
-
-**Step-by-step Changes:**
-
-- **In Modal.jsx:**  
-  I updated the modal to use Framer Motion's `motion.dialog` and added animation props for the initial, animate, and exit states. This allows the modal to smoothly fade in and slide up when opened, and then fade out and slide down when closed. I used the `AnimatePresence` component to ensure the exit animation plays before the modal is removed from the DOM.
-
-- **In Header.jsx:**  
-  I wrapped the conditional rendering of `<NewChallenge />` in `AnimatePresence`. Without this, React would instantly remove the modal on exit, skipping the animation. `AnimatePresence` works around this by letting Framer Motion control the unmounting process, so the exit animation can play out.
-
-**Impact Analysis:**  
-- This update doesn't affect the underlying functionality or performance.
-- All structural and logic aspects remain unchanged.
-- The code is cleaner and more consistent, though comments explaining the animation patterns were removed. Future contributors may need to refer to documentation for details on how exit animations are implemented.
-
-**Summary:**  
-I've updated both Modal.jsx and Header.jsx to support animated exit transitions for modals using Framer Motion's `AnimatePresence`. The app now provides a polished modal experience where both the entrance and exit animations play smoothly, creating a modern and user-friendly dialog interaction.
-
-### **A. Modal.jsx**
-
-**Upodate it :**
-````jsx
-// AnimatePresence is a special component from framer motion
-// that helps to control the exit animation of a component
-
-// notice the pattern hrere bro?
-// initial for the initial state of the animation
-// animate for the final state of the animation
-// exit for the exit state of the animation
-export default function Modal({ title, children, onClose }) {
-  // we have so prop or statre in here, we doesnt need them cuz framer
-  // have some prop to handle animation without state
-  return createPortal(
-    <>
-      <div className="backdrop" onClick={onClose} />
-      <motion.dialog
-        open
-        className="modal"
-        animate={{ opacity: 1, y: 0 }} // animate prop to set the final state of the animation
-        initial={{ opacity: 0, y: 30 }} // inital prop to set the initial state of the animation
-        exit={{ opacity: 0, y: 30 }} // exit prop to set the exit state of the animation
-      >
-        <h2>{title}</h2>
-        {children}
-      </motion.dialog>
-    </>,
-    document.getElementById("modal")
-  );
-}
-````
-
-
----
-
-### **B. Header.jsx**
-
-** Update it :**
-````jsx
-    {/* if we do not use  AnimatePresence , on the exit, new challenge still disappear instantly
-
-react instantly removes the component from the dom
-
-framer motion has a way to work around that, give us special component to disable or control this function called AnimatePresence */}
-      <AnimatePresence>
-        {isCreatingNewChallenge && <NewChallenge onDone={handleDone} />}
-      </AnimatePresence>
-````
-
-
-### Make elems "Pop" with hover animation
-
-
-this time let make the "Add challenge" pop lil bit more when user hover over it,
-## 1. **Explanation of the Changes**
-
-I enhanced the "Add Challenge" button by switching it from a standard `<button>` to a Framer Motion `<motion.button>`. This enables a spring-based scale animation on hover, making the button visually pop out. I also added comments explaining why I chose `whileHover` over more complex event-based animation, and how the `transition` prop controls the animation's behavior.
-
----
-
-## 2. **Step by Step Changes**
-
-### **Old Code (before changes):**
-````jsx
-import { AnimatePresence } from "motion/react";
-import { useState } from "react";
-
-import NewChallenge from "./NewChallenge.jsx";
-
-export default function Header() {
-  const [isCreatingNewChallenge, setIsCreatingNewChallenge] = useState();
-
-  function handleStartAddNewChallenge() {
-    setIsCreatingNewChallenge(true);
-  }
-
-  function handleDone() {
-    setIsCreatingNewChallenge(false);
-  }
-
-  return (
-    <>
-      <AnimatePresence>
-        {isCreatingNewChallenge && <NewChallenge onDone={handleDone} />}
-      </AnimatePresence>
-
-      <header id="main-header">
-        <h1>Ir Challenges</h1>
-        <button onClick={handleStartAddNewChallenge} className="button">
-          Add Challenge
-        </button>
-      </header>
-    </>
-  );
-}
-````
-
-### **New Code (after changes):**
-````jsx
-:\src\components\Header.jsx
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
-
-import NewChallenge from "./NewChallenge.jsx";
-
-export default function Header() {
-  const [isCreatingNewChallenge, setIsCreatingNewChallenge] = useState();
-
-  function handleStartAddNewChallenge() {
-    setIsCreatingNewChallenge(true);
-  }
-
-  function handleDone() {
-    setIsCreatingNewChallenge(false);
-  }
-
-  return (
-    <>
-      <AnimatePresence>
-        {isCreatingNewChallenge && <NewChallenge onDone={handleDone} />}
-      </AnimatePresence>
-
-      <header id="main-header">
-        <h1>Ir Challenges</h1>
-        <motion.button onClick={handleStartAddNewChallenge}
-        // i will not use animate here
-        // cuz it would mean i would have to listen to 
-        // onHoverStart and onHoverEnd event for the button to pop out libit
-        // that alot of work for a small effect
-
-        // use whileHover instead for simplicity
-        whileHover={{
-          scale: 1.1
-        }}
-        // transition will controll all the animation behavior applyon this element
-        transition={{
-          type: "spring",
-          stiffness: 400,
-          mass: 0.5,
-        }}
-        className="button">
-          Add Challenge
-        </motion.button>
-      </header>
-    </>
-  );
-}
-````
-
----
-
-## 3. **Comments Context**
-
-I added comments to clarify Ir design decisions:
-- I avoided using the `animate` prop for hover effects to keep the code simple.
-- I explained that `whileHover` is more straightforward for this use case.
-- I described how the `transition` prop customizes the spring animation.
-
----
-
-## 4. **Summary**
-
-- **Button Enhancement:** The "Add Challenge" button now animates with a spring scale effect on hover, improving user experience.
-- **Code Comments:** Comments provide context for animation choices and implementation.
-- **No Functional Changes:** The core logic for challenge creation remains unchanged.
-
-
-### Re use animation state
-
-Re use animatino state 
-
-in Modal.jsx:
-
----
-
-**1. Explanation of the changes:**  
-I refactored the modal animation logic to use Framer Motion’s `variants` prop. This makes animation states reusable and more maintainable. I also added a comment explaining the benefit of using variants.
-
----
-
-**2. Step by step:**
-
-**Old code:**
-````jsx
-<motion.dialog
-  open
-  className="modal"
-  animate={{ opacity: 1, y: 0 }}
-  initial={{ opacity: 0, y: 30 }}
-  exit={{ opacity: 0, y: 30 }}
->
-  <h2>{title}</h2>
-  {children}
-</motion.dialog>
-````
-
-**New code:**
-````jsx
-<motion.dialog
-  // useful for defining and resueing animation states
-  variants={{
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
-  }}
-  open
-  className="modal"
-  animate="visible"
-  initial="hidden"
-  exit="hidden"
->
-  <h2>{title}</h2>
-  {children}
-</motion.dialog>
-````
-
----
-
-**3. Comments context:**  
-I added a comment above the `variants` prop to clarify its purpose for future maintainers.
-
----
-
-**Summary:**  
-- Switched to using `variants` for animation states.
-- Added a helpful comment for context.
-- The code is now cleaner and easier to extend.
-
-### Nested animations and variants
-
-In this step:  
-Nested animations and variants  
-Variant can also be used to trigger animation deep inside the component tree by just setting animation to a certain variant on an ancestor component ==> sounds crazy right, but it ain’t that hard ==))
-
-**Modal.jsx & NewChallenge.jsx Code Review**  
-
-### 1. Explain the changes
-
-I refactored modal and image list animation logic to use Framer Motion’s `variants` prop for both the modal and its child image list items. I added comments explaining how variants are inherited by children, and clarified why transition and exit props are set in specific ways to avoid flicker and backdrop delays.
-
----
+- **Objective:** Animate UI changes based on state.
+- **Example:** Icon rotation using Framer Motion’s `animate` prop.
 
 ```jsx
-// modal is an ancestor component here that wraps children components
-// in my case it will be NewChallenge component
-// all the variant set in Modal component will be inherited by children components
-// so in NewChallenge we don’t need to set animate, initial, exit again
-export default function Modal({ title, children, onClose }) {
-  return createPortal(
-    <>
-      <div className="backdrop" onClick={onClose} />
-      <motion.dialog
-      // useful for defining and reusing animation states
+// Animate icon rotation based on expanded state
+<motion.span
+  animate={{ rotate: isExpanded ? 180 : 0 }}
+  className="challenge-item-details-icon"
+>
+  &#9650;
+</motion.span>
 ```
 
+- **Result:** Declarative, state-driven animation.
+
 ---
 
-### 2. Step by step
+## Adding Entry Animations
 
-**Old Modal code:**
-````jsx
-<motion.dialog
-  open
-  className="modal"
-  animate={{ opacity: 1, y: 0 }}
-  initial={{ opacity: 0, y: 30 }}
-  exit={{ opacity: 0, y: 30 }}
->
-  <h2>{title}</h2>
-  {children}
-</motion.dialog>
-````
+- **Objective:** Animate modal entrance using Framer Motion.
+- **Code:**
+  ```jsx
+  <motion.dialog
+    open
+    className="modal"
+    animate={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 30 }}
+  >
+    ...
+  </motion.dialog>
+  ```
+- **Result:** Modal fades in and slides up.
 
-**New Modal code:**
-````jsx
-<motion.dialog
-  // useful for defining and reusing animation states
-  variants={{
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
-  }}
-  open
-  className="modal"
-  animate="visible"
-  initial="hidden"
-  exit="hidden"
->
-  <h2>{title}</h2>
-  {children}
-</motion.dialog>
-````
+---
 
-**Old NewChallenge image list code:**
-````jsx
-{images.map((image) => (
-  <li key={image.alt} ...>
-    <img {...image} />
-  </li>
-))}
-````
+## Animating Element Disappearances / Removal
 
-**New NewChallenge image list code:**
-```jsx
-{images.map((image) => (
+- **Objective:** Animate modal exit using Framer Motion’s `AnimatePresence`.
+- **Modal.jsx:**
+  ```jsx
+  <motion.dialog
+    open
+    className="modal"
+    animate={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 30 }}
+    exit={{ opacity: 0, y: 30 }}
+  >
+    ...
+  </motion.dialog>
+  ```
+- **Header.jsx:**
+  ```jsx
+  <AnimatePresence>
+    {isCreatingNewChallenge && <NewChallenge onDone={handleDone} />}
+  </AnimatePresence>
+  ```
+- **Result:** Modal animates out smoothly on close.
+
+---
+
+## Making Elements “Pop” With Hover Animations
+
+- **Objective:** Animate button scale on hover.
+- **Code:**
+  ```jsx
+  <motion.button
+    whileHover={{ scale: 1.1 }}
+    transition={{ type: "spring", stiffness: 400, mass: 0.5 }}
+    className="button"
+  >
+    Add Challenge
+  </motion.button>
+  ```
+- **Result:** Button pops out on hover.
+
+---
+
+## Reusing Animation States
+
+- **Objective:** Use Framer Motion’s `variants` for reusable animation states.
+- **Code:**
+  ```jsx
+  <motion.dialog
+    variants={{
+      hidden: { opacity: 0, y: 30 },
+      visible: { opacity: 1, y: 0 }
+    }}
+    open
+    className="modal"
+    animate="visible"
+    initial="hidden"
+    exit="hidden"
+  >
+    ...
+  </motion.dialog>
+  ```
+- **Result:** Cleaner, maintainable animation logic.
+
+---
+
+## Nested Animations & Variants
+
+- **Objective:** Inherit animation states in nested components.
+- **Modal.jsx:** Variants set on ancestor.
+- **NewChallenge.jsx:** Child `<motion.li>` uses variants.
+  ```jsx
   <motion.li
-    // just have to define variants, no need to define animate, initial, exit again
     variants={{
       hidden: { opacity: 0, scale: 0.5 },
       visible: { opacity: 1, scale: 1, transition: { type: "spring" } }
     }}
     key={image.alt}
-    onClick={() => handleSelectImage(image)}
-    className={selectedImage === image ? "selected" : undefined}
+    ...
   >
     <img {...image} />
   </motion.li>
-))}
-```
-
-### Explanation:  
-- I just have to define variants, no need to define animate, initial, exit again  
-- add exist visible to prevent flicker when modal close  
-- it overrides the exit in Modal component  
-- if we don’t do this, when modal closes, it will wait for all the items in li to exit first  
-- then modal exits, causing flicker effect  
-- I must not use variant name in this case because in Modal component we already set animate, initial, exit with variant names  
-- have to use value directly  
-- exit={ { opacity: 1, scale: 1 } }
-
-- UPDATE: in the later version of motion, if we keep the exit and transition: { type: 'spring' } to the whole motion.li  
-- after closing the modal my backdrop would not go away.
-
-- Setting the transition attribute in the motion.li element means that element will enter AND EXIT using those transition properties.   
-- The added bounce that is created by the "spring" animation (which looks great on entry) is what is causing the delay on the backdrop’s disappearance.   
-- We can’t see it happening, but Framer Motion is waiting for the children elements to finish bouncing before removing the backdrop.
-
-- So instead of adding transition: { type: 'spring' } to the whole motion.li attribute, simply add it to the visible variant (as shown in the code above). That means motion.li elements will only "spring" on entry. Then I can simply delete the exit={{ opacity: 1, scale: 1 }} which for some reason is breaking the backdrop.  
+  ```
+- **Result:** Nested elements animate in sync with parent.
 
 ---
 
-**Summary:**  
-Variants let you control animation of nested components just by setting animation states on an ancestor. The modal’s variants are inherited automatically, so you don’t have to repeat animate/initial/exit setup in deep children. I only attach transition to entry, not exit, in motion.li for smoother closing and fixing backdrop flickers/delays.
+## Animating Staggered Lists
 
-### Amnimatin staggered list
-
-In this step, I’m animating a staggered list of images—basically making each image in the list animate one after the other instead of all at once.
-
-To achieve this, I added Framer Motion’s `staggerChildren` property to the `visible` variant of the parent `<motion.ul>`:
-
-```jsx
-{/* use staggerChildren to animate list items */}
-<motion.ul
-  variants={{
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }}
-  id="new-challenge-images"
->
-  ...
-</motion.ul>
-```
-
-With this setup, when the image list becomes visible, each list item’s animation gets triggered with a slight delay (`0.1` seconds) after the previous one—creating a smooth, step-by-step entry effect for the images.
-
-### Anmating color with keyframe
-
-In this step, I’m animating the color and scaling effect of the “Add Challenges” button using Framer Motion. For simplicity, I used the `whileHover` prop on the button, like this:
-
-```jsx
-// use whileHover instead for simplicity
-whileHover={{
-  scale: 1.1,
-  backgroundColor: "#4b5563",
-}}
-```
-
-This makes the button smoothly scale up and changes its background color to dark grey when hovered.
-
-Inside the NewChallenge component, I also updated `<motion.li>` for the image list to showcase keyframe animations using an array of values:
-
-```jsx
-<motion.li
-  // just have to define variants, no need to define animate, initial, exit again
-  variants={{
-    hidden: { opacity: 0, scale: 0.5 },
-    // we can use array as value to define keyframes
-    visible: { opacity: 1, scale: [0.8, 1.3, 1] },
-    transition: { type: "spring" },
-  }}
->
-```
-
-With these changes, the scaling effect (keyframes) applies as soon as a list item enters. The updated button and animated images add a fun and dynamic feeling to the UI.
-
-### Imperative actions
-
-In this step, I’m animating the form imperatively using Framer Motion’s `useAnimate` hook—perfect for those cases where I want to trigger animation in response to specific user actions, rather than just on mount or hover.
-
-Here’s what I did:
-
-- I imported and declared `useAnimate` inside `NewChallenge.jsx`:
-  ```js
-  // useAnimate is a low-level animation hook that gives you full control over animations in your components.
-  // scope is a ref that you can attach to any element you want to animate
-  // animate is a function that you can use to trigger animations on the scoped element or its children
-  const [scope, animate] = useAnimate();
+- **Objective:** Animate list items with staggered entry.
+- **Code:**
+  ```jsx
+  <motion.ul
+    variants={{
+      visible: { transition: { staggerChildren: 0.1 } }
+    }}
+    id="new-challenge-images"
+  >
+    ...
+  </motion.ul>
   ```
+- **Result:** List items animate one after another.
 
-- In the `handleSubmit` function, right after checking if any required fields are missing, I triggered a shake animation on the input and textarea fields:
+---
+
+## Animating Colors & Working with Keyframes
+
+- **Objective:** Animate color and scale with keyframes.
+- **Button:**
+  ```jsx
+  whileHover={{
+    scale: 1.1,
+    backgroundColor: "#4b5563",
+  }}
+  ```
+- **Image List:**
+  ```jsx
+  <motion.li
+    variants={{
+      hidden: { opacity: 0, scale: 0.5 },
+      visible: { opacity: 1, scale: [0.8, 1.3, 1] },
+      transition: { type: "spring" },
+    }}
+  >
+  ```
+- **Result:** Dynamic color and scale effects.
+
+---
+
+## Imperative Animations
+
+- **Objective:** Trigger animations in response to user actions.
+- **Code:**
   ```js
-  if (
-    !challenge.title.trim() ||
-    !challenge.description.trim() ||
-    !challenge.deadline.trim() ||
-    !challenge.image
-  ) {
-    // use css selector to select input and textarea inside the scope element
+  const [scope, animate] = useAnimate();
+  if (invalid) {
     animate(
       'input, textarea',
-      { x: [0, -10, 10, -10, 10, 0] }, // shake keyframes
-      { type: 'keyframes', duration: 0.2, delay: stagger(0.05) } // transition settings
+      { x: [0, -10, 10, -10, 10, 0] },
+      { type: 'keyframes', duration: 0.2, delay: stagger(0.05) }
     );
-
     return;
   }
+  <form ref={scope}>...</form>
   ```
+- **Result:** Inputs shake on invalid submission.
 
-- And of course, I attached the scope ref to the form element:
-  ```js
-  <form id="new-challenge" onSubmit={handleSubmit} ref={scope}>
+---
+
+## Animating Layout Changes
+
+- **Objective:** Animate list item removal and tab switching.
+- **Challenges.jsx:**
+  ```jsx
+  <AnimatePresence mode="wait">
+    {displayedChallenges.length > 0 && (
+      <motion.ol className="challenge-items" key="list">
+        <AnimatePresence>
+          {displayedChallenges.map((challenge) => (
+            <ChallengeItem ... />
+          ))}
+        </AnimatePresence>
+      </motion.ol>
+    )}
+    {displayedChallenges.length === 0 && (
+      <motion.p
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        key="fallback"
+      >
+        No challenges found.
+      </motion.p>
+    )}
+  </AnimatePresence>
   ```
-
-With this setup, every time the user tries to submit the form without proper input, the input fields and textarea shake a little bit, giving instant feedback in a fun way. This is a cool example of how you can use `useAnimate` for imperative, targeted animations right inside your component logic.
-
-### Multi elems animations
-
-In this step, I’m working on animated challenges viewing—so when users view all active challenges, mark them as completed or failed, or switch tabs between completed and failed challenges, the UI transitions feel smooth instead of instantly snapping.
-
-First, I updated the way active challenges are rendered in `Challenges.jsx`. The idea is, when a user marks a challenge as completed or failed, the challenge item "snaps out" of the list, but with smoother motion thanks to Framer Motion's exit animations.
-
----
-
-### 2. Step by step
-
-**Old code (list rendering):**
-```jsx
-<ol className="challenge-items">
-  {displayedChallenges.map((challenge) => (
-    <ChallengeItem
-      key={challenge.id}
-      challenge={challenge}
-      onViewDetails={() => handleViewDetails(challenge.id)}
-      isExpanded={expanded === challenge.id}
-    />
-  ))}
-</ol>
-```
-
-**New code (animated list rendering):**
-```jsx
-<AnimatePresence
-  // add mode wait to ensure exit animations complete before entering animations start 
-  mode="wait"
->
-  {displayedChallenges.length > 0 && (
-    <motion.ol className="challenge-items"
-      // add a key to help framer motion to tell the component apart when the list changes 
-      key="list"
-    >
-      <AnimatePresence>
-        {displayedChallenges.map((challenge) => (
-          <ChallengeItem
-            key={challenge.id}
-            challenge={challenge}
-            onViewDetails={() => handleViewDetails(challenge.id)}
-            isExpanded={expanded === challenge.id}
-          />
-        ))}
-      </AnimatePresence>
-    </motion.ol>
-  )}
-
-  {displayedChallenges.length === 0 && <motion.p 
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    key={"fallback"}>No challenges found.</motion.p>}
-</AnimatePresence>
-```
-
-**Old ChallengeItem code:**
-```jsx
-<li>
-  <article className="challenge-item">
-    ...
-  </article>
-</li>
-```
-
-**New ChallengeItem code:**
-```jsx
-// add layout prop to enable layout animations
-<motion.li layout exit={{
-  y: -30, opacity: 0
-}}>
-  <article className="challenge-item">
-    ...
-  </article>
-</motion.li>
-```
+- **ChallengeItem.jsx:**
+  ```jsx
+  <motion.li layout exit={{ y: -30, opacity: 0 }}>
+    <article className="challenge-item">...</article>
+  </motion.li>
+  ```
+- **Result:** Smooth transitions for adding/removing items.
 
 ---
 
-### 3. Extras
+## Orchestrating Multi-Element Animations
 
-- `// add mode wait to ensure exit animations complete before entering animations start`
-- `// add a key to help framer motion to tell the component apart when the list changes`
-- `// add layout prop to enable layout animations`
-
----
-
-With these changes, when I mark a challenge as completed or failed, the list item animates out smoothly (yanking up and fading out), and switching tabs between challenge states gets a polished transition rather than a sudden snap. All thanks to AnimatePresence, the layout prop, and proper exit animations!
-
-### Update  Challenge Tabs, Challenge List & Items Animation
-
-In this step, I updated the Challenge Tabs, Challenge List, and Challenge Items to use enhanced animations and layout transitions with Framer Motion.
-
----
-
-### 1. Explain the changes
-
-I improved the UI by combining Framer Motion’s animation tools with layout animations, shared element transitions, and key-based animation re-triggers. The tabs system now has an animated active indicator using the shared `layout` prop, badges re-animate whenever their count changes thanks to their `key`, and the challenge list and items use layout and exit animations for smoother transitions when items are added, removed, or re-ordered.
-
----
-
-### 2. Step by step
-
-**Old Tab & Badge code:**
-```jsx
-<button
-  className={isSelected ? 'selected' : undefined}
-  onClick={onSelect}
->
-  {children}
-  <Badge caption={badgeCaption}></Badge>
-</button>
-```
-
-**New Tab & Badge code:**
-```jsx
-<button
-  className={isSelected ? 'selected' : undefined}
-  onClick={onSelect}
->
-  {children}
-  {/* key here will act as a unique identifier for the Badge component */}
-  {/* when the value of the key changes, react will destroy the old component and render a new one
-      triggering the animation each time the badgeCaption changes
-  */}
+- **Objective:** Animate tabs, badges, and challenge items together.
+- **Tabs & Badges:**
+  ```jsx
   <Badge key={badgeCaption} caption={badgeCaption}></Badge>
-</button>
-{isSelected && <motion.div layout="tab-indicator" className="active-tab-indicator" />}
-```
+  {isSelected && <motion.div layout="tab-indicator" className="active-tab-indicator" />}
+  ```
+- **Result:** Shared layout and badge animations.
 
-**Old ChallengeItem code:**
-```jsx
-<li>
-  <article className="challenge-item">
-    ...
-  </article>
-</li>
-```
+---
 
-**New ChallengeItem code:**
+
+## Combining Animations With Layout Animations
+
+- **Objective:** Use Framer Motion’s layout features for shared transitions.
+
 ```jsx
-// add layout prop to enable layout animations
-<motion.li layout exit={{
-  y: -30, opacity: 0
-}}>
-  <article className="challenge-item">
-    ...
-  </article>
+// Animate tab indicator position with layout prop
+{isSelected && (
+  <motion.div layout className="active-tab-indicator" />
+)}
+
+// Animate challenge item layout changes
+<motion.li layout exit={{ y: -30, opacity: 0 }}>
+  <article className="challenge-item">...</article>
 </motion.li>
 ```
 
----
-
-### 3. Some extra explain
-
-- `// key here will act as a unique identifier for the Badge component`
-- `// when the value of the key changes, react will destroy the old component and render a new one triggering the animation each time the badgeCaption changes`
-- `// add layout id for framer motion to enable shared layout animations`
-- `// add layout prop to enable layout animations`
+- **Result:** Smooth movement of tab indicators and challenge items.
 
 ---
 
-### 4. Summary
 
-- Combined Framer Motion’s animation and layout features for smooth, modern UI transitions.
-- Used `layout` for the shared tab indicator to animate its movement.
-- Re-triggered badge animation when its value changes by adjusting its `key`.
-- Enabled challenge item layout and exit animations for polished list updates.
-- Added comments in the code clarifying animation logic and best practices.
+## Animating Shared Elements
 
-### Step 16
+- **Objective:** Animate elements that move between layouts (e.g., tab indicator).
 
-In this step, I’m trying out **Scroll-Based Animation** on the Welcome page.
-
----
-
-### 1. Explain the changes
-
-I implemented scroll-based animation using Framer Motion’s `useScroll` and `useTransform` hooks to create a parallax effect. This means images and text on the landing page now move and fade dynamically as users scroll—making the landing experience more lively and interactive.
-
----
-
-### 2. Step by step
-
-**Old code (static images and text):**
 ```jsx
-<header id="welcome-header">
-  <h1>Ready for a challenge?</h1>
-  <Link id="cta-link" to="/challenges">Get Started</Link>
-  <img src={cityImg} alt="A city skyline" id="city-image" />
-  <img src={heroImg} alt="A superhero" id="hero-image" />
-</header>
+// Use layoutId for shared element transitions
+<motion.div layoutId="tab-indicator" className="active-tab-indicator" />
 ```
 
-**New code (animated with scroll):**
+- **Result:** Seamless transitions for shared UI elements.
+
+---
+
+
+## Re-triggering Animations via Keys
+
+- **Objective:** Use React keys to re-trigger badge animations.
+
 ```jsx
-const { scrollY } = useScroll();
-
-const opacityCity = useTransform(scrollY, [0, 200, 300, 500], [1, 0.5, 0.5, 0]);
-const yCity = useTransform(scrollY, [0, 200], [0, -100]);
-const yHero = useTransform(scrollY, [0, 300], [0, -50]);
-const opacityHero = useTransform(scrollY, [0, 300, 500], [1, 0.76, 0]);
-const scaletext = useTransform(scrollY, [0, 300], [1, 1.5]);
-const yText = useTransform(scrollY, [0, 200, 300, 500], [0, 50, 50, 300]);
-
-<motion.div id="welcome-header-content"
-  style={{ scale: scaletext, y: yText }}>
-  <h1>Ready for a challenge?</h1>
-  <Link id="cta-link" to="/challenges">Get Started</Link>
-</motion.div>
-<motion.img style={{ opacity: opacityCity, y: yCity }} src={cityImg} ... />
-<motion.img style={{ y: yHero, opacity: opacityHero }} src={heroImg} ... />
+// Use key to re-trigger badge animation when value changes
+<Badge key={badgeCaption} caption={badgeCaption} />
 ```
 
----
-
-### 3. Extras for expert
-
-- `// useScroll hooks help us track scroll position for potential animations`
-- `// use transform to create a parallax effect on the city image`
-- `// useTransform takes three arguments: the value to transform, an array of input ranges, and an array of output ranges`
-- `// Scale down the city image slightly as we scroll down`
-- `// Move the city image up as we scroll down`
-- `// Move the hero image up slightly as we scroll down`
-- `// Slightly fade the hero image as we scroll down`
-- `// Scale up the text as we scroll down`
-- `// Move the text down as we scroll down`
+- **Result:** Badge animates each time its value changes.
 
 ---
 
-With these changes, the Welcome page gets a smooth parallax animation, with multiple elements reacting to scroll for an energetic, modern landing effect.
+## Scroll-based Animations
 
-<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qa22O4htdpoa0Rj23UWQDuHKPwhigkJ7OfnNC" alt="main page.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+- **Objective:** Animate landing page elements based on scroll position.
+- **Code:**
+  ```jsx
+  const { scrollY } = useScroll();
+  const opacityCity = useTransform(scrollY, [0, 200, 300, 500], [1, 0.5, 0.5, 0]);
+  const yCity = useTransform(scrollY, [0, 200], [0, -100]);
+  const yHero = useTransform(scrollY, [0, 300], [0, -50]);
+  const opacityHero = useTransform(scrollY, [0, 300, 500], [1, 0.76, 0]);
+  const scaletext = useTransform(scrollY, [0, 300], [1, 1.5]);
+  const yText = useTransform(scrollY, [0, 200, 300, 500], [0, 50, 50, 300]);
 
-<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qVE7NZmiJkX2Nb0tMKUHmf86soRSCTWVOnPrc" alt="city disappear.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+  <motion.div id="welcome-header-content" style={{ scale: scaletext, y: yText }}>
+    <h1>Ready for a challenge?</h1>
+    <Link id="cta-link" to="/challenges">Get Started</Link>
+  </motion.div>
+  <motion.img style={{ opacity: opacityCity, y: yCity }} src={cityImg} ... />
+  <motion.img style={{ y: yHero, opacity: opacityHero }} src={heroImg} ... />
+  ```
+- **Result:** Parallax effect and dynamic landing page.
 
-## Summary
+![Main Page](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qa22O4htdpoa0Rj23UWQDuHKPwhigkJ7OfnNC)
+![City Disappear](https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qVE7NZmiJkX2Nb0tMKUHmf86soRSCTWVOnPrc)
 
-### Key Learnings
+---
 
-Some of the key services and concepts I learned in this project:
+## Summary & Key Learnings
 
-- **React animation fundamentals:** How to improve user engagement and experience by incorporating animations into a React app, starting with simple CSS transitions and moving up to powerful libraries.
-- **Framer Motion:** Using its motion components, variants, and hooks (`useAnimate`, `useScroll`, `useTransform`) to handle complex UI animation, exit states, imperative triggers, staggered lists, keyframe effects, scroll-based parallax, and more.
-- **Context API:** Managing shared state for challenges with React Context, giving structure to the app’s data flow.
-- **React Router:** Implementing SPA navigation for seamless transitions between views (welcome page, challenges list, etc).
-- **Imperative vs. Declarative Animation:** Choosing between pure CSS/reactive approaches and using hooks/functions to trigger animations on specific user interactions, like error feedback or scroll effects.
-- **Layout and Shared Element Animation:** Making smooth transitions for tabs, lists, and items by combining Framer Motion’s layout prop and shared layout IDs.
-- **Best Practices in UI Animation:** Avoiding issues like flicker and backdrop delay, and understanding how to use keys and layout features to control animation timing.
+### Key Concepts
 
-Overall, this project helped me combine React fundamentals with modern animation techniques to create a more polished, interactive, and user-friendly web application.
+- **React Animation Fundamentals:** CSS transitions, Framer Motion, Context API, React Router.
+- **Framer Motion:** Motion components, variants, hooks (`useAnimate`, `useScroll`, `useTransform`).
+- **Imperative vs. Declarative Animation:** When to use each approach.
+- **Layout & Shared Element Animation:** Smooth transitions for tabs, lists, and items.
+- **Best Practices:** Avoid flicker, use keys and layout features for timing.
 
 ### Unexpected Insights
 
-One thing I didn’t expect in this project was just how subtle and tricky UI animation bugs could be—especially when mixing exit animations with complex layouts or nested components. For example, sometimes the backdrop wouldn’t disappear as expected, or list items would flicker if transition and exit settings weren’t carefully managed. 
-
-It surprised me how much small details, like the order of AnimatePresence, keys, or where to put the transition prop, could totally change the animation feel and even cause odd bugs. Debugging those nuanced animation glitches forced me to dig way deeper into Framer Motion’s docs than I thought I’d need!
+- Small details (order of AnimatePresence, keys, transition props) can cause subtle animation bugs.
+- Debugging animation glitches often requires deep dives into documentation.
 
 ### Time Investment
 
-A lot of hours, it hard to document when practice with UI.
+- Many hours spent practicing and refining UI animation.
 
 ### Motivation
 
-For a job interview .
+- For a job interview.
+
+---
+
+**Final Code:** [GitHub - animation-react/tree/animation](https://github.com/vvduth/animation-react/tree/animation)  
+**Start Code:** [GitHub - animation-react/tree/main](https://github.com/vvduth/animation-react/tree/main)
+
+---
