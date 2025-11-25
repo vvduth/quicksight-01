@@ -51,7 +51,7 @@ To browse available providers, go to: https://registry.terraform.io/browse/provi
 
 We'll use the AWS provider:
 
-```hcl
+```bash
 provider "aws" {
   region = "eu-north-1"
 }
@@ -112,7 +112,7 @@ Copy the output and use it in the next step.
 
 ### keypair.tf
 
-```hcl
+```bash
 resource "aws_key_pair" "dove-key" {
   key_name   = "dove-key"
   public_key = file("dove-key.pub")
@@ -127,7 +127,7 @@ This will create a key pair called `dove-key` in the AWS console.
 
 ### securitygroup.tf
 
-```hcl
+```bash
 resource "aws_security_group" "dove-sg" {
   name        = "dove-sg"
   description = "Security group for dove instances"
@@ -180,7 +180,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound_ipv6" {
 
 ### instance.tf
 
-```hcl
+```bash
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.amiID.id
   instance_type          = "t3.micro"
@@ -253,7 +253,7 @@ Terraform can create and destroy infrastructure with just a few commands, so alw
 
 Add this to your `instance.tf`:
 
-```hcl
+```bash
 resource "aws_ec2_instance_state" "web-state" {
   instance_id = aws_instance.web.id
   state       = "running"

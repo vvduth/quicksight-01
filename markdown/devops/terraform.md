@@ -34,7 +34,7 @@ aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn2-ami-hv
 
 Use Terraform data source to get the latest AMI ID dynamically:
 
-```hcl
+```bash
 data "aws_ami" "amiID" {
   most_recent = true
   
@@ -61,7 +61,7 @@ data "aws_ami" "amiID" {
 To get information outside Terraform, we use data sources.
 
 **Syntax:**
-```hcl
+```bash
 data "TYPE" "NAME" {
   CONFIG
 }
@@ -74,7 +74,7 @@ Data sources allow you to fetch information from your cloud provider or other ex
 Just like print in Python, output blocks are used to display values after `terraform apply`.
 
 **Syntax:**
-```hcl
+```bash
 output "output_name" {
   description = "Description of the output"
   value       = resource.type.name.attribute
@@ -109,7 +109,7 @@ Here are the essential Terraform commands you need to know:
 
 Create a file named `main.tf` with the following content:
 
-```hcl
+```bash
 data "aws_ami" "amiID" {
   most_recent = true
   
