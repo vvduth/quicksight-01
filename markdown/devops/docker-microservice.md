@@ -1,5 +1,12 @@
 # Containerizing a Microservice E-Commerce Application with Docker
 
+**Author:** Duc Thai
+
+**Email:** ducthai060501@gmail.com
+
+## Overview
+
+
 ## Introduction
 
 Today we'll walk through how to containerize a microservice application using Docker. Microservice architecture has become the standard for modern software development because it allows teams to deliver features quickly and efficiently. As a DevOps engineer, you'll definitely encounter microservice applications, and knowing how to containerize them is essential.
@@ -35,7 +42,13 @@ User Request → Nginx API Gateway → Routes based on URL path:
   └─ /webapi   → Java API (port 9000) → MySQL
 ```
 
-## Getting Started
+<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qbkbp0sYzC0UbepwGZEqnOvQ5go6BkMrPTW1t" alt="image.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+
+<img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qEDTMlS5RyQWderu2ZITqoEwHSfV9gCkMpaLA" alt="image-1.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+
+## Steps
+
+### ## Getting Started
 
 ### Step 1: Clone the Repository
 
