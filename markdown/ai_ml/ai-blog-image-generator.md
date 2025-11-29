@@ -6,6 +6,8 @@
 
 In this article, I'll build  a multi-step AI workflow that automates the generation of blog posts from outlines. This approach demonstrates powerful patterns for working with large language models, including style transfer, output formatting, and robust response handling.
 
+code: https://github.com/vvduth/ai-workflow-blog
+
 <img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4q7Lrg2tVQV1X9BEfvjYTeFJu05cbKyiIHSU4g" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
