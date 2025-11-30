@@ -1,5 +1,6 @@
 # Advanced Control Flow in AI Workflows: Loops, Conditionals, and Parallel Execution
 <img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qLxMiILppcxJndMbU1QwmelBVYyuL3aXISzWg" alt="AI Workflow Control Flow" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+
 ## What We've Built So Far
 
 We've built an AI workflow with Python that generates blog posts based on given topics. The workflow includes several key components:
