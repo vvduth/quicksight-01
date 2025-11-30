@@ -1,113 +1,264 @@
-# Enhancing Your AI Workflow: Advanced Control Flows with Python
-
----
-
-## Introduction
-
-Imagine you're writing an article and designing the accompanying images at the same time—that's what advanced control flows in AI workflows can achieve. By incorporating techniques like parallel execution, conditional steps, and iterative loops, we transform a sequential workflow into a dynamic, flexible system.
-
+# Advanced Control Flow in AI Workflows: Loops, Conditionals, and Parallel Execution
 <img src="https://xjoit2fax3.ufs.sh/f/xY7L9K0z7b4qLxMiILppcxJndMbU1QwmelBVYyuL3aXISzWg" alt="AI Workflow Control Flow" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+## What We've Built So Far
 
----
+We've built an AI workflow with Python that generates blog posts based on given topics. The workflow includes several key components:
 
-## Overview of Our Current AI Workflow
+### Setup and Configuration
 
-We've previously established a Python-based workflow to generate blog posts from given topics. Now, we're enhancing it with advanced control concepts to boost efficiency and adaptability.
+The workflow starts by importing standard libraries (`base64`, `sys`, `os`) and loading environment variables using `dotenv`. This is where we store sensitive information like the OpenAI API key. We then import the `OpenAI` client and `pydantic` for data validation, and initialize the OpenAI client for making API calls.
 
----
+### Core Helper Functions
 
-### What We Have Built So Far
+Our workflow includes several helper functions that handle different parts of the process:
 
-1. **Imports and Setup:**
-   - Imported libraries: `base64`, `sys`, `os`
-   - Managed environment variables with `dotenv`
-   - Integrated and initialized the OpenAI client.
+- `load_file(path)` reads and returns the content of a file, exiting if the file doesn't exist
+- `save_file(path, content)` writes content to a file
+- `generate_article_draft(outline)` loads example blog posts from the `example_posts` directory, sends a prompt to OpenAI's GPT-4o model to generate a blog post draft based on the provided outline and the style of the example posts, and returns the generated markdown content
+- `generate_thumbnail(article)` uses OpenAI's image model (`gpt-image-1`) to generate a thumbnail image for the blog post and decodes it from base64
 
-2. **Helper Functions:**
-   - **File Handling:**
-     - `load_file(path)`: Reads file content.
-     - `save_file(path, content)`: Saves content to a file.
-   - **Draft Generation:**
-     - `generate_article_draft(outline)`: Uses OpenAI to create drafts.
-   - **Thumbnail Creation:**
-     - `generate_thumbnail(article)`: Generates images using OpenAI.
+### Main Workflow
 
-3. **Main Workflow:**
-   - Processes command-line inputs.
-   - Generates and saves blog drafts and thumbnails.
+The `main()` function orchestrates the entire process. It checks for a command-line argument (the outline file path), loads the outline, generates a blog post draft, prints the draft, generates a thumbnail image, and saves both the thumbnail and the blog post draft to files.
 
----
+## Today's Goal: Advanced Control Flow
 
-## Extending the Workflow with Advanced Features
+Today we'll extend this workflow to support more complex control flow patterns, including parallel execution, conditional steps, and loops.
 
-Our aim is to make the AI workflow more adaptable and responsive.
+## Understanding Sequential vs Parallel Execution
 
-### 1. Parallel Execution
+When building workflows, whether you're using AI or not, it's likely that not all steps need to run one after another. In our previous workflow, we ran all steps sequentially because many of them depended on each other. If step B depends on step A, it needs to run after step A finishes.
 
-By allowing independent tasks to run simultaneously, we save time. For instance, drafting and thumbnail creation can occur at the same time if they don't depend on each other.
+However, there are cases when you want to run steps in parallel. When some steps are independent of each other, they can run in any order. For example, if step A takes a long time to run and step B is independent of step A, you could run step B while waiting for step A to finish.
 
-### 2. Conditional Steps
+You can also run steps conditionally. If step A produces a result that indicates step B should run, then you run step B. Otherwise, you skip it.
 
-Conditional logic lets the workflow adapt dynamically. If an initial draft is satisfactory, we can skip the redrafting phase.
+You can also repeat steps. This might make sense if you want to refine a result over time, gather feedback, or build a chat application where you want to allow the user to ask follow-up questions.
 
-### 3. Iterative Refinement with Loops
+## Implementing a Feedback Loop
 
-Iterative loops allow for continuous refinement of drafts, ensuring that feedback is used to enhance quality until standards are met.
+In our updated workflow, we'll add a loop in the main function with an exit condition. We'll keep calling `generate_article_draft`, but instead of using just the outline as input, we'll also pass the previous draft (if it exists) and some feedback (if it exists).
 
----
+After generating the draft, we'll evaluate it by feeding it to an evaluation function that decides whether the draft needs improvement. We'll call this function `evaluate_article_draft`. The function uses an AI model to evaluate the draft and provide feedback.
 
-## Implementation Process
+### Defining the Evaluation Output Structure
 
-### Enhancing the `main()` Function
-
-The main function now supports iterative improvements with an exit condition, refining drafts until quality criteria are fulfilled.
+We'll ask for the output in JSON format with two fields: `needs_improvement` (boolean) and `feedback` (string). We'll define this structure in our Python code using Pydantic:
 
 ```python
-def main():
-    cycles = 0
-    while cycles < 10:
-        draft = generate_article_draft(outline, previous_draft, feedback)
-        evaluation = evaluate_article_draft(draft)
-        if not evaluation.needs_improvement:
-            break
-        feedback = evaluation.feedback
-        previous_draft = draft
-        cycles += 1
+class Evaluation(BaseModel):
+    needs_improvement: bool = Field(
+        description="Whether the draft needs to be improved"
+    )
+    feedback: str = Field(description="Feedback on how to improve the draft")
 ```
 
-- **Explanation:** This loop refines the draft up to ten times or breaks when no improvements are needed.
+### Implementing the Evaluation Function
 
-### Concurrent Task Execution
+Here's how we implement the evaluation function:
 
-Using Python's `concurrent.futures`, we run tasks like thumbnail generation and LinkedIn post creation in parallel.
+```python
+def evaluate_article_draft(draft: str) -> Evaluation:
+    print("Evaluating article draft...")
+    response = client.responses.parse(
+        model="gpt-4o",
+        input=[
+            {
+                "role": "developer",
+                "content": """
+                    You are an expert blog post evaluator....
+                """,
+            },
+            {
+                "role": "user",
+                "content": f"""
+                    Evaluate the following blog post draft:
+                    <draft>
+                    {draft}
+                    </draft>
+
+                    Return the feedback as JSON, indicating whether the draft needs to be improved and why.
+                """,
+            },
+        ],
+        text_format=Evaluation,
+    )
+
+    return response.output_parsed
+```
+
+### Handling the Loop
+
+If `needs_improvement` is true, we'll use the feedback to generate a new draft. Otherwise, we'll exit the loop and return the final draft. It's important to handle the exit condition properly to avoid infinite loops. We'll add a variable called `cycles` to limit the number of iterations in case the model keeps saying that the draft needs improvement.
+
+## Running Steps in Parallel
+
+After the loop ends, we'll perform two steps in parallel: generate the thumbnail and create a LinkedIn post about our blog post. We can use Python's threading module to run these steps simultaneously:
 
 ```python
 with concurrent.futures.ThreadPoolExecutor() as executor:
-    future_thumbnail = executor.submit(generate_thumbnail, final_draft)
-    future_linkedin = executor.submit(generate_linkedin_post, final_draft)
+    future_thumbnail = executor.submit(generate_thumbnail, blog_post_draft)
+    future_linkedin = executor.submit(generate_linkedin_post, blog_post_draft)
 
     linkedin_post = future_linkedin.result()
     thumbnail_image = future_thumbnail.result()
 ```
 
-- **Explanation:** Parallel execution minimizes wait times, optimizing workflow efficiency.
+### Implementing the LinkedIn Post Generator
 
-### Feedback and Evaluation Loop
-
-Drafts are managed with an AI-driven feedback loop, ensuring they meet quality standards.
+Here's the implementation of the LinkedIn post generation function:
 
 ```python
-def evaluate_article_draft(draft: str) -> Evaluation:
-    response = client.responses.parse(model="gpt-4o", ...)
-    return response.output_parsed
+def generate_linkedin_post(article: str) -> str:
+    print("Generating LinkedIn post...")
+
+    example_posts_path = "example_linkedin_posts"
+
+    if not os.path.exists(example_posts_path):
+        raise FileNotFoundError(f"The directory '{example_posts_path}' does not exist.")
+
+    example_posts = []
+
+    for filename in os.listdir(example_posts_path):
+        if filename.lower().endswith(".txt"):
+            with open(
+                os.path.join(example_posts_path, filename), "r", encoding="utf-8"
+            ) as file:
+                example_posts.append(file.read())
+
+    example_posts_str = "\n\n".join(
+        f"<example-post-{i+1}>\n{post}\n</example-post-{i+1}>"
+        for i, post in enumerate(example_posts)
+    )
+
+    response = client.responses.create(
+        model="gpt-4o",
+        input=[
+            {
+                "role": "developer",
+                "content": """
+                    You are an expert LinkedIn post generator.
+                    ....
+                """,
+            },
+            {
+                "role": "user",
+                "content": f"""
+                    Generate a LinkedIn post for the following blog post:
+                    <article>
+                    {article}
+                    </article>
+
+                    Here are some example LinkedIn posts I wrote in the past:
+                    <example-posts>
+                    {example_posts_str}
+                    </example-posts>
+
+                    ...
+                """,
+            },
+        ],
+    )
+
+    return response.output_text
 ```
 
-- **Explanation:** The function critiques the draft and offers feedback for potential improvements.
+## Updating the Article Draft Generator
 
----
+We need to update `generate_article_draft` to accept feedback and the previous draft as input:
 
-## Conclusion
+```python
+def generate_article_draft(
+    outline: str, existing_draft: str | None = None, feedback: str | None = None
+) -> str:
+    print("Generating article draft...")
+    example_posts_path = "example_posts"
 
-Incorporating advanced control flows elevates our AI workflow to a highly responsive and efficient system. With these enhancements, we align closer to real-world scenarios where adaptability and efficiency are crucial. Looking ahead, further innovations could include more comprehensive feedback mechanisms and integration with additional AI capabilities.
+    if not os.path.exists(example_posts_path):
+        raise FileNotFoundError(f"The directory '{example_posts_path}' does not exist.")
 
----
+    example_posts = []
+    for filename in os.listdir(example_posts_path):
+        if filename.lower().endswith(".md") or filename.lower().endswith(".mdx"):
+            with open(
+                os.path.join(example_posts_path, filename), "r", encoding="utf-8"
+            ) as file:
+                example_posts.append(file.read())
+
+    if not example_posts:
+        raise ValueError(
+            "No example blog posts found in the 'example_posts' directory."
+        )
+
+    example_posts_str = "\n\n".join(
+        f"<example-post-{i+1}>\n{post}\n</example-post-{i+1}>"
+        for i, post in enumerate(example_posts)
+    )
+
+    prompt = f"""
+                Write a detailed blog post based on the following outline:
+                <outline>
+                {outline}
+                </outline>
+                Below are some example blog posts I wrote in the past:
+                <example-posts>
+                {example_posts_str}
+                </example-posts>
+                ...
+            """
+
+    if existing_draft and feedback:
+        example_posts_str += (
+            f"\n\n<existing-draft>\n{existing_draft}\n</existing-draft>"
+        )
+        example_posts_str += f"\n\n<feedback>\n{feedback}\n</feedback>"
+
+        prompt = f"""
+            Write an improved version of the following blog post draft:
+            <existing-draft>
+            {existing_draft}
+            </existing-draft>
+            The following feedback should be taken into account when writing the improved draft:
+            <feedback>
+            {feedback}
+            </feedback>
+            The original draft AND your improved version should be based on the following outline:
+            <outline>
+            {outline}
+            </outline>
+            Below are some example blog posts I wrote in the past:
+            <example-posts>
+            {example_posts_str}
+            </example-posts>
+            ....
+        """
+
+    response = client.responses.create(
+        model="gpt-4o",
+        input=[
+            {
+                "role": "developer",
+                "content": """...""",
+            },
+            {"role": "user", "content": prompt},
+        ],
+    )
+
+    generated_text = response.output_text
+
+    if generated_text.strip().startswith("```markdown"):
+        lines = generated_text.strip().splitlines()
+        if len(lines) > 2 and lines[-1].strip() == "```":
+            generated_text = "\n".join(lines[1:-1])
+
+    return generated_text
+```
+
+## Running and Testing
+
+To run and test the updated workflow:
+
+1. Run `uv sync` to install the `concurrent` package
+2. Execute `python main.py path/to/outline`
+
+This workflow now supports loops for iterative improvement, conditional execution based on evaluation results, and parallel execution of independent tasks like thumbnail generation and LinkedIn post creation.
