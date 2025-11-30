@@ -371,9 +371,9 @@ Visit **http://localhost** in your browser. You should see the EMart homepage wh
 - Place orders
 - Test the Java API by clicking on "Try BookSmart"
 
-![EMart Homepage](image.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/image.png" alt="EMart Homepage" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
-![Java BookSmart](image-1.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/image-1.png" alt="Java BookSmart" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ## Clean Up
 

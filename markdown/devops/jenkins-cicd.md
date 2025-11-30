@@ -77,25 +77,39 @@ Jenkins installation is straightforward:
 Once installed, Jenkins can be accessed via a web interface and configured to fit your team's workflow.
 
 ---
-## set up an ec2 instance for jenkins
-- launch an ec2 instance (amazon linux 2 or ubuntu): I se ubuntu cuz in easy to install jenkins
-- allow port 8080 in security group
-- use large instance t3.smaller which has 2 gb ra, so we can build and test projects
-* jenkins runs on port 8080, same with tomcat server
-![jenkins sc](image.png)
+---
 
-- ssh in to ur ec2
-- update ur instance
+## Setting Up Jenkins on EC2
+
+### Prerequisites and Instance Setup
+
+**Step 1: Launch EC2 Instance**
+
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/image-1.png" alt="EC2 Launch" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+
+When launching your EC2 instance, consider the following:
+- Instance type: Ubuntu (recommended for easy installation) or Amazon Linux 2
+- Instance size: At least t3.small with 2GB RAM for building and testing projects
+- Security group: Allow port 8080 (Jenkins default port, same as Tomcat)
+
+**Step 2: Connect to EC2**
+```bash
+ssh -i your-key.pem ubuntu@your-ec2-public-ip
+```
+
+### Installation Steps
+
+**Update System**
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
-- install jdk 
+**Install JDK**
 ```bash
 sudo apt install openjdk-21-jdk -y
 ```
 
-- isntall jenkins
+**Install Jenkins**
 ```bash
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
@@ -106,10 +120,13 @@ sudo apt update
 sudo apt install jenkins -y
 ```
 
-verify jenkins is running
+**Verify Jenkins is Running**
 ```bash
 sudo systemctl status jenkins
-root@ip-172-31-29-194:~# systemctl status jenkins
+```
+
+Expected output:
+```
 ● jenkins.service - Jenkins Continuous Integration Server
      Loaded: loaded (/usr/lib/systemd/system/jenkins.service; enabled; preset: enabled)
      Active: active (running) since Sun 2025-11-30 12:06:57 UTC; 36s ago
@@ -117,81 +134,104 @@ root@ip-172-31-29-194:~# systemctl status jenkins
       Tasks: 50 (limit: 2204)
      Memory: 482.4M (peak: 508.8M)
         CPU: 20.379s
-     CGroup: /system.slice/jenkins.service
-
-
 ```
-==> green as a tick = we cool
 
--check jenkins home dir
+### Jenkins Directory Structure
+
+Check the Jenkins home directory:
 ```bash
-root@ip-172-31-29-194:~# ls /var/lib/jenkins/
-config.xml                     jenkins.telemetry.Correlator.xml  nodeMonitors.xml  secret.key                secrets  userContent
-hudson.model.UpdateCenter.xml  jobs                              plugins           secret.key.not-so-secret  updates  users
-
+ls /var/lib/jenkins/
 ```
 
-if u want to take back of jenkin, just shut down service, archive jenkins home dir /var/lib/jenkins, overrite it when u want to restore it
+Key directories and files:
+- `config.xml` - Main Jenkins configuration
+- `jobs/` - All Jenkins jobs
+- `plugins/` - Installed plugins
+- `users/` - User accounts
+- `secrets/` - Security credentials
 
-### broswer
-* goto http://your-ec2-public-ip:8080
-you should see this unlock jenkins page
-![unlock jenkins](image-1.png)
+### Backing Up and Restoring Jenkins
 
-- get the password
-```bash
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-```
-### install suggested plugins
- * we can say plugins are the Jenkins powerhouse.
-So if there is a question, what Jenkins can do,
-it depends on what plugins are available.
-Jenkins can run build CI/CD stuff, of course,
-but there's so many other build tools, right?
-Like we are using Maven,
-you might need to use, you know,
-something else, Ant, Gradle, some Node.js build.js build.
-    
-### create first admin user
-![alt text](image-2.png)
+1. Shut down Jenkins service
+2. Archive the `/var/lib/jenkins` directory
+3. To restore: Replace the directory with your backup and restart Jenkins
 
+---
 
-### welcome to jenkins
-![alt text](image-3.png)
+## Initial Jenkins Setup via Web Interface
 
-and we say "Thank you, Koshuke" (founder of jenkins)
+### Access Jenkins
 
-## freestyle vs paac 
-* freestyle is the classic jenkins job type
-* So freestyle job are all graphical jobs.
-So you click on create a job and you fill all the information.
-It's basically a form filling.
-You run the job and you see it's output.
-Now that's fine and good, but the problem with this is, you will have many types, many jobs, many jobs that you need to connect together to create a pipeline.
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/image-1.png" alt="Jenkins Web Interface" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
-Fetch the code.
+1. Open your browser and navigate to:
+   ```
+   http://your-ec2-public-ip:8080
+   ```
 
-Build the code on another job, then run
+2. You will see the "Unlock Jenkins" page
 
-test another job, to deploy another job, and then you connect all of them together manually, one
+3. Get the initial admin password:
+   ```bash
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   ```
 
-by one.
+4. Copy and paste the password into the unlock page
 
-Now, it's not a problem, but it's a problem when you want to replicate the same thing if you want to do the same thing in other project.
-A similar thing in another Jenkins.
+### Install Suggested Plugins
 
-* in real time, we need everythignas as a code in deveops world.
-* so we need jenkins pipeline as code
-* So you create a similar pipeline or same pipeline, which will be written in Groovy Language.
+Jenkins is powerful because of its **plugin ecosystem**. Plugins determine what Jenkins can do:
+- **Build tool plugins:** Maven, Ant, Gradle, Node.js, etc.
+- **Integration plugins:** Git, GitHub, Docker, Kubernetes, AWS, etc.
+- **Testing plugins:** JUnit, TestNG, Sonar, etc.
 
-So it's similar to creating a job.
+Click **Install suggested plugins** to get common plugins for most use cases.
 
-You create a job.
+### Create First Admin User
 
-But in that job you mention this entire script and that entire script is your pipeline.
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/image-2.png" alt="Create Admin User" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
-That's all.
+After plugins are installed, create your first admin user:
+- Username and password
+- Full name and email
+- Click **Save and Continue**
 
-And you can version control it because it will be all text.
+### Welcome to Jenkins
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/image-3.png" alt="Jenkins Ready" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
-And it is recommended now because we need everything as a code, so pipeline also as a code.
+You're now ready to use Jenkins!
+---
+
+## Job Types: Freestyle vs Pipeline as Code
+
+### Freestyle Jobs
+
+Freestyle jobs are the classic Jenkins job type:
+- **Graphical interface:** Click to create a job and fill out forms
+- **Simple configuration:** User-friendly UI for basic tasks
+- **Limitations:** When you have many jobs to connect:
+  - Fetch code (Job 1)
+  - Build code (Job 2)
+  - Run tests (Job 3)
+  - Deploy (Job 4)
+  - Must manually connect all jobs together
+
+### Problems with Freestyle
+
+- Difficult to replicate pipelines across projects
+- Hard to version control (configuration is in Jenkins, not in code)
+- Not scalable for complex workflows
+
+### Pipeline as Code
+
+Modern Jenkins uses **Pipeline as Code** (written in Groovy):
+- Define the entire pipeline in a script
+- Version control everything (store in Git)
+- Easy to replicate and share
+- Follows DevOps principle: "Everything as Code"
+
+**Benefits:**
+- Reproducible across projects
+- Version controlled like regular code
+- Easy to review and modify
+- Recommended for modern CI/CD workflows
