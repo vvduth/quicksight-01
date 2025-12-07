@@ -37,14 +37,14 @@ This project uses the **MELD dataset**, which contains video clips extracted fro
 
 ⚠️ **Important:** Due to the large dataset size, ensure you have sufficient disk space before downloading.
 
-![MELD Dataset](image-3.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/image-3.png" alt="MELD Dataset" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 ## Neural Network Fundamentals
 
 ### Architecture Overview
 
-![Neural Network Architecture](image-2.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/image-2.png" alt="Neural Network Architecture" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### How Individual Neurons Work
 
@@ -162,7 +162,7 @@ We use calculus (partial derivatives) to measure how much each individual weight
 
 ### Gradient Descent Algorithm
 
-![Gradient Descent Visualization](image.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/image.png" alt="Gradient Descent Visualization" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 **Step-by-Step Process:**
 
@@ -206,7 +206,7 @@ graph TD
 
 ### Understanding Model Performance Issues
 
-![Underfitting vs Overfitting](image-1.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/image-1.png" alt="Underfitting vs Overfitting" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Underfitting
 
@@ -502,7 +502,7 @@ graph TD
 
 ## Our Late Fusion Implementation Details
 
-![Late Fusion Architecture](image-4.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/image-4.png" alt="Late Fusion Architecture" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Detailed Architecture Breakdown
 
