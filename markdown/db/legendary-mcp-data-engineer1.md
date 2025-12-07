@@ -9,7 +9,7 @@
 
 ---
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_er-diagram-screenshot)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_er-diagram-screenshot" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -45,7 +45,7 @@ This project definitely met my goals—I was able to practice deploying containe
 
 In this step, I’m setting up my development environment by installing the necessary tools. Docker Desktop will help me easily manage and run containers on my local machine, making it simple to launch a PostgreSQL instance in an isolated environment. I’m also installing `uv`, a fast Python package manager, to streamline the process of managing project dependencies and virtual environments. This setup ensures my workflow is consistent, efficient, and ready for database experimentation.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_8h9i0j1k)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_8h9i0j1k" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### What's Docker and why containers?
 
@@ -74,7 +74,7 @@ The command `uv init` set up a Python project because it’s important to organi
 
 ### Installing Docker MCP
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_mcp-config-screenshot)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_mcp-config-screenshot" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -84,7 +84,7 @@ In this step, I'm going to use the Docker MCP to guide Cursor in creating a new 
 
 Once the database is ready, I'll load some demo data into it so I have something meaningful to work with. After the data is loaded, I'll visualize the database contents—this helps me better understand the data structures, spot trends or anomalies, and verify that my setup is working as expected. Leveraging MCPs in this way allows me to manage, manipulate, and monitor both Docker and PostgreSQL instances seamlessly from Cursor, streamlining my workflow and making hands-on database work much more efficient.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_postgres-container-screenshot)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_postgres-container-screenshot" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Database security
 
@@ -114,7 +114,7 @@ I verified my database by prompting Cursor to use the Postgres MCP to read the d
 
 The Mermaid ER diagram displays tables as labeled boxes, columns as fields within those boxes, and relationships as connecting lines or arrows between related tables. Example values from the sampled rows are included, which makes it easy to see not just the schema but also the kind of data stored in each part of the database. This approach provided a quick and visual overview of both the database structure and its contents, confirming that the setup and data loading were successful.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_er-diagram-screenshot)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_er-diagram-screenshot" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -139,7 +139,7 @@ Cursor’s audit found several areas for improvement:
 
 - Cache hit rate was excellent (99.93%), meaning almost all queries are served from cache and there’s no immediate need to tune cache or buffer.
 
-![Image](http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_performance-screenshot)
+<img src="http://learn.nextwork.org/relaxed_teal_timid_avocado/uploads/mcp-data-engineer1_performance-screenshot" alt="Image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Performance gains
 
