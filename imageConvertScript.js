@@ -35,7 +35,8 @@ function convertMarkdownImagesToHtml(content) {
         // Use provided alt text or default to "Image"
         const alt = altText.trim() || 'Image';
         
-        return `<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/${imageSrc}" alt="${alt}" style="${IMAGE_STYLE}" />`;
+        //return `<img src="${imageSrc}" alt="${alt}" style="${IMAGE_STYLE}" />`;
+        return `<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/${imageSrc}" alt="${alt}" style="${IMAGE_STYLE}" />`;
     });
 }
 
