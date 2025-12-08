@@ -1,0 +1,46 @@
+pipeline {
+    // where do we run the pipeline/which agent
+    agent any
+    tools {
+        // which version of maven we use
+        maven 'MAVEN3.9'
+        // which version of jdk we use
+        jdk 'JDK17'
+    }
+
+    stages {
+        stage("Fetch code from git") {
+            steps {
+                // mention the pulgin we want to use and params
+                git branch: 'atom', url : 'https://github.com/vvduth/vprofile-project.git'
+            }
+        }
+        // run unit tsest using maven
+        stage("Run Unit Tests") {
+            steps {
+                // run maven command to run unit tests
+                sh 'mvn test'
+            }
+        }
+
+        // install dependencies and build the project
+        stage("Build Project") {
+            steps {
+                // run maven command to build the project
+                sh 'mvn clean install -DskipTests=true'
+            }
+            post {
+                // if build is successful
+                success {
+                    echo 'Build completed successfully!'
+                    // use archiveArtifacts to store the built war file as a build artifact
+                    archiveArtifacts artifacts: 'target/*.war'
+                }
+                // if build fails
+                failure {
+                    echo 'Build failed. Please check the logs for details.'
+                }
+            }
+        }
+    }
+}
