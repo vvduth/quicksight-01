@@ -145,11 +145,11 @@ systemctl enable nexus
 ### Security Group for Nexus
 - Allow **Inbound Port 8081** from Jenkins EC2 and your IP address.
 
-![nexus security group](image.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-3/image.png" alt="nexus security group" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 Paste the nexus script in user data and launch the instance.
 
-![nexus bash script usre data](image-1.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-3/image-1.png" alt="nexus bash script usre data" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -305,7 +305,7 @@ reboot
    sudo systemctl status nexus
    ```
 2. Access via browser: `http://your-nexus-ip:8081`
-   ![nexu on broswer](image-2.png)
+   <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-3/image-2.png" alt="nexu on broswer" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 3. Get initial admin password:
    ```bash
    cat /opt/nexus/sonatype-work/nexus3/admin.password
@@ -314,7 +314,7 @@ reboot
 
 ### Verify SonarQube
 1. Access via browser: `http://your-sonarqube-ip`
-   ![sonar qube on broswer](image-3.png)
+   <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-3/image-3.png" alt="sonar qube on broswer" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 2. Login with default credentials:
    - Username: `admin`
    - Password: `admin`
@@ -331,6 +331,6 @@ To integrate these tools, install the following plugins in Jenkins:
 4. **Pipeline Maven Integration** (for Maven builds)
 5. **Build Timestamp** (for versioning artifacts)
 
-![plugin jenkins](image-5.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-3/image-5.png" alt="plugin jenkins" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 Go to **Manage Jenkins > Plugins > Available Plugins** and install them.

@@ -122,9 +122,9 @@ pipeline {
 4.  Paste the code above into the **Script** box.
 5.  Click **Save** and then **Build Now**.
 
-![console output](image.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image.png" alt="console output" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
-!stage-views
+You should see the pipeline executing with stages for fetching code, running tests, and building the project. If everything goes well, you'll have your WAR file archived as a build artifact!
 
 ---
 
@@ -144,7 +144,7 @@ First, ensure your SonarQube EC2 instance is powered on. Then, we need to do two
 **Install Scanner:**
 Go to **Manage Jenkins** -> **Global Tool Configuration** -> Scroll to **SonarQube Scanner** -> **Add SonarQube Scanner**.
 
-![add sonarqube scanner](image-2.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-2.png" alt="add sonarqube scanner" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 **Configure Server:**
 1.  Go to **Manage Jenkins** -> **Configure System** -> Scroll to **SonarQube servers**.
@@ -153,7 +153,7 @@ Go to **Manage Jenkins** -> **Global Tool Configuration** -> Scroll to **SonarQu
     *   **Server URL:** `http://<sonarqube-ec2-private-ip>:80` (Since our machines are in the same VPC, we use the private IP. Nginx is forwarding port 80 to 9000).
     *   **Token:** You need to generate this on the SonarQube server.
 
-![soner token page on broswer](image-3.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-3.png" alt="soner token page on broswer" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 3.  Paste the generated token into Jenkins and save.
 
@@ -180,13 +180,13 @@ Now, let's modify the Jenkinsfile to include a **Checkstyle** analysis stage aft
         }
 ```
 
-![chekc style steps output](image-4.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-4.png" alt="chekc style steps output" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
-![workspace for check style](image-5.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-5.png" alt="workspace for check style" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 Inside the `target/site` directory, you will find the `checkstyle-result.xml` file. We can archive this as an artifact, but reading raw XML is painful. We will upload this to SonarQube for better visualization.
 
-![checkstyle_result.xml](image-6.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-6.png" alt="checkstyle_result.xml" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Step 3: Add SonarQube Analysis Stage
 
@@ -223,11 +223,11 @@ We will now add a stage to run the SonarQube scanner. This sends all our reports
 *   `java.binaries`: Location of compiled Java classes.
 *   `reportPaths`: Locations of the various test reports we generated earlier.
 
-![sonarqube analysis result](image-7.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-7.png" alt="sonarqube analysis result" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 After a successful build, check your SonarQube dashboard. You should see your project listed there!
 
-![sonar qube dashbboard](image-8.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-8.png" alt="sonar qube dashbboard" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -240,7 +240,7 @@ SonarQube comes with a default Quality Gate, but let's create our own to be stri
 3.  Add a condition: **Bugs is greater than 10**. This means if the code has more than 10 bugs, the pipeline should fail.
 4.  Go to your **Project Settings** -> **Quality Gate** and select your new `vprofile-quality-gate`.
 
-![change the quality gate](image-9.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-9.png" alt="change the quality gate" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### The Missing Link: Webhooks
 
@@ -250,7 +250,7 @@ Right now, Jenkins sends data to SonarQube, but it doesn't know if the Quality G
 2.  **Name:** `jenkins-webhook`
 3.  **URL:** `http://<jenkins-ec2-PRIVATE-ip>:8080/sonarqube-webhook/`
 
-![add webhook on sonarqube project settting](image-10.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-10.png" alt="add webhook on sonarqube project settting" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Step 4: Add Quality Gate Check to Jenkinsfile
 
@@ -273,8 +273,8 @@ Finally, add a stage to wait for SonarQube's response.
 
 If your code has more than 10 bugs, the pipeline will now fail at the Quality Gate stage.
 
-![quality gate failed](image-11.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-11.png" alt="quality gate failed" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 To fix this (for demonstration purposes), bump up the bug limit in your Quality Gate to 50, and run the pipeline again. It should pass!
 
-![buil sucess](image-12.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-4/image-12.png" alt="buil sucess" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
