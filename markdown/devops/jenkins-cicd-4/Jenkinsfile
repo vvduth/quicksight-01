@@ -15,13 +15,7 @@ pipeline {
                 git branch: 'atom', url : 'https://github.com/vvduth/vprofile-project.git'
             }
         }
-        // run unit tsest using maven
-        stage("Run Unit Tests") {
-            steps {
-                // run maven command to run unit tests
-                sh 'mvn test'
-            }
-        }
+        
 
         // install dependencies and build the project
         stage("Build Project") {
@@ -39,6 +33,52 @@ pipeline {
                 // if build fails
                 failure {
                     echo 'Build failed. Please check the logs for details.'
+                }
+            }
+        }
+        // run unit tsest using maven
+        stage("Run Unit Tests") {
+            steps {
+                // run maven command to run unit tests
+                sh 'mvn test'
+            }
+        }
+
+        stage('checkstyle analysis') {
+            steps {
+                // run maven command to perform checkstyle analysis
+                // nmaven will download checkstyle plugin and run it against the codebase
+                sh 'mvn checkstyle:checkstyle'
+            }
+        }
+
+        stage("SonarQube Analysis") {
+            environment {
+                // find this in jenkins => tools
+                scannerHome = tool 'sonar6.2'
+            }
+            steps {
+                // the nae that you set in the sonarQube server configuration in jenkins
+                withSonarQubeEnv('sonarserver') {
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
+                    -Dsonar.projectName=vprofile \
+                    -Dsonar.projectVersion=1.0 \
+                    -Dsonar.sources=src/ \
+                    -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
+                    -Dsonar.junit.reportPaths=target/surefire-reports/ \
+                    -Dsonar.jacoco.reportPaths=target/jacoco.exec \
+                    -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml 
+
+                    '''
+                }
+            }
+        }
+
+        stage("Quality Gate") {
+            steps {
+                // timeout for waiting for the analysis to be done
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
