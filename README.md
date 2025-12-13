@@ -11,17 +11,6 @@ This repository documents my hands-on AWS learning journey. I've completed **25+
 
 **Author:** Duc Thai | **Email:** ducthai060501@gmail.com
 
----
-
-## 📊 Quick Stats
-
-| Metric | Value |
-|--------|-------|
-| Projects | 25+ |
-| AWS Services | 20+ |
-| Hours Learning | 50+ |
-| Performance Gain | 62% |
-| Architecture Patterns | 35+ |
 
 ---
 
@@ -29,6 +18,7 @@ This repository documents my hands-on AWS learning journey. I've completed **25+
 
 ### 🤖 AI & Machine Learning
 - **[RAG Chatbot with Bedrock](markdown/ai_ml/legendary-ai-rag-bedrock.md)** - Custom AI with vector embeddings
+- **[Video Sentiment Analysis](markdown/ai_ml/notes/notes.md)** - Multi-modal deep learning for emotion detection
 
 ### ⚡ Containers & Compute
 - **[Docker & Elastic Beanstalk](markdown/compute/legendary-aws-compute-eb.md)** - Container fundamentals
@@ -55,6 +45,7 @@ This repository documents my hands-on AWS learning journey. I've completed **25+
 ### 🔄 DevOps
 - **[CI/CD Pipeline](markdown/devops/legendary-aws-devops-cicd.md)** - Automated deployment
 - **[GitHub Actions](markdown/devops/legendary-aws-devops-github.md)** - Workflow automation
+- **[Jenkins CI/CD](markdown/devops/jenkins-cicd.md)** - Full pipeline with Nexus, SonarQube, Docker & ECS
 
 ---
 
@@ -63,17 +54,6 @@ This repository documents my hands-on AWS learning journey. I've completed **25+
 **AWS:** Lambda, EKS, DynamoDB, RDS, Aurora, EC2, VPC, CloudFront, S3, KMS, GuardDuty, Bedrock, QuickSight, CodePipeline
 
 **Tools:** Docker, Kubernetes, Git, GitHub Actions, Python, AWS CLI, CloudFormation
-
----
-
-## 🏆 Key Achievements
-
-✅ **62% Performance Improvement** - CloudFront optimization (102ms → 271ms)  
-✅ **Real Security Testing** - SQL injection & command injection attack simulation  
-✅ **Container Mastery** - Full Docker and Kubernetes pipeline  
-✅ **Threat Detection** - GuardDuty findings and incident response  
-✅ **Enterprise Architecture** - Multi-tier high-availability applications  
-✅ **Complex Networking** - VPC peering and security controls  
 
 ---
 
