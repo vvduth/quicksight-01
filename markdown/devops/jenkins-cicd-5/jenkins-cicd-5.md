@@ -19,11 +19,11 @@ Ensure your **Jenkins**, **SonarQube**, and **Nexus** EC2 instances are up and r
 
 ### Step 1: Configure Nexus Repository
 1.  Access Nexus in your browser: `http://<nexus-server-ip>:8081`
-    ![nexus on browser](image.png)
+    <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image.png" alt="nexus on browser" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 2.  Log in as admin.
 3.  Go to **Server Administration** (gear icon) -> **Repositories**.
 4.  Click **Create repository** -> Select **maven2 (hosted)**.
-    ![create repo](image-1.png)
+    <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-1.png" alt="create repo" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 5.  Name it `vprofile-repo` and create it.
 
 ### Step 2: Configure Jenkins Credentials
@@ -32,7 +32,7 @@ Ensure your **Jenkins**, **SonarQube**, and **Nexus** EC2 instances are up and r
     *   **ID:** `nexuslogin`
     *   **Username:** `admin`
     *   **Password:** `<your-nexus-password>`
-    ![jenkisn credential page](image-2.png)
+    <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-2.png" alt="jenkisn credential page" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Step 3: Update Jenkinsfile for Nexus Upload
 Add the `Upload artifact` stage to your `Jenkinsfile`. This uses the `nexusArtifactUploader` step (note the capital 'A').
@@ -69,7 +69,7 @@ If you encounter issues with disk space or stale files:
 ### Verification
 Run the build. If successful, check your Nexus repository to confirm the artifact was uploaded.
 
-![nexus broswer repo](image-5.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-5.png" alt="nexus broswer repo" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -109,7 +109,7 @@ pipeline {
 }
 ```
 
-![slack notification](image-7.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-7.png" alt="slack notification" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -130,7 +130,7 @@ Instead of just storing the WAR file, we will containerize the application and p
     ```
 4.  **Plugins:** Install **Docker Pipeline**, **Amazon ECR**, and **AWS Steps** plugins in Jenkins.
 5.  **Create ECR Repo:** Create a repository named `vprofileappimage` in AWS ECR.
-    ![amazon ecr create](image-8.png)
+    <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-8.png" alt="amazon ecr create" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Update Jenkinsfile for Docker Build & Push
 Replace the "Upload artifact" stage with Docker stages.
@@ -169,7 +169,7 @@ Replace the "Upload artifact" stage with Docker stages.
 
 Run the build. You should see the image in your ECR repository.
 
-![docker ecr](image-11.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-11.png" alt="docker ecr" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ---
 
@@ -179,18 +179,18 @@ Now that our image is in ECR, we will deploy it to Amazon ECS (Elastic Container
 
 ### ECS Setup
 1.  **Create Cluster:** Create a generic ECS cluster (Fargate or EC2).
-    ![ecs](image-12.png)
+    <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-12.png" alt="ecs" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 2.  **Task Definition:**
     *   Create a Task Definition.
     *   **Image URI:** Use the ECR URI (e.g., `.../vprofileappimage:latest`).
     *   **Port Mapping:** 8080.
     *   **Role:** Ensure the Task Execution Role has permissions to pull from ECR and write to CloudWatch Logs.
-    ![task definition](image-13.png)
+    <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-13.png" alt="task definition" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 3.  **Create Service:**
     *   Create a Service from the Task Definition.
     *   **Load Balancer:** Attach an Application Load Balancer (ALB).
     *   **Security Group:** Allow Port 80 (HTTP) from anywhere.
-    ![ecs service](image-15.png)
+    <img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-15.png" alt="ecs service" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Update Jenkinsfile for Deployment
 Add the deployment stage. This command forces ECS to update the service with the latest image.
@@ -225,4 +225,4 @@ Add the deployment stage. This command forces ECS to update the service with the
 5.  ECS pulls the new image and replaces the old containers.
 6.  Slack notifies the team of success/failure.
 
-![build rsuilt](image-18.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/devops/jenkins-cicd-5/image-18.png" alt="build rsuilt" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
