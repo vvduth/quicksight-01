@@ -36,7 +36,7 @@ function convertMarkdownImagesToHtml(content) {
         const alt = altText.trim() || 'Image';
         
         //return `<img src="${imageSrc}" alt="${alt}" style="${IMAGE_STYLE}" />`;
-        return `<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/jenkins-cicd-5/${imageSrc}" alt="${alt}" style="${IMAGE_STYLE}" />`;
+        return `<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/ai-multi-agents-notes/${imageSrc}" alt="${alt}" style="${IMAGE_STYLE}" />`;
     });
 }
 

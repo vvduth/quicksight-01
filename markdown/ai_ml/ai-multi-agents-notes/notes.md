@@ -424,4 +424,4 @@ Summary Report Agent is generating the summary report...
 Summary Report Generated.
 ```
 
-![generated mardown file](image.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/ai_ml/ai-multi-agents-notes/image.png" alt="generated mardown file" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
