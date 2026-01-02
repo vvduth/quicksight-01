@@ -80,7 +80,7 @@ servers:
 * after the bind mount the voulme to the container, we need to copy the nginx config file to the container
   ```yaml
   volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       ```
 - explain: we have a folder called nginx in our host machine, which contains the nginx config file
 - we mount this file to the container's nginx config file path
@@ -161,3 +161,103 @@ php:
     env_file:
       - ./env/mysql.env
 ```
+
+### composer container
+* we will use custom docker image for composer container
+```dockerfile
+FROM composer:latest
+
+WORKDIR /var/www/html
+
+ENTRYPOINT [ "composer", "--ignore-platform-reqs" ]
+```
+- explain: we use the latest composer image as the base image, set the working directory to /var/www/html, and set the entrypoint to composer command with --ignore-platform-reqs flag to ignore platform requirements
+- we need this contaienr to have access to the source code
+```yaml
+    volumes:
+      - ./src:/var/www/html:delegated
+```
+
+
+### create a laravel app using the composer container
+* first run only composer container
+```bash
+ docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+```
+- explain: this command will run the composer container and remove it after it exits
+* then inside the container, run the following command to create a new laravel app
+* the dot at the end means we want to create the app in the current directory which is /var/www/html inside the container and ./src in our host machine
+![host machine laravel app](image-2.png)
+
+### try to run the app
+* now we have the laravel app code in our host machine, we can try to run the app using nginx and php container
+* first take look insei src/.env to see some configuration like database connection
+* here the the default: 
+* ```env
+DB_CONNECTION=
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+* modify these values to match our mysql container configuration
+```env
+
+* cuurentlyt the incoming request wiil hit our server containert first (nginx), then nginx will forward the request to php container to interpret the php code and return the response back to nginx which will then return the response to the client
+* so inisde the serevr serrvice we need anothre bind mount to mount the source code to the nginx container as well
+```yaml
+    volumes:
+      - ./src:/var/www/html:delegated
+```
+* now we run the app using docker compose
+```bash
+ docker-compose up -d server php mysql
+```
+
+* now open the browser and go to http://localhost:8000
+## Encountered issue 
+* I got an error: file_put_contents(/var/www/html/storage/framework/views/9745f6a6f3fcc1ddd95648c9a006bc71.php): Failed to open stream: Permission denied
+
+![error 500](image-3.png)
+
+* When using Docker on Linux, you might face permission errors when adding a bind mount as shown in the next lecture. If you do, try these steps:
+Change the php.dockerfile so that it looks like that:
+
+```dockerfile
+FROM php:8.2.4-fpm-alpine
+ 
+WORKDIR /var/www/html
+ 
+COPY src .
+ 
+RUN docker-php-ext-install pdo pdo_mysql
+ 
+RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
+ 
+USER laravel
+```
+
+we now create a user "laravel" which we use (with the USER instruction) for commands executed inside of this image / container).
+
+
+Also edit the composer.dockerfile to look like this:
+
+```dockerfile
+FROM composer:2.5.7
+ 
+RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
+ 
+USER laravel
+ 
+WORKDIR /var/www/html
+ 
+ENTRYPOINT [ "composer", "--ignore-platform-reqs" ]
+```
+Here, we add that same "laravel" user and use it for creating the project therefore.
+
+These steps should ensure that all files which are created by the Composer container are assigned to a user named "laravel" which exists in all containers which have to work on the files.
+
+
+## working app
+![working laravel app](image-4.png)
