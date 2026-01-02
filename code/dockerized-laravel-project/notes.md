@@ -108,3 +108,56 @@ server {
 }
 ```
 - explain: in the config file, we set the root directory to /var/www/html/public, because in laravel app, the public folder is the entry point of the app, listen on port 80, handle request to index.php file, and forward php request to the php container on port 3000
+### to the php container:
+* will be ralteive strightforward
+* we will build our own custom php image on tyop on the official php image from docker hub cuz I need to install some extra php extensions that are required by laravel
+* that is why i created a dockerfiles/php.dockerfile file in my host machine
+```dockerfile
+FROM php:7.4-fpm-alpine
+
+WORKDIR /var/www/html
+
+RUN docker-php-ext-install pdo pdo_mysql
+```
+
+- explain: we use the php 7.4 fpm alpine image as the base image, set the working directory to /var/www/html, and install the pdo and pdo_mysql extensions which are required by laravel to connect to mysql database
+- herer we donot have and commnnd or entrypoint at the end, when to do not have entrypoint or command, the container will use the default command from the base image, which is php-fpm in this case
+- And therefore it will be able to deal
+
+with incoming PHP files that should be interpreted
+
+because our base image is invoking this interpreter.
+
+- with that done, in our docker compose filw we can refer to the custom php image we just built
+```yaml
+php:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+```
+- explain: we set the build context to the dockerfiles folder in our host machine, and specify the dockerfile name
+- now we have to ensuer this interpreter contaner can reach our sourcre code which is located in our local host machine.
+- andt that source code is also need to be later on available inside the var/www/html folder inside the php container
+- bind mount the source code folder from our host machine to the php container
+- inside our local machine creat the folder and src (for source code) and put the laravel app code inside that folder
+```yaml
+    volumes:
+      - ./src:/var/www/html:delegated
+```
+- the php default expose port 9000, bbut in ngixn config we expect the php fpm to be running on port 3000
+- so we need to change teh fastcgi_pass line in the nginx config file to point to port 9000
+- remember we qalso have direct container communication between nginx and php container
+```nginx
+        fastcgi_pass php:9000;
+```
+- explain: here php is the service name of the php container, and 9000 is the port that php fpm is listening on inside the container
+![php container](image-1.png)
+
+### mysql container
+* we will use the official mysql image from docker hub
+```yaml
+ mysql:
+    image: 'mysql:5.7'
+    env_file:
+      - ./env/mysql.env
+```
