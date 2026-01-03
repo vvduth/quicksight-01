@@ -222,10 +222,11 @@ DB_PASSWORD=
 ![error 500](image-3.png)
 
 * When using Docker on Linux, you might face permission errors when adding a bind mount as shown in the next lecture. If you do, try these steps:
+* after larevel 12+ , there are some achanges need to be made
 Change the php.dockerfile so that it looks like that:
 
 ```dockerfile
-FROM php:8.2.4-fpm-alpine
+FROM php:8.4-fpm-alpine
  
 WORKDIR /var/www/html
  
@@ -233,31 +234,113 @@ COPY src .
  
 RUN docker-php-ext-install pdo pdo_mysql
  
+# IF YOU GET PERMISSIONS ISSUES ON /var/www/html/storage
+# RUN chown -R www-data:www-data .
+ 
 RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
  
 USER laravel
 ```
 
+
+* we use php 8.4 here because laravel 12+ requires php 8.4 or higher
+* we copy the source code to the image during build time
 we now create a user "laravel" which we use (with the USER instruction) for commands executed inside of this image / container).
 
 
 Also edit the composer.dockerfile to look like this:
 
 ```dockerfile
-FROM composer:2.5.7
+FROM composer:latest
  
 RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
  
-USER laravel
+USER laravel 
  
 WORKDIR /var/www/html
+ 
+#unsure if this is needed
+USER root 
  
 ENTRYPOINT [ "composer", "--ignore-platform-reqs" ]
 ```
 Here, we add that same "laravel" user and use it for creating the project therefore.
 
 These steps should ensure that all files which are created by the Composer container are assigned to a user named "laravel" which exists in all containers which have to work on the files.
+* explain:
+*  - we create the same "laravel" user here as well
+*  - we switch to that user with the USER instruction
+*  - PHP-FPM refuses to run as root by default, that why we need to create a non-root user "laravel" in the php container
+*  bbut the laravel user does not have access to the storage directorym hwich is mounted from my window/linux subsystem host machine
+*  - therefore we need to temporarily switch to root user to give the laravel user the right permissions to the storage directory
+*  
+# also you need to run the artisan migration first using the artisan container to create the necessary database tables
+```bash
+ docker-compose exec php php artisan migrate
+```
+
 
 
 ## working app
 ![working laravel app](image-4.png)
+
+*  try change the code in \src\resources\views\welcome.blade.php and run the app again to see the changes reflected in the browser
+*  ![code change refelected](image-5.png)
+## artisan container
+* no need to create the separate dockerfile for artisan container, we can use the same php.dockerfile
+* just need to set the command to run artisan
+```yaml
+  artisan:
+    build:
+      context: ./dockerfiles
+      dockerfile: php.dockerfile
+    volumes:
+      - ./src:/var/www/html
+```
+* we can also override the php image to ruand entry point in docker compose for artisan container
+```yaml
+    entrypoint: ["php", "/var/www/html/artisan"]
+```
+
+## npm container
+* quite simple
+```yaml
+ npm:
+    image: 'node:18-alpine'
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
+    volumes:
+      - ./src:/var/www/html
+```
+
+## bind mounts vs copy : when to use which
+* bind mount ususally user for easeier during development, cuz the src folder chanegs and only avaliin my local host machine.
+* if we deploy containers to production, we usually copy the source code to the image during build time
+* so in production we usually use copy instead of bind mount
+* in our case I will caret nginx.dockerfile
+```dockerfile
+FROM nginx:stable-alpine
+
+WORKDIR /etc/nginx/conf.d
+
+COPY nginx/nginx.conf .
+
+# in local folder the file naem is nginx.conf , but in container it is default.conf
+RUN mv nginx.conf default.conf 
+
+WORKDIR /var/www/html
+
+COPY src .
+```
+
+=> this will copy the source code to the nginx container during build time
+
+* go back to docker-compose.yaml and change the server service to build the custom nginx image
+```yaml
+  server:
+    build:
+      context: ./dockerfiles
+      dockerfile: nginx.dockerfile
+    ports:
+      - "8000:80"
+```
