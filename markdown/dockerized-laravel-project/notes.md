@@ -41,7 +41,7 @@ Make sure you have Docker and Docker Compose installed. Follow the official docs
 
 ### Step 1: Create `docker-compose.yaml`
 We'll declare our 6 services here.
-![services in laravel app](image.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/dockerized-laravel-project/image.png" alt="services in laravel app" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Server Container (Nginx)
 We'll use the official Alpine image and expose port 8000.
@@ -112,7 +112,7 @@ php:
     ```nginx
     fastcgi_pass php:9000;
     ```
-![php container](image-1.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/dockerized-laravel-project/image-1.png" alt="php container" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### MySQL Container
 Standard setup using the official image.
@@ -156,7 +156,7 @@ docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
 ```
 
 *   **Explanation**: This runs `create-project` inside the container, depositing the files into `./src` on your host.
-![host machine laravel app](image-2.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/dockerized-laravel-project/image-2.png" alt="host machine laravel app" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ### Running the App
 Check `src/.env` for database config and update it to match your MySQL container settings:
@@ -188,7 +188,7 @@ Visit `http://localhost:8000`.
 
 ## Encountered Issues & Fixes
 I hit a permission error: `file_put_contents(...): Failed to open stream: Permission denied`.
-![error 500](image-3.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/dockerized-laravel-project/image-3.png" alt="error 500" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 This happens because the container user doesn't have write permissions to the bind-mounted folders on Linux/WSL. Also, Laravel 12+ requires PHP 8.4.
 
@@ -234,10 +234,10 @@ docker-compose exec php php artisan migrate
 
 ## Working App
 Success!
-![working laravel app](image-4.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/dockerized-laravel-project/image-4.png" alt="working laravel app" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 I changed `src/resources/views/welcome.blade.php` and the changes reflected instantly.
-![code change refelected](image-5.png)
+<img src="https://raw.githubusercontent.com/vvduth/quicksight-01/refs/heads/main/markdown/dockerized-laravel-project/image-5.png" alt="code change refelected" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 
 ## Artisan Container
 We can reuse the `php.dockerfile` for Artisan commands.
