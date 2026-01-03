@@ -5,6 +5,11 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/nginx.dockerfile
+    ports:
+      -  '8080:80'
+    depends_on:
+      - php
+      - mysql
   php:
     build:
       context: .
@@ -17,14 +22,14 @@ services:
       - ./env/mysql.env
   composer:
     build:
-      context: ./dockerfiles
-      dockerfile: composer.dockerfile
+      context: .
+      dockerfile: dockerfiles/composer.dockerfile
     volumes:
       - ./src:/var/www/html
   artisan:
     build:
-      context: ./dockerfiles
-      dockerfile: php.dockerfile
+      context: .
+      dockerfile: dockerfiles/php.dockerfile
     volumes:
       - ./src:/var/www/html
     entrypoint: ["php", "/var/www/html/artisan"]

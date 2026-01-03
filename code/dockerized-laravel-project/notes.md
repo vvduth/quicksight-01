@@ -337,10 +337,15 @@ COPY src .
 
 * go back to docker-compose.yaml and change the server service to build the custom nginx image
 ```yaml
-  server:
+ server:
     build:
-      context: ./dockerfiles
-      dockerfile: nginx.dockerfile
+      context: .
+      dockerfile: dockerfiles/nginx.dockerfile
     ports:
-      - "8000:80"
+      -  "8080:80"
+    depends_on:
+      - php
+      - mysql
 ```
+
+==> no need to bind mount the source code to the nginx container anymore
