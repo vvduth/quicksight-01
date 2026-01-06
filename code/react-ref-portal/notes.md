@@ -144,3 +144,10 @@ const TimerChallenges = ({ title, targetTime }) => {
 export default TimerChallenges;
 => we use ref to store the timer id across renders without causing re-renders
 * if we just store timer id in a state variable, every time we set the timer id, it would cause a re-render which is unnecessary
+## useImperativeHandle
+* use cases
+  - when you want to expose only certain methods or properties of a child component to its parent component
+  - when you want to encapsulate complex logic within a child component while still allowing the parent component to interact with it in a controlled manner
+  - It  requires 2 args: 
+  - 1. ref: the ref object that you want to customize
+  - 2. createHandle: a function that returns an object containing the methods and properties
