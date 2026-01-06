@@ -6,6 +6,9 @@ export default function Player() {
 
   function handleClick() {
     setEnteredPlayerName(playerNameRef.current.value);
+
+    // clear input field after setting name
+    playerNameRef.current.value = "";
   }
   return (
     <section id="player">
