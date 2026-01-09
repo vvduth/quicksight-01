@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { useImperativeHandle } from "react";
-
 const ResultModal = ({ targetTime, result, ref,
   remainingTime,
   onReset
