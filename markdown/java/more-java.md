@@ -3,6 +3,37 @@
 ## The Collections API: Grouping Your Stuff
 Think of the Collections API as Java's way of helping you organize your messy room. It's a set of classes and interfaces designed to store and manipulate groups of objects so you don't have to build your own linked list from scratch every time (unless you're into that sort of thing).
 
+```java
+import java.util.*;
+
+public class CollectionsDemo {
+    public static void main(String[] args) {
+        // Example usage of different collections
+        List<String> arrayList = new ArrayList<>();
+        Set<String> hashSet = new HashSet<>();
+        Map<String, Integer> hashMap = new HashMap<>();
+
+        // Adding elements
+        arrayList.add("Apple");
+        arrayList.add("Banana");
+        arrayList.add("Apple"); // Duplicates allowed
+
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Apple"); // Duplicate ignored
+
+        hashMap.put("Apple", 1);
+        hashMap.put("Banana", 2);
+        hashMap.put("Apple", 3); // Key updated
+
+        // Displaying collections
+        System.out.println("ArrayList: " + arrayList);
+        System.out.println("HashSet: " + hashSet);
+        System.out.println("HashMap: " + hashMap);
+    }
+}
+```
+
 ### ArrayList: The Resizable Workhorse
 * It's basically an array that grew up and realized it didn't like being a fixed size.
 * It allows duplicate elements (because sometimes you just need two "Pizza" entries).
