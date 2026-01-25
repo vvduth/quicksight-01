@@ -1,5 +1,5 @@
 Sure! Here's a concise version suitable for an interview:
-### Can you explain the four core principles of Object-Oriented Programming—encapsulation, inheritance, polymorphism, and abstraction—and how they are implemented in Java? Feel free to give examples if it helps.
+### Q: Can you explain the four core principles of Object-Oriented Programming—encapsulation, inheritance, polymorphism, and abstraction—and how they are implemented in Java? Feel free to give examples if it helps.
 The four core OOP principles in Java are:
 
 1. **Encapsulation** – Bundling data and methods, using private fields with public getters/setters to control access.  

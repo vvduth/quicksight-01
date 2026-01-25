@@ -1,4 +1,4 @@
-### Could you explain the difference between an abstract class and an interface, and share a scenario where you might prefer one over the other?
+## Question: Could you explain the difference between an abstract class and an interface, and share a scenario where you might prefer one over the other?
 
  Sure! Here's the difference between an abstract class and an interface in Java:
 
@@ -49,7 +49,7 @@ Would you like to see a practical example of how these are used in a real-world 
 
 
 
-Now, how would you decide between using an enum versus a class for something like representing user roles in a system?
+## Question: Now, how would you decide between using an enum versus a class for something like representing user roles in a system?
 
 Great question! Here's how you'd decide between using an **enum** and a **class** to represent user roles in a system:
 
