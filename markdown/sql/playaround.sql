@@ -99,3 +99,17 @@ FROM phones
 ORDER by price DESC
 LIMIT 2
 OFFSET 1;
+
+-- * from => join => where => group by => having = > select => order by   
+
+SELECT manufacturer 
+FROM phones
+WHERE price < 170
+
+UNION 
+
+SELECT manufacturer
+FROM phones
+GROUP BY manufacturer
+HAVING COUNT(*) > 2
+;
