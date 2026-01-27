@@ -247,3 +247,9 @@ B b = (B) a;   // Downcasting
     *   `double` -> `Double`
     *   `char` -> `Character`
     *   `boolean` -> `Boolean`
+
+* soap/rest
+* websocket
+* hibernate
+* jpa
+* spring mvc: model view controller, ModelController, RequestMapping, view resolver, model attribute, 

@@ -172,7 +172,5 @@
 
 ### Extras
 - The `@Configuration` annotation marks a class as a source of bean definitions. It tells Spring, "I've got some `@Bean` methods here you might want to look at."
- a 30-minute Google Meet call (in English) with Hang (Kaylin) Nguyen
-Senior Talent Acquisition Partner to learn more about your experience and share what they are building at Nimble
 
-a 30-minute Google Meet call (in English) with Hang (Kaylin) Nguyen - Senior Talent Acquisition Partner to learn more about your experience and share what they are building at Nimble. we aim to create a comfortable, conversational atmosphere while asking a mix of skills-based and personality questions. Our goal is to assess both your fit with the team and your readiness for the role. Just come ready to discuss my experience and share how I approach real-world challenges. focus on practical, intermediate-level questions that allow you to showcase your expertise and familiarity with current technologies and best practices.
+

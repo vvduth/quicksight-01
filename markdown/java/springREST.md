@@ -1,0 +1,2 @@
+## what is rest?
+REST (Representational State Transfer) is an architectural style for designing networked applications. It relies on a stateless, client-server communication protocol, typically HTTP. RESTful services use standard HTTP methods (GET, POST, PUT, DELETE) to perform operations on resources identified by URIs (Uniform Resource Identifiers).

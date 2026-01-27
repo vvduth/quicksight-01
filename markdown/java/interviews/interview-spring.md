@@ -95,3 +95,24 @@ Constructor injection is often preferred over field injection for several reason
 1. **Testability**: It makes unit testing easier since dependencies can be provided directly through the constructor, allowing for better control over mock objects.
 1. **Clearer API**: The constructor clearly indicates what dependencies are required for the class to function
 1. **Avoids Reflection**: Field injection often relies on reflection, which can lead to issues with visibility and can be less efficient.
+
+
+## Q: explain @authowired annotation in Spring and how it works with dependency injection?
+The `@Autowired` annotation in Spring is used to automatically inject dependencies into a class. It is a key part of Spring's Dependency Injection (DI) mechanism. When you annotate a constructor, setter method, or field with `@Autowired`, Spring's IoC container will automatically resolve and inject the required dependency.
+* example of constructor injection using `@Autowired`:
+```java
+@Service
+public class UserService {
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+}
+```
+
+main code
+In this example, Spring will automatically inject an instance of `UserRepository` into the `UserService` when it is created. The IoC container looks for a bean of type `UserRepository` in its context and provides it to the `UserService` constructor.
+
+`@Autowired` can also be used on setter methods and fields, but constructor injection is generally preferred for the reasons mentioned earlier.
