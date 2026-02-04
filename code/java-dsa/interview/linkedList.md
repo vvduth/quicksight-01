@@ -44,3 +44,12 @@
 * prev1.next = D2.next
 * return D1.next
 ## reverse between
+* we have a linkedlist with 2 indexes: m and n
+* reverse the nodes between m and n
+* how to do this?
+* dummy will point that the head
+* prev will be right before m (index m-1)
+* create a for loop that have n - m iterations, then swap the ponter to reverse the nodes.
+* after the loop, re point the head to dummy.next
+## swap nodes in pairs
+* we have a linkedlist, swap every 2 adjacent nodes

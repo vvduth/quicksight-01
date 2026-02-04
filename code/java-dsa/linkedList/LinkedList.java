@@ -262,5 +262,53 @@ public class LinkedList {
         head = dummy1.next;
         
     }
+
+    public void reverseBetween(int startIndex, int endIndex) {
+        if (length == 0 ){
+            return;
+        }
+        Node dummyNode = new Node(0);
+        dummyNode.next = head;
+        Node prev = dummyNode;
+        Node current = null;
+
+        for (int i = 0; i <= startIndex; i++) {
+            prev = prev.next;
+            current = prev.next;
+            for (int j = 0; j < endIndex -startIndex; j++) {
+                Node nodeToMove = current.next;
+                current.next = nodeToMove.next;
+                nodeToMove.next = prev.next;
+                prev.next = nodeToMove;
+            }
+        }
+        head = dummyNode.next;
+
+    }
+
+    public void swapPairs() {
+        if (head == null ||head.next == null) {
+            return;
+        }
+        Node dummyNode = new Node(0);
+        dummyNode.next = head; 
+        Node prev = dummyNode;
+        Node first = head; 
+
+        while(first != null && first.next != null) {
+            Node second = first.next;
+            
+            // swap
+            prev.next = second;
+            first.next = second.next;
+            second.next = first;
+
+
+            prev = first;
+            first = first.next;
+        }
+        head = dummyNode.next;
+
+    }
 }
 

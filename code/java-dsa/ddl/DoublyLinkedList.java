@@ -13,7 +13,9 @@ public class DoublyLinkedList {
         Node(int value) {
             this.value = value;
         }
-        Node() {}
+
+        Node() {
+        }
     }
 
     public DoublyLinkedList(int value) {
@@ -22,11 +24,9 @@ public class DoublyLinkedList {
         tail = newNode;
         length = 1;
     }
-    
 
     public DoublyLinkedList() {
     }
-
 
     public Node getHead() {
         return head;
@@ -157,14 +157,15 @@ public class DoublyLinkedList {
         length++;
         return true;
     }
+
     public Node remove(int index) {
-        if (index < 0 || index >= length  ) {
+        if (index < 0 || index >= length) {
             return null;
         }
         if (index == 0) {
             removeFirst();
         }
-        if (index == length -1 ) {
+        if (index == length - 1) {
             removeLast();
         }
         Node temp = get(index);
@@ -179,15 +180,15 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    // another way of remove 
+    // another way of remove
     public Node remove2(int index) {
-        if (index < 0 || index >= length  ) {
+        if (index < 0 || index >= length) {
             return null;
         }
         if (index == 0) {
             removeFirst();
         }
-        if (index == length -1 ) {
+        if (index == length - 1) {
             removeLast();
         }
         Node temp = get(index);
@@ -203,7 +204,7 @@ public class DoublyLinkedList {
         if (length == 1) {
             return true;
         }
-        Node forward = head; 
+        Node forward = head;
         Node backward = tail;
 
         for (int i = 0; i < length / 2; i++) {
@@ -217,20 +218,105 @@ public class DoublyLinkedList {
         return true;
     }
 
-     public void reverse() {
+    public void reverse() {
         Node current = head;
         Node temp = null;
-    
+
         while (current != null) {
             temp = current.prev;
             current.prev = current.next;
             current.next = temp;
             current = current.prev;
         }
-    
+
         temp = head;
         head = tail;
         tail = temp;
+    }
+
+    public void partitionList(int x) {
+        // If the list is empty, nothing to do
+        if (head == null)
+            return;
+
+        // Create two dummy nodes to help build two new lists
+        Node dummy1 = new Node(0); // List for nodes < x
+        Node dummy2 = new Node(0); // List for nodes >= x
+
+        // Use these pointers to build the two lists
+        Node prev1 = dummy1;
+        Node prev2 = dummy2;
+        Node current = head;
+
+        // Traverse the original list
+        while (current != null) {
+            if (current.value < x) {
+                // Attach node to dummy1 list
+                prev1.next = current;
+                current.prev = prev1;
+                prev1 = current;
+            } else {
+                // Attach node to dummy2 list
+                prev2.next = current;
+                current.prev = prev2;
+                prev2 = current;
+            }
+            current = current.next;
+        }
+
+        // End the second list to avoid any trailing connections
+        prev2.next = null;
+
+        // Connect the two lists
+        prev1.next = dummy2.next;
+
+        // If dummy2 list has nodes, fix their prev pointer
+        if (dummy2.next != null) {
+            dummy2.next.prev = prev1;
+        }
+
+        // Update head pointer of the main list
+        head = dummy1.next;
+
+        // Ensure new head has no previous pointer
+        if (head != null) {
+            head.prev = null;
+        }
+    }
+
+    public void swapPairs() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node dummyNode = new Node(0);
+        dummyNode.next = head;
+        Node prev = dummyNode;
+        
+
+        while (head != null && head.next != null) {
+            Node first = head;
+            Node second = first.next;
+
+            // swap
+            prev.next = second;
+            first.next = second.next;
+            second.next = first;
+
+            // swap prev
+            second.prev = prev;
+            first.prev = second;
+            if (first.next != null) {
+                first.next.prev = first;
+            }
+            
+            // move pointers to prepare for the next iteration
+            head = first.next;
+            prev = first; 
+
+        }
+        head = dummyNode.next;
+        if (head != null) head.prev = null;
+
     }
 
 }
