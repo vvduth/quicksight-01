@@ -11,6 +11,9 @@ public class Stack {
         top = newNode;
         height = 1;
     }
+    public boolean isEmpty() {
+        return height == 0;
+    }
     public void printStack() {
         Node temp = top;
         while (temp != null) {
